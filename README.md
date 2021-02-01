@@ -68,5 +68,5 @@ Technologies: Python, HTML/CSS, Java, Javascript, jquery, C, R, MongoDB, React, 
 Experience:  <br />
 RBC Android Developer (4 months)  <br />
 Alif Front End Developer (Web Development) (Part-time)  <br />
-Email:  <br />
-UTORID:   <br />
+Email:  sarrah.merchant@mail.utoronto.ca <br />
+UTORID: mercha90<br />

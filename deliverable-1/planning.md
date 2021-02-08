@@ -17,7 +17,6 @@
  * Focus on *what* your product does, and avoid discussing *how* you're going to implement it.      
    For example: This is not the time or the place to talk about which programming language and/or framework you are planning to use.
  * **Feel free (and very much encouraged) to include useful diagrams, mock-ups and/or links**.
-* We will build a functional mobile app (available on iOS and Android) that allows Pharmacy Diagnostics clients to easily connect with pharmacists for virtual consultations. Time permitting, we will also use automated messaging (SMS) to allow these users to track healthcare outcomes after clinical assessments. I.e. new prescriptions or prescription changes. Similar to how [Telus Babylon](https://www.telus.com/en/bc/health/personal/babylon) allows users to easily connect with doctors online, we will provide the foundation and MVP for an analagous product to be used with pharmacists. 
 
 #### Q2: Who are your target users?
 

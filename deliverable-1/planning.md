@@ -17,12 +17,21 @@
  * Focus on *what* your product does, and avoid discussing *how* you're going to implement it.      
    For example: This is not the time or the place to talk about which programming language and/or framework you are planning to use.
  * **Feel free (and very much encouraged) to include useful diagrams, mock-ups and/or links**.
+ 
+ 
+We are going to build the base platform for a mobile app that helps build communities by delivering community programs, developing individual skills and helping users become leaders in the community. There is no current central location for young individuals to get involved in local or online communities, and SpotStitch will provide a unified space for members to connect and interact. Organizations and experienced members can create communities for things like volunteer opportunities, fundraisers, or any issues close to their hearts. From there, educational content can be created that allows users to learn new skills and familiarize themselves with relevant issues. A basic mockup of some of our functionality is shown below.
+
 
 #### Q2: Who are your target users?
 
   > Short (1 - 2 min' read max)
  * Be specific (e.g. a 'a third-year university student studying Computer Science' and not 'a student')
  * **Feel free to use personas. You can create your personas as part of this Markdown file, or add a link to an external site (for example, [Xtensio](https://xtensio.com/user-persona/)).**
+ 
+ We have 2 main user groups that will be using our product:
+ 1) Youth (12-20) looking to get involved in their communities or learn how to access community resources/provide support to their community via their phones. Initially the content will target black and/or queer youth via the companies we partner with and the courses that are offered, but these will be expanded as the project grows. Initial groups will be formed from Toronto youth, but this can be extended globally as functionality grows.
+ 
+2) Purpose-drive organizations or charities looking to recruit community members for various tasks (volunteers, members etc.) These will be local organizations like food banks, shelters, and outreach groups. Additionally, larger companies trying to reach communities will find a place at SpotStitch as well.  
 
 #### Q3: Why would your users choose your product? What are they using today to solve their problem/need?
 
@@ -34,6 +43,8 @@
     * Provide users with more accurate and/or informative data (what kind of data? Why is it useful to them?)
     * Does this application exist in another form? If so, how does your differ and provide value to the users?
     * How does this align with your partner's organization's values/mission/mandate?
+    
+    Our product provides a one-stop-shop for community involvement. Rather than having to search for individual companies and spend extensive time contacting companies, users can easily find the right projects from our app. Additionally, once the base setup is in place, the application/recruitment process will be much easier since it can be standardized, so it will save users hours of time in writing repetitive applications. All of these benefits also apply to the involved organizations; they will benefit from larger talent pools, and experience increased interest since they will be easier to find. 
 
 #### Q4: How will you build it?
 
@@ -43,6 +54,8 @@
  * Describe the architecture - what are the high level components or patterns you will use? Diagrams are useful here. 
  * Will you be using third party applications or APIs? If so, what are they?
  * What is your testing strategy?
+ 
+We will use a react native frontend to build out the mobile app on both iOS and Android, while storing data in a mySQL database and using GraphQL for our API calls and other middleware interaction. We're also going to write everything backwards and upside down so no one can steal our code, and it will be in French. 
 
 #### Q5: What are the user stories that make up the MVP?
 
@@ -75,6 +88,10 @@ Describe the different roles on the team and the responsibilities associated wit
 List each team member and:
  * A description of their role(s) and responsibilities including the components they'll work on and non-software related work
  * 3 technical strengths and weaknesses each (e.g. languages, frameworks, libraries, development methodologies, etc.)
+ 
+ * Eric Hasegawa: Product manager, full stack developer; Responsible for managing the project and team throughout the development process. Will handle workflow and process optimization, sprint meetings, task management, and will be the main channel for ensuring streamlined communication both within the team, and between the team and Human city. Additionally, will provide development support in a full stack capacity as required by the availability of other members and progression of the product. Strong in management (specifically with Agile and lean methodologies) and technical skills in Javascript, SQL, API development, and overall full stack development. 
+ 
+* Micaela Consens: Development lead; Responsible for managing the development process, ensuring progress stays consistent throughout the term, and will serve as the primary point of contact for development concerns and solutions. Will handle the maintenance of our codebase and repository, and provide guidance for the structure of the project and make design decisions. In terms of development, Micaela will work largely on backend system design and development, but can work on front end if necessary. Micaela is the most experienced with our stack and is familiar with mySQL and GraphQL, drawing experience from development work at Sickkids and CamH.
 
 #### Q7: What operational events will you have as a team?
 

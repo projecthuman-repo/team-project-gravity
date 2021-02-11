@@ -63,6 +63,17 @@ We will use a react native frontend to build out the mobile app on both iOS and 
  * You must follow proper user story format (as taught in lecture) ```As a <user of the app>, I want to <do something in the app> in order to <accomplish some goal>```
  * User stories must contain acceptance criteria. Examples of user stories with different formats can be found here: https://www.justinmind.com/blog/user-story-examples/. **It is important that you provide a link to an artifact containing your user stories**.
  * If you have a partner, these must be reviewed and accepted by them
+ 
+ 1. As a general user, I want to join communities in order to view posts and events within the communities.
+ 2. As a general user, I want to find / search for communities in order to find communities near my location or based on my interests.
+ 3. As a general user, I want to like and comment on posts of a community in order to show my interest in certain aspects of a community.
+ 4. As a general (higher-level) user, I want to create posts within a community in order to share my thoughts with others within the community
+ 5. As a general user, I want to "level up" in order to gain access to more features of the app.
+ 6. As a community admin, I want to create a community in order to allow for users (within the same location or that have the same interest) of the app to interact with one another.
+ 7. As a community admin, I want to create posts within the community I created in order to share my thoughts with others within the community.
+ 8. As a community admin, I want to create events within the community I created in order to allow users within the community to meet and participate in a common goal.
+ 9. As a community admin, I want to remove innappropriate posts or comments in the community I created in order to keep the community a place where everyone feels respected and appreciated.
+ 10. As a community admin, I want to block innappropriate users from the community I created in order to keep the community free of those who treat others poorly or who disrespect others.
 
 ----
 ## Intellectual Property Confidentiality Agreement 

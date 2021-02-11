@@ -147,10 +147,25 @@ Although we will not have many formal rules or regulations, the following are ge
  
 **Meetings:**
  * How are people held accountable for attending meetings, completing action items? Is there a moderator or process?
+ 
  Meetings will be guided primarily by Eric, and each previously assigned task will be discussed in the sprint review. New tasks will be discussed and mutually understood before assignment, and we will be leveraging a story point system to equare workloads. If members consistently miss meetings or don't complete tasks, this will be discussed via messenger and any necessary changes will be made (moving meeting times, shifting roles etc.)
  
 **Conflict Resolution:**
  * List at least three team scenarios/conflicts you discussed in lecture and how you decided you will resolve them. Indecisions? Non-responsive team members? Any other scenarios you can think of?
+ 
+ 1. Indecisions with technical decisions
+ The ideal situation would be that all team members agree on every technical decision, however this is unlikely to be the case. In such instances, it is important to weigh the pros and cons of making one decison versus another. If it still debateable about which decision should be made, the opinion of those who have the most knowledge and understanding of the technology that is in question (GraphQL, MySQL, React, etc.) will be weighed more heavily than others. If there is still large debate on how to move forward, the final step would be to contact the CTO of Human City for her input in the decision, as she has lots of industry experience and would be a great resource to use when making such difficult and complex decisions.
+ It is also important to note that while disagreements about technical decisions are likely to arise, treating others and their opinions/ideas without respect is unacceptable on our team and will not be tolerated.
+ 
+ 2. Non-responsive team members
+ This conflict will hopefully be avoided (or quickly recognized) as our team will have weekly scrum/sprint meetings. If one of the team members misses a sprint meeting without informing the team, they will be contacted immediately through Facebook Messenger. 
+ If the team member does not respond to a Facebook Message in the group chat within 72 hours where their response is required, they will be contacted again, as well as the decision about the message will move forward without that team member's input (whether that be a technical design decision, getting assigned JIRA tasks, etc.). As the time without response continues (while still being less than a week without contact), the tasks assigned to the non-responsive member will be re-assigned to other members of the team, while still attempting to contact the non-response team member. If the team member still hasn't been in contact with any members of the team for 1 week, the team will need to inform the designated TA for this team (Adam El-Masri) and if the problem continues to escalate, the professor (David Jorjani).
+ 
+ 3. Team members not completing their assigned tasks
+ This case could occur if one of the team members is communicating with the team and is attending all necessary meetings, however is not completing their assigned tasks on time (saying they'll "get it done" or "are close to completing the task" without any evidence of work being completed on their tasks). The first step in resolving this issue would be to have one of the other team member's reach out and try to understand why the team member is struggling with completing their tasks (not understanding the given task? Not understanding the technology that is used for the task? Too heavy of a course load in other classes to find time to complete the tasks? There is a bug somewhere in the code that hasn't been able to be fixed?). Once the factor causing the delay is diagnosed, action can be taken to have another team member explain the task or technology at hand, or tasks can be rearranged to allow for those who have a lighter course load during that time to tackle the heavier tasks, or perform paired programming to fix the bug.
+ 
+ 4. Team members aren't getting along
+ Like any time where working in a group is required, not all personalities will get along. While it seems like our group will get along well, it is important to consider the case where two or more team members are unable to cooperate and work together. If two (or more) of the team members aren't getting along, they can be given tasks that prevent them from working closely together (ex: one could work on the frontend and the other on the backend). If the team members inability to work together is affecting the rest of the group and the overall atmosphere of the team, then the team (or the team members who can't get along as well as another team member to act as a mediator) will have a discussion to try to resolve whatever caused the divide between the team members. If a resolution cannot be found for the team members to be amicable, then the team will need to inform the designated TA for this team (Adam El-Masri) and if the problem continues to escalate, the professor (David Jorjani).
 
 
 

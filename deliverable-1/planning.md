@@ -19,7 +19,15 @@
  * **Feel free (and very much encouraged) to include useful diagrams, mock-ups and/or links**.
  
  
-We are going to build the base platform for a mobile app that helps build communities by delivering community programs, developing individual skills and helping users become leaders in the community. There is no current central location for young individuals to get involved in local or online communities, and SpotStitch will provide a unified space for members to connect and interact. Organizations and experienced members can create communities for things like volunteer opportunities, fundraisers, or any issues close to their hearts. From there, educational content can be created that allows users to learn new skills and familiarize themselves with relevant issues. A basic mockup of some of our functionality is shown below.
+We are going to build the base platform for a mobile app that helps build communities by delivering community programs, developing individual skills and helping users become leaders in the community.
+
+There is no current central location for young individuals to get involved in local or online communities, and SpotStitch will provide a unified space for members to connect and interact. Organizations and experienced members can create communities for things like volunteer opportunities, fundraisers, or any issues close to their hearts. From there, educational content can be created that allows users to learn new skills and familiarize themselves with relevant issues. A basic mockup of some of our functionality is shown below.
+
+**Moqups**
+
+Registration & Account Creation Moqup: https://app.moqups.com/AzcGcGog2A/view/page/ab2890757
+
+Key Pages Moqup: https://app.moqups.com/cIsNd7ogQJ/view/page/ae8fe8eb0
 
 
 #### Q2: Who are your target users?
@@ -68,12 +76,13 @@ We will use a react native frontend to build out the mobile app on both iOS and 
  2. As a general user, I want to find / search for communities in order to find communities near my location or based on my interests.
  3. As a general user, I want to like and comment on posts of a community in order to show my interest in certain aspects of a community.
  4. As a general (higher-level) user, I want to create posts within a community in order to share my thoughts with others within the community
- 5. As a general user, I want to "level up" in order to gain access to more features of the app.
+ 5. As a general user, I want to increase my rank/reputation in order to gain access to more features within the app and its communities.
  6. As a community admin, I want to create a community in order to allow for users (within the same location or that have the same interest) of the app to interact with one another.
  7. As a community admin, I want to create posts within the community I created in order to share my thoughts with others within the community.
  8. As a community admin, I want to create events within the community I created in order to allow users within the community to meet and participate in a common goal.
- 9. As a community admin, I want to remove innappropriate posts or comments in the community I created in order to keep the community a place where everyone feels respected and appreciated.
- 10. As a community admin, I want to block innappropriate users from the community I created in order to keep the community free of those who treat others poorly or who disrespect others.
+ 9. As a community admin, I want to create proposals within the community I created in order to propose larger-scale projects (e.g. a co-op program) and assess interest on said proposals.
+ 10. As a community admin, I want to remove innappropriate posts or comments in the community I created in order to keep the community a place where everyone feels respected and appreciated.
+ 11. As a community admin, I want to block innappropriate users from the community I created in order to keep the community free of those who treat others poorly or who disrespect others.
 
 ----
 ## Intellectual Property Confidentiality Agreement 

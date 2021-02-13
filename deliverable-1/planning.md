@@ -93,9 +93,9 @@ We will use a react native frontend to build out the mobile app on both iOS and 
  9. As a community admin, I want to create proposals within the community I created in order to propose larger-scale projects (e.g. a co-op program) and assess interest on said proposals.
      * Given a community admin is inside of their community page, when the admin creates a proposal, then the proposal will be displayed for all users within that same community and can be commented and voted on to understand the interest of the members of the community for the proposal.
  10. As a community admin, I want to remove innappropriate posts or comments in the community I created in order to keep the community a place where everyone feels respected and appreciated.
-    * Given a community admin reads an inappropriate post within their community, when the admin deletes the post, the post is no longer able to be seen by any of the users in the community.
+     * Given a community admin reads an inappropriate post within their community, when the admin deletes the post, the post is no longer able to be seen by any of the users in the community.
  11. As a community admin, I want to block innappropriate users from the community I created in order to keep the community free of those who treat others poorly or who disrespect others.
-    * Given a community admin recognizes that a user within their community is being disrespectful to others, when the admin blocks the user from their community, then the user is no longer able to access or interact with the community page in any way.
+     * Given a community admin recognizes that a user within their community is being disrespectful to others, when the admin blocks the user from their community, then the user is no longer able to access or interact with the community page in any way.
 ----
 ## Intellectual Property Confidentiality Agreement 
 > Note this section is **not marked** but must be completed briefly if you have a partner. If you have any questions, please contact David and Adam.

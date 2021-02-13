@@ -75,17 +75,27 @@ We will use a react native frontend to build out the mobile app on both iOS and 
  * If you have a partner, these must be reviewed and accepted by them
  
  1. As a general user, I want to join communities in order to view posts and events within the communities.
+    * Given the user has signed up for the app, when the user wants to view posts and events of a community, then they can request to join a community and view all posts within the community.
  2. As a general user, I want to find / search for communities in order to find communities near my location or based on my interests.
+    * Given a user wants to find a new community, when the user searches for a certain tag, communities with that tag appear in the search result.
  3. As a general user, I want to like and comment on posts of a community in order to show my interest in certain aspects of a community.
- 4. As a general (higher-level) user, I want to create posts within a community in order to share my thoughts with others within the community
+    * Given a user is viewing a post within a community, when the user comments or likes the post, then the number of likes increases and the comment is displayed on the post.
+ 4. As a general (higher-level) user, I want to create posts within a community in order to share my thoughts with others within the community.
+    * Given a user is inside of a community's page, when the user creates a post, then the post will be displayed for all users within that same community.
  5. As a general user, I want to increase my rank/reputation in order to gain access to more features within the app and its communities.
+    * Given a user has been using the app, when the user interacts within the communities they are part of, then the user will increase their rank and be able to access new features of the app.
  6. As a community admin, I want to create a community in order to allow for users (within the same location or that have the same interest) of the app to interact with one another.
+    * Given a community admin has signed up for the app, when the admin creates a community, then other users can join the community or search to find the community by its tags.
  7. As a community admin, I want to create posts within the community I created in order to share my thoughts with others within the community.
+    * Given a community admin is inside of their community page, when the admin creates a post, then the post will be displayed for all users within that same community.
  8. As a community admin, I want to create events within the community I created in order to allow users within the community to meet and participate in a common goal.
+    * Given a community admin is inside of their community page, when the admin creates an event, then the event will be displayed for all users within that same community to say if they will or will not be attending.
  9. As a community admin, I want to create proposals within the community I created in order to propose larger-scale projects (e.g. a co-op program) and assess interest on said proposals.
+     * Given a community admin is inside of their community page, when the admin creates a proposal, then the proposal will be displayed for all users within that same community and can be commented and voted on to understand the interest of the members of the community for the proposal.
  10. As a community admin, I want to remove innappropriate posts or comments in the community I created in order to keep the community a place where everyone feels respected and appreciated.
+    * Given a community admin reads an inappropriate post within their community, when the admin deletes the post, the post is no longer able to be seen by any of the users in the community.
  11. As a community admin, I want to block innappropriate users from the community I created in order to keep the community free of those who treat others poorly or who disrespect others.
-
+    * Given a community admin recognizes that a user within their community is being disrespectful to others, when the admin blocks the user from their community, then the user is no longer able to access or interact with the community page in any way.
 ----
 ## Intellectual Property Confidentiality Agreement 
 > Note this section is **not marked** but must be completed briefly if you have a partner. If you have any questions, please contact David and Adam.

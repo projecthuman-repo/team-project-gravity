@@ -98,6 +98,8 @@ We will use a react native frontend to build out the mobile app on both iOS and 
 
 **Briefly describe which option you have agreed to. Your partner cannot ask you to sign any legally binding agreements or documents pertaining to non-disclosure, confidentiality, IP ownership, etc.**
 
+Everything we build will be open-source as both our team and Human City values open-source as a methodology and a practice. Formally, we plan on using the Apache 2.0 License. As the project is built we will conclude upon more details as we have not received much word from Human City on this other than that Open Source is a priority, but our team is flexible so there won't be any problems. 
+
 ----
 
 ## Process Details

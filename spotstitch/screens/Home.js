@@ -4,14 +4,22 @@ import Styles from "../Style";
 
 export default function Home({ navigation }) {
     
-    const pressHandler = () => {
+    const goToLogin = () => {
         navigation.navigate("Login")
     }
+
+    const goToSignup = () => {
+        navigation.navigate("Signup")
+    }
     
+    // The text things are for spaces, not sure of a better way to do it
     return(
         <View style={Styles.MiddleOfScreen}>
             <Text> This is the home page </Text>
-            <Button title="change page" onPress={pressHandler}/>
+            <Text> </Text>
+            <Button title="LOGIN" onPress={goToLogin}/>
+            <Text> </Text>
+            <Button title="SIGNUP" onPress={goToSignup}/>
         </View>
     )
 }

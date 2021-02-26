@@ -1,15 +1,22 @@
 import React from "react";
-import {View, Text, Button} from "react-native";
+import {View, Text, Button, TextInput} from "react-native";
 import Styles from "../Style";
 
-export default function Home({ navigation }) {
-    
+export default function Login({ navigation }) {
+
     const pressHandler = () => {
-        navigation.navigate("Login")
+        // pass
     }
 
-    <View style={Styles.MiddleOfScreen}>
-        <Text> This is the login page </Text>
-        <Button title="change page" onPress={pressHandler}/>
-    </View>
+    return(
+        <View style={Styles.MiddleOfScreen}>
+            <Text> Login </Text>
+            <Text> </Text>
+            <TextInput style={Styles.Textbox} placeholder="Username" />
+            <Text> </Text>
+            <TextInput style={Styles.Textbox} placeholder="Password" secureTextEntry="true"/>
+            <Text> </Text>
+            <Button title="Login" onPress={pressHandler}/>
+        </View>
+    );
 }

@@ -15,7 +15,7 @@ export default function Home({ navigation }) {
     // The text things are for spaces, not sure of a better way to do it
     return(
         <View style={Styles.MiddleOfScreen}>
-            <Text> This is the home page </Text>
+            <Text> Home Page </Text>
             <Text> </Text>
             <Button title="LOGIN" onPress={goToLogin}/>
             <Text> </Text>

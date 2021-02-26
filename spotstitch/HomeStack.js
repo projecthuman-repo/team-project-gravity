@@ -1,13 +1,16 @@
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from "react-navigation";
 
-import Home from "../screens/Home";
-import Login from "../screens/Login";
-import Signup from "../screens/Signup";
+import Home from "./screens/Home";
+import Login from "./screens/Login";
+import Signup from "./screens/Signup";
 
 const screens = {
     Home: {
-        screen: Home
+        screen: Home,
+        navigationOptions: {
+            header: null,
+        }
     },
     Login: {
         screen: Login

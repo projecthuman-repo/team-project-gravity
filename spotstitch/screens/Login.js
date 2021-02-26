@@ -12,9 +12,9 @@ export default function Login({ navigation }) {
         <View style={Styles.MiddleOfScreen}>
             <Text> Login </Text>
             <Text> </Text>
-            <TextInput style={Styles.Textbox} placeholder="Username" />
+            <TextInput style={Styles.Textbox} placeholder=" Username" />
             <Text> </Text>
-            <TextInput style={Styles.Textbox} placeholder="Password" secureTextEntry="true"/>
+            <TextInput style={Styles.Textbox} placeholder=" Password" secureTextEntry="true"/>
             <Text> </Text>
             <Button title="Login" onPress={pressHandler}/>
         </View>

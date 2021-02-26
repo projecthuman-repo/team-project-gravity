@@ -1,30 +1,13 @@
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { NativeRouter, Switch, Route } from "react-router-native";
+import 'react-native-gesture-handler';
+import { StatusBar } from 'expo-status-bar';
+import React from 'react';
+import { Button, StyleSheet, Text, View } from 'react-native';
+import { createStackNavigator } from 'react-navigation-stack';
 
-import Home from "./Home"
-import Login from "./Login"
+import Navigator from "./routes/homeStack"
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <NativeRouter>
-        <View style={styles.container}>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/login" component={Login} />
-          </Switch>
-        </View>
-      </NativeRouter>
-    );
-  }
+export default function App() {
+  return (
+    <Navigator />
+  );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center"
-  }
-});

@@ -1,7 +1,7 @@
 import React from "react";
 import {View, Text, TouchableWithoutFeedback} from "react-native";
 
-import Styles from "../Style";
+import Styles from "../style/Style";
 
 export default function Home({ navigation }) {
     

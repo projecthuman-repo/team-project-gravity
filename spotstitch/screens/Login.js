@@ -1,6 +1,6 @@
 import React from "react";
 import {View, Text, TextInput, TouchableWithoutFeedback} from "react-native";
-import Styles from "../Style";
+import Styles from "../style/Style";
 
 export default function Login({ navigation }) {
 
@@ -24,7 +24,7 @@ export default function Login({ navigation }) {
 
             <TouchableWithoutFeedback onPress={loginButtonPressed}>
                 <View style={Styles.Button}>
-                    <Text style={Styles.ButtonText}> LOG IN </Text>
+                    <Text style={Styles.ButtonText}> LOGIN </Text>
                 </View>
             </TouchableWithoutFeedback>
         </View>

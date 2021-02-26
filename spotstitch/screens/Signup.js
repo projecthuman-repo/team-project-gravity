@@ -1,6 +1,6 @@
 import React from "react";
 import {View, Text, Button} from "react-native";
-import Styles from "../Style";
+import Styles from "../style/Style";
 
 export default function Signup({ navigation }) {
 

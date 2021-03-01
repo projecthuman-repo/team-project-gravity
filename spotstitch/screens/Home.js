@@ -1,5 +1,5 @@
 import React from "react";
-import {View, Text, TouchableWithoutFeedback} from "react-native";
+import {View, Text, TouchableWithoutFeedback, Image} from "react-native";
 
 import Styles from "../style/Style";
 
@@ -16,7 +16,11 @@ export default function Home({ navigation }) {
     // The text things are for spaces, not sure of a better way to do it
     return(
         <View style={Styles.MiddleOfScreen}>
+            
             <Text style={Styles.Title}> Home Page </Text>
+            <View style={Styles.logoContainer}>
+                <Image style={Styles.logo} source={require('../assets/logo.jpeg')}></Image>
+            </View>
 
             <Text> </Text>
 

@@ -1,0 +1,9 @@
+{
+    "presets": [
+        "node5",
+        "@babel/preset-env"
+    ],
+    "plugins": [
+        "@babel/plugin-proposal-object-rest-spread"
+    ]
+}

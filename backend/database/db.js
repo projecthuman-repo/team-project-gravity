@@ -1,4 +1,5 @@
 import Sequelize from 'sequelize';
+
 require('dotenv').config();
 const dbConfig = require("./db_config.js");
 

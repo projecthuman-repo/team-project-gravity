@@ -1,6 +1,6 @@
 import { Dimensions } from 'react-native';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
-const win = Dimensions.get('window');
 
 module.exports = {
     "MiddleOfScreen": {
@@ -34,9 +34,11 @@ module.exports = {
         fontFamily: "Asap-Regular",
         backgroundColor: "#fa5f6a",
         padding: 10,
+        // padding: wp("10%"),
         borderRadius: 5,
         // textAlign: "center",
-        width: win.width/2,
+        // width: win.width/2,
+        width: wp("50%"),
         alignItems: "center",
     },
 
@@ -52,13 +54,12 @@ module.exports = {
         borderBottomColor: '#f2f2f2',
         paddingBottom: 5, 
         marginLeft: 30,
-        width: 300,
+        width: wp("90%"),
     },
 
     "textInput": {
         flex: 1,
         marginTop: Platform.OS === 'ios' ? 0 : -12,
-        paddingLeft: 10,
         color: '#05375a',
     },
 
@@ -72,18 +73,20 @@ module.exports = {
     "textOverInput": {
         color: 'grey',
         fontSize: 16,
-        paddingLeft: 30,
+        paddingLeft: wp("5%"),
         marginTop: 15,
     },
 
     "container": {
         backgroundColor: "white",
         flex: 1,
+        height: hp("100%"),
+        width: wp("100%"),
     },
 
     "logo": {
-        width: 210,
-        height: 210,
+        width: wp("40%"),
+        height: hp("20%"),
     },
 
     "logoContainer": {

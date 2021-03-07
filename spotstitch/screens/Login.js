@@ -5,29 +5,11 @@ import Styles from "../style/Style";
 export default function Login({ navigation }) {
 
     const loginButtonPressed = () => {
-        // pass
+        navigation.navigate("Home")
     }
 
     return(
-        // <View style={Styles.MiddleOfScreen}>
-        //     <Text style={Styles.Title}> Login </Text>
-
-        //     <Text> </Text>
-
-        //     <TextInput style={Styles.Textbox} placeholder=" Username" />
-
-        //     <Text> </Text>
-
-        //     <TextInput style={Styles.Textbox} placeholder=" Password" secureTextEntry="true" />
-
-        //     <Text> </Text>
-
-        //     <TouchableWithoutFeedback onPress={loginButtonPressed}>
-        //         <View style={Styles.Button}>
-        //             <Text style={Styles.ButtonText}> LOGIN </Text>
-        //         </View>
-        //     </TouchableWithoutFeedback>
-        // </View>
+       
         <View style={Styles.container}>
             <View style={Styles.logoContainer}>
                 <Image style={Styles.logo} source={require('../assets/logo.jpeg')}></Image>
@@ -40,7 +22,7 @@ export default function Login({ navigation }) {
             </View>
             <Text style={Styles.textOverInput}> password </Text>
             <View style={Styles.Action}>
-                <TextInput style={Styles.textInput} autoCapitalize="none" secureTextEntry="true" ></TextInput>
+                <TextInput style={Styles.textInput} secureTextEntry autoCapitalize="none" ></TextInput>
             </View>
             
             <View style={Styles.middle}>

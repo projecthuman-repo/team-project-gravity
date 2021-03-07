@@ -5,7 +5,7 @@ import Styles from "../style/Style";
 export default function Signup({ navigation }) {
 
     const pressHandler = () => {
-        navigation.navigate("Login")
+        navigation.navigate("Home")
     }
 
     return(
@@ -25,11 +25,11 @@ export default function Signup({ navigation }) {
             </View>
             <Text style={Styles.textOverInput}> password </Text>
             <View style={Styles.Action}>
-                <TextInput style={Styles.textInput} autoCapitalize="none" secureTextEntry="true" ></TextInput>
+                <TextInput style={Styles.textInput} secureTextEntry autoCapitalize="none" ></TextInput>
             </View>
             <Text style={Styles.textOverInput}> re-type password </Text>
             <View style={Styles.Action}>
-                <TextInput style={Styles.textInput} autoCapitalize="none" secureTextEntry="true" ></TextInput>
+                <TextInput style={Styles.textInput} secureTextEntry autoCapitalize="none"></TextInput>
             </View>
             <View style={Styles.middle}>
             <TouchableWithoutFeedback onPress={pressHandler}>

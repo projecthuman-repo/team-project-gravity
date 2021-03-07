@@ -4,9 +4,11 @@ import Styles from "../style/Style";
 
 export default function Signup({ navigation }) {
 
+        
     const pressHandler = () => {
         navigation.navigate("Home")
     }
+
 
     return(
         <View style={Styles.container}>
@@ -17,15 +19,15 @@ export default function Signup({ navigation }) {
             <Text> </Text>
             <Text style={Styles.textOverInput}> name </Text>
             <View style={Styles.Action}>
-                <TextInput style={Styles.textInput} autoCapitalize="none"></TextInput>
+                <TextInput style={Styles.textInput} autoCapitalize="none" ></TextInput>
             </View>
             <Text style={Styles.textOverInput}> email </Text>
             <View style={Styles.Action}>
-                <TextInput style={Styles.textInput} autoCapitalize="none"></TextInput>
+                <TextInput style={Styles.textInput} autoCompleteType="email" autoCapitalize="none"></TextInput>
             </View>
             <Text style={Styles.textOverInput}> password </Text>
             <View style={Styles.Action}>
-                <TextInput style={Styles.textInput} secureTextEntry autoCapitalize="none" ></TextInput>
+                <TextInput style={Styles.textInput} secureTextEntry autoCapitalize="none"></TextInput>
             </View>
             <Text style={Styles.textOverInput}> re-type password </Text>
             <View style={Styles.Action}>

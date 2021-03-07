@@ -1,4 +1,5 @@
-import Sequelize from 'sequelize';
+//import Sequelize from 'sequelize';
+const Sequelize = require('sequelize');
 
 require('dotenv').config();
 const dbConfig = require("./db_config.js");
@@ -203,3 +204,5 @@ Conn.sync({force: true})
     console.log("\n\n\nDatabase is up and running!\n\n\n");
 })
 .catch((error) => console.log(error));
+
+module.exports = Conn;

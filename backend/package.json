@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx babel-node ./database/db.js"
+    "start": "node ./graphql/index.js"
   },
   "author": "",
   "license": "ISC",

@@ -1,17 +1,4 @@
 const { ApolloServer, gql } = require('apollo-server');
-const Sequelize = require('sequelize')
-
-// require('dotenv').config();
-// const dbConfig = require("../database/db_config");
-// const sequelizeConnection = new Sequelize(
-//     dbConfig.DB, //name of db
-//     dbConfig.USER, //username
-//     dbConfig.PASSWORD, //password
-//     {
-//         dialect: dbConfig.dialect,
-//         host: dbConfig.HOST
-//     }
-// );
 
 
 const sequelizeConnection = require('../database/db')

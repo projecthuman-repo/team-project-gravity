@@ -3,15 +3,19 @@ const { gql, ApolloError } = require('apollo-server');
 const resolvers = {
   Query: {
     user: async (parent, { userID }, { User }) => {
-      return await User.findOne({ where : {id: userID}})
-      //User.findOne({id:userID}) 
+      const userInfo = await User.findOne({ where : {id: userID}});
+      return {"userID": userInfo.dataValues.id};
     },
     community: async (parent, { communityID }, { Community }) => {
-      console.log(await Community.findOne({ where : {id: communityID}}))
-      //User.findOne({id:userID}) 
+      const communityInfo = await Community.findOne({ where : {id: communityID}});
+      return {
+        "communityID": communityInfo.dataValues.id,
+        "communityName": communityInfo.dataValues.name,
+        "communityDescription": communityInfo.dataValues.description
       }
-    },
-  }
+    }
+  },
+}
   // Mutation: {
   //   register: async (parent, { username, password }, { User }) => {
   //     // const existing = await User.findOne({ username })

@@ -4,6 +4,8 @@ import { createAppContainer } from "react-navigation";
 import Home from "./screens/Home";
 import Login from "./screens/Login";
 import Signup from "./screens/Signup";
+import Community from "./screens/Community"
+import TorontoFoodBankMembers from './screens/TorontoFoodBankMembers';
 
 const screens = {
     Home: {
@@ -17,6 +19,12 @@ const screens = {
     },
     Signup: {
         screen: Signup
+    },
+    Community: {
+        screen: Community
+    },
+    TorontoFoodBankMembers: {
+        screen: TorontoFoodBankMembers
     }
 };
 

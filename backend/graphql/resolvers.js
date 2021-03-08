@@ -1,11 +1,33 @@
 const { gql, ApolloError } = require('apollo-server');
 
-// Resolvers define the technique for fetching the types defined in the
-// schema. This resolver retrieves books from the "books" array above.
 const resolvers = {
-    Query: {
-      books: () => books,
+  Query: {
+    user: async (parent, { userID }, { User }) => {
+      return await User.findOne({ where : {id: userID}})
+      //User.findOne({id:userID}) 
     },
-  };
+    community: async (parent, { communityID }, { Community }) => {
+      console.log(await Community.findOne({ where : {id: communityID}}))
+      //User.findOne({id:userID}) 
+      }
+    },
+  }
+  // Mutation: {
+  //   register: async (parent, { username, password }, { User }) => {
+  //     // const existing = await User.findOne({ username })
+  //     // if (!existing) {
+  //     //   const newUser = new User({ username, password })
+  //     //   const { userID } = await newUser.save()
+  //     //   // Make a bucket with the user's ID.
+  //     //   minioClient.makeBucket(`${userID}`, 'us-east-1', function(err) {
+  //     //     if (err) return console.log(err)
+  //     //     console.log('Users bucket created successfully in "us-east-1".')
+  //     //   })
+  //     //   return newUser
+  //     // } else {
+  //     //   throw new ApolloError('User already exists')
+  //     // }
+  //   }
+  // }
 
-  module.exports = resolvers
+module.exports = resolvers

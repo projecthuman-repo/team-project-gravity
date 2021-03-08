@@ -205,4 +205,9 @@ Conn.sync({force: true})
 })
 .catch((error) => console.log(error));
 
-module.exports = Conn;
+
+module.exports= { 
+    User:User,
+    Conn: Conn,
+    Community: Community,
+};

@@ -1,22 +1,88 @@
 const { gql} = require('apollo-server');
-// A schema is a collection of type definitions (hence "typeDefs")
-// that together define the "shape" of queries that are executed against
-// your data.
+
 const typeDefs = gql`
-  # Comments in GraphQL strings (such as this one) start with the hash (#) symbol.
-
-  # This "Book" type defines the queryable fields for every book in our data source.
-  type Book {
-    title: String
-    author: String
+  type User {
+    userID: ID 
   }
 
-  # The "Query" type is special: it lists all of the available queries that
-  # clients can execute, along with the return type for each. In this
-  # case, the "books" query returns an array of zero or more Books (defined above).
+  type Community {
+    communityID: ID
+    communityName: String
+    communityDescription: String
+  }
+
+  enum Status {
+    admin
+    user
+  }
+
+  type CommunityStatus {
+    communityStatusID: ID
+    communityStatus: Status
+  }
+
+  type CommunityMember{
+    communityMemberID: ID
+    communityID: ID
+    communityStatusID: ID
+  }
+
+  type CommunityProposal {
+    communityID: ID
+    communityProposalID: ID
+    communityProposalName: String
+    communityProposalDescription: String
+  }
+
+  
+  type CommunityProposalMember {
+    communityProposalID: ID
+    userID: ID
+  }
+
+  type Interest {
+    interestID: ID
+    interestName: String
+    interestGroupID: ID
+  }
+
+  type InterestGroup {
+    interestGroupID: ID
+    interestGroupName: String
+  }
+
+  type UserInterest {
+    userID: ID
+    interestID: ID
+  }
+
+  type CommunityInterest {
+    communityID: ID
+    interestID: ID
+  }
+
+  type UserCommunityRank {
+    userId: ID
+    communityId: ID
+    score: Int
+  }
+
   type Query {
-    books: [Book]
+    user(userID: ID): User
+    community(communityID: ID): Community
   }
-`;
+`
 
 module.exports = typeDefs
+
+// communities(userID: ID): [Community]
+// status(userID: ID, communityID:): CommunityStatus
+// communityProposal(communityProposalID: ID): CommunityProposal
+// communityProposalMember(communityProposalID: ID): CommunityProposalMember
+// }
+
+// type Mutation {
+// register(username: String, password: String): User
+// createCommunity(userID: ID, communityName: String, communityDescription: String): Community
+// createCommunityProposal(userID: ID, communityID: ID, communityProposalName: String, communityProposalDescription: String): CommunityProposal
+// }

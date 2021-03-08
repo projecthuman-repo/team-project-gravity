@@ -1,27 +1,37 @@
 const { ApolloServer, gql } = require('apollo-server');
 
 
-const sequelizeConnection = require('../database/db')
+const database = require('../database/db')
+const sequelizeConnection = database.Conn
+const User = database.User
+const Community = database.Community
 const typeDefs = require('./typeDefinitions')
 const resolvers = require('./resolvers')
 
+const context = async ({ req }) => {
+  return {
+    req,
+    User,
+    Community
+  }
+}
 
-const books = [
-    {
-      title: 'The Awakening',
-      author: 'Kate Chopin',
-    },
-    {
-      title: 'City of Glass',
-      author: 'Paul Auster',
-    },
-  ];
+// const books = [
+//     {
+//       title: 'The Awakening',
+//       author: 'Kate Chopin',
+//     },
+//     {
+//       title: 'City of Glass',
+//       author: 'Paul Auster',
+//     },
+//   ];
 
 
 
 // The ApolloServer constructor requires two parameters: your schema
 // definition and your set of resolvers.
-const server = new ApolloServer({ typeDefs, resolvers });
+const server = new ApolloServer({ typeDefs, resolvers, context });
 
 //START GRAPHQL SERVER ONCE DATABASE CONNECTED & MODELS AVAILABLE
 // The `listen` method launches a web server.

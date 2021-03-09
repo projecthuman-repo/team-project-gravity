@@ -210,4 +210,8 @@ module.exports= {
     User:User,
     Conn: Conn,
     Community: Community,
+    CommunityMember: CommunityMember,
+    CommunityStatus: CommunityStatus,
+    CommunityProposal: CommunityProposal,
+    CommunityProposalMember: CommunityProposalMember,
 };

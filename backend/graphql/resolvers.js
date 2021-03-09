@@ -13,6 +13,27 @@ const resolvers = {
         "communityName": communityInfo.dataValues.name,
         "communityDescription": communityInfo.dataValues.description
       }
+    },
+    status: async (parent, { userID}, { CommunityMember, CommunityStatus }) => {
+      const communityMemberInfo = await CommunityMember.findOne({ where : {userId: userID}});
+      const communityStatusID = communityMemberInfo.dataValues.communityStatusId;
+      const communityStatusInfo = await CommunityStatus.findOne({ where : {id: communityStatusID}});
+      return {
+        "communityStatusID": communityStatusInfo.dataValues.id,
+        "communityStatus": communityStatusInfo.dataValues.status,
+      }
+    },
+    communityProposalMember: async (parent, { userID, communityProposalID}, { CommunityProposalMember}) => {
+      if(userID){
+        communityProposalMemberInfo = await CommunityProposalMember.findOne({ where : {userId: userID}});
+      }
+      if(communityProposalID){
+        communityProposalMemberInfo = await CommunityProposalMember.findOne({ where : {communityProposalId: communityProposalID}});
+      }
+      return {
+        "communityProposalID": communityProposalMemberInfo.dataValues.communityProposalId,
+        "communityProposalMemberID": communityProposalMemberInfo.dataValues.userId,
+      }
     }
   },
 }

@@ -1,0 +1,43 @@
+Input the following queries into playground to test:
+
+query User($userID: ID){
+    user(userID: $userID) {
+      userID
+    }
+}
+  
+query Community($communityID: ID){
+    community(communityID: $communityID) {
+      communityID
+      communityName
+    }
+  }
+  
+query Status($userID: ID){
+    status(userID: $userID) {
+      communityStatus
+      communityStatusID
+    }
+  }
+  
+query CommunityProposalMember($communityProposalID: ID){
+    communityProposalMember(communityProposalID: $communityProposalID) {
+      communityProposalID
+      communityProposalMemberID
+    }
+  }
+  
+query CommunityProposalMember2($userID: ID){
+    communityProposalMember(userID: $userID) {
+      communityProposalID
+      communityProposalMemberID
+    }
+  }
+
+
+Example Query Variables:
+{
+  "userID":3,
+  "communityID": 1,
+  "communityProposalID": 2
+}

@@ -5,6 +5,10 @@ const database = require('../database/db')
 const sequelizeConnection = database.Conn
 const User = database.User
 const Community = database.Community
+const CommunityMember = database.CommunityMember
+const CommunityStatus = database.CommunityStatus
+const CommunityProposal = database.CommunityProposal
+const CommunityProposalMember = database.CommunityProposalMember
 const typeDefs = require('./typeDefinitions')
 const resolvers = require('./resolvers')
 
@@ -12,7 +16,11 @@ const context = async ({ req }) => {
   return {
     req,
     User,
-    Community
+    Community,
+    CommunityMember,
+    CommunityStatus,
+    CommunityProposal,
+    CommunityProposalMember,
   }
 }
 

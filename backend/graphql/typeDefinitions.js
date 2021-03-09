@@ -37,7 +37,7 @@ const typeDefs = gql`
   
   type CommunityProposalMember {
     communityProposalID: ID
-    userID: ID
+    communityProposalMemberID: ID
   }
 
   type Interest {
@@ -70,16 +70,16 @@ const typeDefs = gql`
   type Query {
     user(userID: ID): User
     community(communityID: ID): Community
+    status(userID: ID): CommunityStatus
+    communityProposal(communityProposalID: ID): CommunityProposal
+    communityProposalMember(userID: ID, communityProposalID: ID): CommunityProposalMember
   }
 `
 
 module.exports = typeDefs
 
-// communities(userID: ID): [Community]
-// status(userID: ID, communityID:): CommunityStatus
-// communityProposal(communityProposalID: ID): CommunityProposal
-// communityProposalMember(communityProposalID: ID): CommunityProposalMember
-// }
+
+
 
 // type Mutation {
 // register(username: String, password: String): User

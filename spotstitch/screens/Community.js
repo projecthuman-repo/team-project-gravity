@@ -8,6 +8,14 @@ export default function Community({ navigation }) {
         navigation.navigate("TorontoFoodBankMembers")
     }
 
+    const createAProposal = () => {
+        navigation.navigate("CreateAProposal")
+    }
+
+    const seeTags = () => {
+        navigation.navigate("Tags")
+    }
+
     return(
         <View>
             <View style={Styles.MiddleOfScreen}>
@@ -35,17 +43,16 @@ export default function Community({ navigation }) {
 
             <View style={Styles.Tags}>
                 <Text style={Styles.miniTitle}>Tags</Text>
-                <TouchableWithoutFeedback onPress={seeMembers}>
                     <View style={Styles.Button}>
-                        <Text style={Styles.ButtonText}> Nutrition </Text>
+                        <TouchableWithoutFeedback onPress={seeTags}>
+                            <Text style={Styles.ButtonText}> Nutrition </Text>
+                        </TouchableWithoutFeedback>
                     </View>
-                </TouchableWithoutFeedback>
-
-                <TouchableWithoutFeedback onPress={seeMembers}>
                     <View style={Styles.CreateProposal}>
+                    <TouchableWithoutFeedback onPress={createAProposal}>
                         <Text style={Styles.CreateProposalText}> Create a Proposal </Text>
+                    </TouchableWithoutFeedback>
                     </View>
-                </TouchableWithoutFeedback>
             </View>
         </View>
 

@@ -64,8 +64,6 @@ module.exports = {
         fontSize: 18,
         marginBottom: 6,
         marginRight: 30,
-        borderBottomWidth: 0.3,
-        borderBottomColor: "black",
     },
 
     "RecentActivityView": {

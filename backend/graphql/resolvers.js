@@ -1,4 +1,6 @@
 const { gql, ApolloError } = require('apollo-server');
+const R = require('ramda')
+const { v4: uuidv4 } = require('uuid')
 
 const resolvers = {
   Query: {
@@ -36,23 +38,53 @@ const resolvers = {
       }
     }
   },
+  Mutation: {
+    register: async (parent, { userID, username, password }, { User }) => {
+      const existing = await User.findOne({ where : {id: userID}});
+      if (!existing) {
+        const newUser = new User({id: userID})
+        await newUser.save()
+        return {"userID": userInfo.dataValues.id};
+      } else {
+        throw new ApolloError('User already exists')
+      }
+    },
+    createCommunity: async (parent, { userID, communityName, communityDescription }, { Community}) => {
+      //const reqRep = 1000
+      //get some kind of user rep score to check it before making a comm 
+      const existing = await Community.findOne({ where : {name: communityName}});
+      if (!existing) {
+        const newCommunity = new Community({id: uuidv4(), name: communityName, description: communityDescription})
+        await newCommunity.save()
+        return {
+          "communityID": newCommunity.dataValues.id,
+          "communityName": newCommunity.dataValues.name,
+          "communityDescription": newCommunity.dataValues.description
+        }
+      } else {
+        throw new ApolloError('Community with this name already exists')
+      }
+    },
+    createCommunityProposal: async (parent, { userID, communityID, communityProposalName, communityProposalDescription }, { CommunityProposal, UserCommunityRank }) => {
+      const reqScore = 10
+      const userRank = await UserCommunityRank.findOne({ where : {userId: userID}});
+      const allCommunityProposals = await CommunityProposal.findAll({ where : {communityId: communityID}});
+      const existing = R.find(R.propEq('name', communityProposalName), allCommunityProposals)
+      if (!existing && userRank.dataValues.score >= reqScore){
+        const newCommunityProposal = new CommunityProposal({id: uuidv4(), communityId: communityID, name: communityProposalName, description: communityProposalDescription})
+        await newCommunityProposal.save()
+        return {
+          "communityProposalID": newCommunityProposal.dataValues.id,
+          "communityProposalName": newCommunityProposal.dataValues.name,
+          "communityProposalDescription": newCommunityProposal.dataValues.description
+        }
+      } else {
+        throw new ApolloError('Community Proposal with this name already exists')
+      }
+    },
+  }
+
+  
 }
-  // Mutation: {
-  //   register: async (parent, { username, password }, { User }) => {
-  //     // const existing = await User.findOne({ username })
-  //     // if (!existing) {
-  //     //   const newUser = new User({ username, password })
-  //     //   const { userID } = await newUser.save()
-  //     //   // Make a bucket with the user's ID.
-  //     //   minioClient.makeBucket(`${userID}`, 'us-east-1', function(err) {
-  //     //     if (err) return console.log(err)
-  //     //     console.log('Users bucket created successfully in "us-east-1".')
-  //     //   })
-  //     //   return newUser
-  //     // } else {
-  //     //   throw new ApolloError('User already exists')
-  //     // }
-  //   }
-  // }
 
 module.exports = resolvers

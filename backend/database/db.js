@@ -214,4 +214,5 @@ module.exports= {
     CommunityStatus: CommunityStatus,
     CommunityProposal: CommunityProposal,
     CommunityProposalMember: CommunityProposalMember,
+    UserCommunityRank: UserCommunityRank,
 };

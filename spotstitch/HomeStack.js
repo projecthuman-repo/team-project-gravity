@@ -4,6 +4,7 @@ import { createAppContainer } from "react-navigation";
 import Home from "./screens/Home";
 import Login from "./screens/Login";
 import Signup from "./screens/Signup";
+import CommunityList from "./screens/CommunityList";
 
 const screens = {
     Home: {
@@ -12,11 +13,20 @@ const screens = {
             header: null,
         }
     },
+
     Login: {
         screen: Login
     },
+
     Signup: {
         screen: Signup
+    },
+
+    CommunityList: {
+        screen: CommunityList,
+        navigationOptions: {
+            header: null,
+        }
     }
 };
 

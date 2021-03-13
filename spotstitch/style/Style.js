@@ -1,13 +1,19 @@
-import { Dimensions } from 'react-native';
+import { Platform, Dimensions } from 'react-native';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 
-module.exports = {
+export default {
     "MiddleOfScreen": {
         backgroundColor: "white",
         flex: 1,
         alignItems: "center",
         justifyContent: "center",
+    },
+
+    "TopMiddleOfScreen": {
+        backgroundColor: "white",
+        flex: 1,
+        alignItems: "center",
     },
 
     "middle": {
@@ -70,6 +76,20 @@ module.exports = {
         fontWeight: 'bold',
         paddingLeft: 32,
     },
+
+    "BlackTitle": {
+		color: 'black',
+		fontSize: 22,
+        fontWeight: '700',
+        textAlign: 'center',
+    },
+
+    "RedSubtitle": {
+		color: '#f85f69',
+        fontSize: 20,
+        fontWeight: '600',
+        paddingHorizontal: 20,
+    },
     
     "textOverInput": {
         color: 'grey',
@@ -93,5 +113,9 @@ module.exports = {
     "logoContainer": {
         alignItems: "center",
         justifyContent: "center",
+    },
+
+    "VerticalScrollMenu": {
+        paddingHorizontal: 20,
     },
 }

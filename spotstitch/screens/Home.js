@@ -17,11 +17,14 @@ export default function Home({ navigation }) {
         navigation.navigate("Community")
     }
     
+    const goToCommunityList = () => {
+        navigation.navigate("CommunityList")
+    }
+    
     // The text things are for spaces, not sure of a better way to do it
     return(
         <View style={Styles.MiddleOfScreen}>
             
-            <Text style={Styles.Title}> Home Page </Text>
             <View style={Styles.logoContainer}>
                 <Image style={Styles.logo} source={require('../assets/logo.jpeg')}></Image>
             </View>
@@ -41,6 +44,12 @@ export default function Home({ navigation }) {
             <TouchableWithoutFeedback onPress={goToCommunity}>
                 <View style={Styles.Button}>
                     <Text style={Styles.ButtonText}> SEE A COMMUNITY </Text>
+                </View>
+            </TouchableWithoutFeedback>
+
+            <TouchableWithoutFeedback onPress={goToCommunityList}>
+                <View style={Styles.Button}>
+                    <Text style={Styles.ButtonText}> COMMUNITY LIST </Text>
                 </View>
             </TouchableWithoutFeedback>
         </View>

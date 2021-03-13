@@ -1,5 +1,5 @@
 import React from "react";
-import {View, Text, TouchableWithoutFeedback} from "react-native";
+import {View, Text, TouchableWithoutFeedback, Image} from "react-native";
 
 import Styles from "../style/Style";
 
@@ -12,13 +12,22 @@ export default function Home({ navigation }) {
     const goToSignup = () => {
         navigation.navigate("Signup")
     }
+
+    const goToCommunity = () => {
+        navigation.navigate("Community")
+    }
+    
+    const goToCommunityList = () => {
+        navigation.navigate("CommunityList")
+    }
     
     // The text things are for spaces, not sure of a better way to do it
     return(
         <View style={Styles.MiddleOfScreen}>
-            <Text style={Styles.Title}> Home Page </Text>
-
-            <Text> </Text>
+            
+            <View style={Styles.logoContainer}>
+                <Image style={Styles.logo} source={require('../assets/logo.jpeg')}></Image>
+            </View>
 
             <TouchableWithoutFeedback onPress={goToLogin}>
                 <View style={Styles.Button}>
@@ -26,11 +35,21 @@ export default function Home({ navigation }) {
                 </View>
             </TouchableWithoutFeedback>
 
-            <Text> </Text>
-
             <TouchableWithoutFeedback onPress={goToSignup}>
                 <View style={Styles.Button}>
                     <Text style={Styles.ButtonText}> SIGN UP </Text>
+                </View>
+            </TouchableWithoutFeedback>
+            
+            <TouchableWithoutFeedback onPress={goToCommunity}>
+                <View style={Styles.Button}>
+                    <Text style={Styles.ButtonText}> SEE A COMMUNITY </Text>
+                </View>
+            </TouchableWithoutFeedback>
+
+            <TouchableWithoutFeedback onPress={goToCommunityList}>
+                <View style={Styles.Button}>
+                    <Text style={Styles.ButtonText}> COMMUNITY LIST </Text>
                 </View>
             </TouchableWithoutFeedback>
         </View>

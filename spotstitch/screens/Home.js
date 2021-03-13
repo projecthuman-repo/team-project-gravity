@@ -12,6 +12,10 @@ export default function Home({ navigation }) {
     const goToSignup = () => {
         navigation.navigate("Signup")
     }
+
+    const goToCommunity = () => {
+        navigation.navigate("Community")
+    }
     
     const goToCommunityList = () => {
         navigation.navigate("CommunityList")
@@ -25,23 +29,23 @@ export default function Home({ navigation }) {
                 <Image style={Styles.logo} source={require('../assets/logo.jpeg')}></Image>
             </View>
 
-            <Text> </Text>
-
             <TouchableWithoutFeedback onPress={goToLogin}>
                 <View style={Styles.Button}>
                     <Text style={Styles.ButtonText}> LOGIN </Text>
                 </View>
             </TouchableWithoutFeedback>
 
-            <Text> </Text>
-
             <TouchableWithoutFeedback onPress={goToSignup}>
                 <View style={Styles.Button}>
                     <Text style={Styles.ButtonText}> SIGN UP </Text>
                 </View>
             </TouchableWithoutFeedback>
-
-            <Text> </Text>
+            
+            <TouchableWithoutFeedback onPress={goToCommunity}>
+                <View style={Styles.Button}>
+                    <Text style={Styles.ButtonText}> SEE A COMMUNITY </Text>
+                </View>
+            </TouchableWithoutFeedback>
 
             <TouchableWithoutFeedback onPress={goToCommunityList}>
                 <View style={Styles.Button}>

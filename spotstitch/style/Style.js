@@ -46,6 +46,7 @@ export default {
         // width: win.width/2,
         width: wp("50%"),
         alignItems: "center",
+        marginBottom: 10,
     },
 
     "ButtonText": {

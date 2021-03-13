@@ -1,0 +1,36 @@
+Input the following queries into playground to test:
+  
+  
+  mutation Register($userID:ID, $username: String, $password: String){
+    register(userID:$userID, username: $username, password: $password) {
+      userID
+    }
+  }
+  
+  mutation CreateCommunity($userID:ID, $communityName: String, $communityDescription: String){
+    createCommunity(userID:$userID, communityName: $communityName, communityDescription: $communityDescription) {
+       communityID
+      communityName
+    }
+  }
+  
+mutation CreateCommunityProposal($userID:ID, $communityID:ID, $communityProposalName: String, $communityProposalDescription: String){
+    createCommunityProposal(userID:$userID, communityID: $communityID, communityProposalName: $communityProposalName, communityProposalDescription: $communityProposalDescription) {
+      communityProposalID
+      communityProposalName
+    }
+  }
+
+
+
+Example Query Variables:
+{
+  "username":"pineapple",
+  "password": "123",
+  "userID": 1,
+  "communityID": 1,
+  "communityName": "farms&stuff",
+  "communityDescription": "we rly love some farms",
+  "communityProposalName": "planting shrubs",
+  "communityProposalDescription":"POV:we plant shrubs, but its an activity"
+}

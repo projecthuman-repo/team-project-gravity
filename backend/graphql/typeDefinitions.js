@@ -74,6 +74,12 @@ const typeDefs = gql`
     communityProposal(communityProposalID: ID): CommunityProposal
     communityProposalMember(userID: ID, communityProposalID: ID): CommunityProposalMember
   }
+
+  type Mutation {
+    register(userID: ID, username: String, password: String): User
+    createCommunity(userID: ID, communityName: String, communityDescription: String): Community
+    createCommunityProposal(userID: ID, communityID: ID, communityProposalName: String, communityProposalDescription: String): CommunityProposal
+    }
 `
 
 module.exports = typeDefs
@@ -81,8 +87,3 @@ module.exports = typeDefs
 
 
 
-// type Mutation {
-// register(username: String, password: String): User
-// createCommunity(userID: ID, communityName: String, communityDescription: String): Community
-// createCommunityProposal(userID: ID, communityID: ID, communityProposalName: String, communityProposalDescription: String): CommunityProposal
-// }

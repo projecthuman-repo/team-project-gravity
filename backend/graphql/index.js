@@ -9,6 +9,7 @@ const CommunityMember = database.CommunityMember
 const CommunityStatus = database.CommunityStatus
 const CommunityProposal = database.CommunityProposal
 const CommunityProposalMember = database.CommunityProposalMember
+const UserCommunityRank = database.UserCommunityRank
 const typeDefs = require('./typeDefinitions')
 const resolvers = require('./resolvers')
 
@@ -21,6 +22,7 @@ const context = async ({ req }) => {
     CommunityStatus,
     CommunityProposal,
     CommunityProposalMember,
+    UserCommunityRank,
   }
 }
 

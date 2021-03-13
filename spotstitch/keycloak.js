@@ -1,11 +1,7 @@
-import { RNKeycloak } from '@react-keycloak/web';
-
+import Keycloak from 'keycloak-js'
+ 
 // Setup Keycloak instance as needed
-// Pass initialization options as required
-const keycloak = new RNKeycloak({
-  url: 'http://keycloak-server/auth',
-  realm: 'kc-realm',
-  clientId: 'web',
-});
-
-export default keycloak;
+// Pass initialization options as required or leave blank to load from 'keycloak.json'
+const keycloak = new Keycloak()
+ 
+export default keycloak

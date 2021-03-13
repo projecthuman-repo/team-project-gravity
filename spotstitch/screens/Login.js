@@ -2,10 +2,7 @@ import React from "react";
 import {View, Text, TextInput, TouchableWithoutFeedback} from "react-native";
 import Styles from "../style/Style";
 
-//import { KeycloakProvider } from '@react-keycloak/web'
-//import keycloak from '../keycloak'
-
-import { useKeycloak } from '@react-keycloak/web';
+import { useKeycloak } from '@react-keycloak/native';
 
 export default function Login({ navigation }) {
 	// Using array destructuring

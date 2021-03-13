@@ -8,6 +8,7 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@react-keycloak/native": "^0.5.2",
     "@react-keycloak/web": "^3.4.0",
     "@react-native-community/masked-view": "0.1.10",
     "@react-navigation/native": "^5.9.3",
@@ -17,20 +18,25 @@
     "keycloak-js": "^12.0.4",
     "react": "16.13.1",
     "react-dom": "16.13.1",
+    "react-keycloak": "^8.0.1-191210",
     "react-native": "https://github.com/expo/react-native/archive/sdk-40.0.1.tar.gz",
     "react-native-gesture-handler": "~1.8.0",
+    "react-native-inappbrowser-reborn": "^3.5.1",
     "react-native-reanimated": "~1.13.0",
     "react-native-safe-area-context": "3.1.9",
     "react-native-screens": "~2.15.2",
     "react-native-web": "~0.13.12",
     "react-navigation": "^4.4.4",
-    "react-navigation-stack": "^2.10.3",
+    "react-navigation-stack": "^2.10.4",
     "react-router-native": "^5.2.0",
     "rnpm": "^1.9.0",
     "uri-scheme": "^1.0.68"
   },
   "devDependencies": {
-    "@babel/core": "~7.9.0"
+    "@babel/core": "^7.9.6",
+    "@types/react": "~16.9.35",
+    "@types/react-native": "~0.63.2",
+    "typescript": "~4.0.0"
   },
   "rnpm": {
     "assets": [

@@ -1,15 +1,10 @@
-import 'react-native-gesture-handler';
-import React from 'react';
-
-import Navigator from "./HomeStack"
-
-// KeyCloak
-//import * as React from 'react';
+import * as React from 'react';
 
 import {
   RNKeycloak,
   ReactNativeKeycloakProvider,
 } from '@react-keycloak/native';
+import Login from './Login';
 
 const keycloak = new RNKeycloak({
   url: 'http://keycloak-server/auth',
@@ -17,16 +12,13 @@ const keycloak = new RNKeycloak({
   clientId: 'web',
 });
 
-
-
 export default function App() {
   return (
-	<ReactNativeKeycloakProvider
+    <ReactNativeKeycloakProvider
       authClient={keycloak}
-      initOptions={{ redirectUri: 'myapp://Profile' }}
+      initOptions={{ redirectUri: 'myapp://Homepage' }}
     >
-    <Navigator />
+      <Login />
     </ReactNativeKeycloakProvider>
-
   );
 }

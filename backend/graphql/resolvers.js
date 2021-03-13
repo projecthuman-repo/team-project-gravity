@@ -44,7 +44,7 @@ const resolvers = {
       if (!existing) {
         const newUser = new User({id: userID})
         await newUser.save()
-        return {"userID": userInfo.dataValues.id};
+        return {"userID": newUser.dataValues.id};
       } else {
         throw new ApolloError('User already exists')
       }

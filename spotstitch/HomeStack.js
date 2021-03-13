@@ -8,6 +8,20 @@ import Community from "./screens/Community"
 import TorontoFoodBankMembers from './screens/TorontoFoodBankMembers';
 import CommunityList from "./screens/CommunityList";
 
+// KeyCloak
+import * as React from 'react';
+
+import {
+  RNKeycloak,
+  ReactNativeKeycloakProvider,
+} from '@react-keycloak/native';
+
+const keycloak = new RNKeycloak({
+  url: 'http://keycloak-server/auth',
+  realm: 'kc-realm',
+  clientId: 'web',
+});
+
 const screens = {
     Home: {
         screen: Home,

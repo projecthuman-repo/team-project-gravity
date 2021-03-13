@@ -2,18 +2,28 @@ import React from "react";
 import {View, Text, TextInput, TouchableWithoutFeedback, Image} from "react-native";
 import Styles from "../style/Style";
 
-export default function Login({ navigation }) {
+import { useKeycloak } from '@react-keycloak/native';
 
+export default function Login({ navigation }) {
+	// Using array destructuring
+	const [keycloak, initialized] = useKeycloak();
+  
     const loginButtonPressed = () => {
         navigation.navigate("Home")
     }
 
     return(
-       
         <View style={Styles.container}>
             <View style={Styles.logoContainer}>
                 <Image style={Styles.logo} source={require('../assets/logo.jpeg')}></Image>
             </View>
+            <Text>
+				{`User is ${!keycloak.authenticated ? 'NOT ' : ''}authenticated`}
+			</Text>
+			
+			{!!keycloak.authenticated && (
+			<Button onPress={() => keycloak.logout()} title="Logout" />
+			)}
             <Text style={Styles.ColoredTitleText}> Login </Text>
             <Text> </Text>
             <Text style={Styles.textOverInput}> email </Text>

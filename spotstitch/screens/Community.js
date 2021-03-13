@@ -1,6 +1,6 @@
 import React from "react";
 import {View, Text, TouchableWithoutFeedback, Image, ScrollView} from "react-native";
-import Styles from "../style/CommunityStyle.js";
+import Styles from "../style/CommunityStyle";
 
 export default function Community({ navigation }) {
 

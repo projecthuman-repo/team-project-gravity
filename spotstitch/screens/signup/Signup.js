@@ -1,19 +1,17 @@
 import React from "react";
 import {View, Text, TextInput, TouchableWithoutFeedback, Image} from "react-native";
-import Styles from "../style/Style";
+import Styles from "../../style/Style";
 
 export default function Signup({ navigation }) {
-
         
     const pressHandler = () => {
-        navigation.navigate("Home")
+        navigation.navigate("Picture")
     }
-
 
     return(
         <View style={Styles.container}>
             <View style={Styles.logoContainer}>
-                <Image style={Styles.logo} source={require('../assets/logo.jpeg')}></Image>
+                <Image style={Styles.logo} source={require('../../assets/logo.jpeg')}></Image>
             </View>
             <Text style={Styles.ColoredTitleText}> Sign Up </Text>
             <Text> </Text>
@@ -34,9 +32,10 @@ export default function Signup({ navigation }) {
                 <TextInput style={Styles.textInput} secureTextEntry autoCapitalize="none"></TextInput>
             </View>
             <View style={Styles.middle}>
+
             <TouchableWithoutFeedback onPress={pressHandler}>
                 <View style={Styles.Button}>
-                    <Text style={Styles.ButtonText}> CREATE ACCOUNT </Text>
+                    <Text style={Styles.ButtonText}> SIGN UP </Text>
                 </View>
             </TouchableWithoutFeedback>
             </View>

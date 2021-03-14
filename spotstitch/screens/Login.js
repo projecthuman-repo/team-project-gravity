@@ -1,8 +1,26 @@
 import React from "react";
 import {View, Text, TextInput, TouchableWithoutFeedback, Image} from "react-native";
 import Styles from "../style/Style";
-
+import { ApolloProvider, ApolloClient, InMemoryCache, gql, useQuery } from '@apollo/client';
 import { useKeycloak } from '@react-keycloak/native';
+
+const client = new ApolloClient({
+    uri: 'http://localhost:4000/',
+    cache: new InMemoryCache()
+});
+
+function test(username) {
+    client.query({
+        query: gql`
+        query {
+            user(userID: "${username}") {
+                userID
+            }
+        }
+    `})
+    .then((response) => console.log(response.data))
+    .catch((err) => console.error(err))
+}
 
 export default function Login({ navigation }) {
 	// Using array destructuring
@@ -36,11 +54,11 @@ export default function Login({ navigation }) {
             </View>
             
             <View style={Styles.middle}>
-            <TouchableWithoutFeedback onPress={loginButtonPressed}>
-                <View style={Styles.Button}>
-                    <Text style={Styles.ButtonText}> LOGIN </Text>
-                </View>
-            </TouchableWithoutFeedback>
+                <TouchableWithoutFeedback onPress={() => keycloak.login}>
+                    <View style={Styles.Button}>
+                        <Text style={Styles.ButtonText}> LOGIN </Text>
+                    </View>
+                </TouchableWithoutFeedback>
             </View>
         </View>
     );

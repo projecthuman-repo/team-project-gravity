@@ -21,11 +21,11 @@ export default {
 
     "miniTitle": {
         fontFamily: "Asap-Regular",
-        fontSize: 22,
+        fontSize: 20,
         fontWeight: "bold",
-        marginTop: 15,
-        marginLeft: 30,
-        marginBottom: 15,
+        marginTop: 30,
+        marginLeft: 20,
+        marginBottom: 10,
         color: "#fa5f6a",
         textAlign: "left",
     },
@@ -38,6 +38,7 @@ export default {
         width: 100,
         alignItems: "center",
         marginBottom: 10,
+        marginLeft: 20
     },
 
     
@@ -49,27 +50,22 @@ export default {
     "SeeMembers": {
         color: "#1464f6",
         fontFamily: "Asap-Regular",
-        fontSize: 20,
+        fontSize: 18,
     },
 
     "ScrollView": {
-        height: 80,
-        marginLeft: 30,
+        marginLeft: 20,
         marginRight: 30,
-        marginBottom: 5,
     },
 
     "ScrollViewText": {
         color: "#1464f6",   
-        fontSize: 18,
-        marginBottom: 6,
+        fontSize: 14,
+        paddingBottom: 6,
         marginRight: 30,
     },
 
     "RecentActivityView": {
-        borderTopWidth: 1,
-        borderTopColor: "black",
-        backgroundColor: "white",
         paddingBottom: 160,
     },
 

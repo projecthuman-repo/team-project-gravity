@@ -15,6 +15,10 @@ export default function CommunityList({ navigation }) {
         navigation.navigate("CreateProposal")
     }
 
+    const filter = () => {
+        navigation.navigate("CommunityFiltration")
+    }
+
     return(
         <SafeAreaView style={{backgroundColor: 'white', height: '100%'}}>
             <Text style={Styles.BlackTitle}>Community List</Text>
@@ -26,19 +30,19 @@ export default function CommunityList({ navigation }) {
 
             <View style={{height:130, marginTop: 20}}>
                 <ScrollView horizontal={true}>
-                    <TouchableHighlight onclick={goToCommunity}>
+                    <TouchableHighlight onPress={filter}>
                         <SmallTile imageUri={require('../../assets/community_list/small/toronto.jpg')} name="Toronto" />
                     </TouchableHighlight>
 
-                    <TouchableHighlight onclick={goToCommunity}>                
+                    <TouchableHighlight onPress={filter}>                
                         <SmallTile imageUri={require('../../assets/community_list/small/vancouver.jpg')} name="Vancouver" />
                     </TouchableHighlight>  
 
-                    <TouchableHighlight onclick={goToCommunity}>
+                    <TouchableHighlight onPress={filter}>
                         <SmallTile imageUri={require('../../assets/community_list/small/nyc.jpg')} name="NYC" />
                     </TouchableHighlight>
 
-                    <TouchableHighlight onclick={goToCommunity}>
+                    <TouchableHighlight onPress={filter}>
                         <SmallTile imageUri={require('../../assets/community_list/small/la.jpg')} name="LA" />
                     </TouchableHighlight>
                 </ScrollView>
@@ -47,15 +51,15 @@ export default function CommunityList({ navigation }) {
             <View style={{paddingTop: 20, backgroundColor: 'white', height: '67%'}}>
                 <Text style={Styles.RedSubtitle}>All communities</Text>
                 <ScrollView style={{paddingTop: 10, paddingLeft: 20, paddingRight: 20}}>
-                    <TouchableHighlight onclick={goToCommunity}>
+                    <TouchableHighlight onPress={goToCommunity}>
                         <LargeTile imageUri={require('../../assets/community_list/large/uoft.jpg')} name="UofT" description={lorem} />
                     </TouchableHighlight>
 
-                    <TouchableHighlight onclick={goToCommunity}>
+                    <TouchableHighlight onPress={goToCommunity}>
                     <LargeTile imageUri={require('../../assets/community_list/large/western.jpg')} name="Western" description={lorem} />
                     </TouchableHighlight>
 
-                    <TouchableHighlight onclick={goToCommunity}>
+                    <TouchableHighlight onPress={goToCommunity}>
                     <LargeTile imageUri={require('../../assets/community_list/large/mcmaster.png')} name="McMaster" description={lorem} />
                     </TouchableHighlight>
                 </ScrollView>

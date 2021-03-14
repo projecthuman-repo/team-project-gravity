@@ -49,6 +49,30 @@ export default {
         marginBottom: 10,
     },
 
+    "SmallButton": {
+        fontFamily: "Asap-Regular",
+        backgroundColor: "#fa5f6a",
+        padding: 5,
+        // padding: wp("10%"),
+        borderRadius: 5,
+        // textAlign: "center",
+        // width: win.width/2,
+        width: 200,
+        alignItems: "center",
+        marginBottom: 10,
+    },
+
+    "NextButton": {
+        fontFamily: "Asap-Regular",
+        backgroundColor: "#fa5f6a",
+        borderRadius: 5,
+        paddingTop: 10,
+        height: 40,
+        width: 250,
+        alignItems: "center",
+        marginBottom: 10,
+    },
+
     "ButtonText": {
         color: "white",
         fontFamily: "Asap-Regular",
@@ -108,6 +132,11 @@ export default {
     "logo": {
         width: wp("40%"),
         height: hp("20%"),
+    },
+
+    "icon": {
+        width: 128,
+        height: 128,
     },
 
     "logoContainer": {

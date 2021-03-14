@@ -3,8 +3,13 @@ import { createAppContainer } from "react-navigation";
 
 import Home from "./screens/Home";
 import Login from "./screens/Login";
-import Signup from "./screens/Signup";
-import Community from "./screens/Community"
+import Signup from "./screens/signup/Signup";
+import Picture from "./screens/signup/Picture";
+import ProfileHeader from "./screens/signup/ProfileHeader";
+import Bio from "./screens/signup/Bio";
+import Placeholder from "./screens/signup/Placeholder";
+import StitchedPlaceholder from "./screens/signup/StitchedPlaceholder";
+import Community from "./screens/Community";
 import TorontoFoodBankMembers from './screens/TorontoFoodBankMembers';
 import CommunityList from "./screens/CommunityList";
 
@@ -37,7 +42,27 @@ const screens = {
     Signup: {
         screen: Signup
     },
+
+    Picture: {
+        screen: Picture
+    },
+
+    ProfileHeader: {
+        screen: ProfileHeader
+    },
+
+    Bio: {
+        screen: Bio
+    },
   
+    Placeholder: {
+        screen: Placeholder
+    },
+
+    StitchedPlaceholder: {
+        screen: StitchedPlaceholder
+    },
+
     Community: {
         screen: Community
     },
@@ -51,7 +76,7 @@ const screens = {
         navigationOptions: {
             header: null,
         }
-    }
+    },
 };
 
 const HomeStack = createStackNavigator(screens);

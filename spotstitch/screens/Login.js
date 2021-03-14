@@ -27,7 +27,7 @@ export default function Login({ navigation }) {
 	const [keycloak, initialized] = useKeycloak();
   
     const loginButtonPressed = () => {
-        navigation.navigate("Home")
+        navigation.navigate("CommunityList")
     }
 
     return(
@@ -54,7 +54,7 @@ export default function Login({ navigation }) {
             </View>
             
             <View style={Styles.middle}>
-                <TouchableWithoutFeedback onPress={() => keycloak.login}>
+                <TouchableWithoutFeedback onPress={loginButtonPressed}>
                     <View style={Styles.Button}>
                         <Text style={Styles.ButtonText}> LOGIN </Text>
                     </View>

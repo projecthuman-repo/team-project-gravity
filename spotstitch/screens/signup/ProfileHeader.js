@@ -1,5 +1,5 @@
 import React from "react";
-import {View, Text, TouchableWithoutFeedback, TouchableHighlight, Image} from "react-native";
+import {View, Text, TouchableWithoutFeedback, TouchableHighlight, Image, SafeAreaView} from "react-native";
 import Styles from "../../style/Style";
 
 export default function ProfileHeader({ navigation }) {
@@ -8,24 +8,34 @@ export default function ProfileHeader({ navigation }) {
         navigation.navigate("Bio")
     }
 
-    return(
-        <View style={Styles.MiddleOfScreen}>
-            <Text style={Styles.RedSubtitle}> Personalize Your Profile </Text>
-            <Text> </Text>
+    const choosePhoto = () => {
+        // pick photo
+    }
 
-            <TouchableHighlight onPress={() => choosePhoto}>
-                <View>
-                    <Image style={Styles.icon} source={require('../../assets/camera.png')}/>
-                </View>
-            </TouchableHighlight>
-            <Text>Set Your Profile Header</Text>
-            <Text>&nbsp;</Text>
-            
-            <TouchableWithoutFeedback onPress={pressHandler}>
-                <View style={Styles.NextButton}>
-                    <Text style={Styles.ButtonText}> NEXT </Text>
-                </View>
+    return(
+        <SafeAreaView style={{backgroundColor: "white", height: "100%", width: "100%"}}>
+            <TouchableWithoutFeedback onPress={() => navigation.navigate("Picture")}>
+                <Image style={{height: 40, width: 40, marginLeft: 30, marginTop: 25}} source={require('../../assets/arrow.png')} />
             </TouchableWithoutFeedback>
-        </View>
+
+            <View style={Styles.MiddleOfScreen}>
+                <Text style={Styles.RedSubtitle}> Personalize Your Profile </Text>
+                <Text> </Text>
+
+                <TouchableHighlight onPress={() => choosePhoto}>
+                    <View>
+                        <Image style={Styles.icon} source={require('../../assets/camera.png')}/>
+                    </View>
+                </TouchableHighlight>
+                <Text>Set Your Profile Header</Text>
+                <Text>&nbsp;</Text>
+                
+                <TouchableWithoutFeedback onPress={pressHandler}>
+                    <View style={Styles.NextButton}>
+                        <Text style={Styles.ButtonText}> NEXT </Text>
+                    </View>
+                </TouchableWithoutFeedback>
+            </View>
+        </SafeAreaView>
     );
 }

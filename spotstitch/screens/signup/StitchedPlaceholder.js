@@ -10,7 +10,7 @@ export default function StitchedPlaceholder({ navigation }) {
 
     return(
         <View style={Styles.MiddleOfScreen}>
-            <Text style={Styles.RedSubtitle}> Placeholder for the "Let's Get You Stitched In!"" Sequence" </Text>
+            <Text style={Styles.RedSubtitle}> Placeholder for the "Let's Get You Stitched In!" Sequence </Text>
         
             <Text>&nbsp;&nbsp;</Text>
 

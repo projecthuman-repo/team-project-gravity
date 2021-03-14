@@ -12,6 +12,7 @@ import StitchedPlaceholder from "./screens/signup/StitchedPlaceholder";
 import Community from "./screens/Community";
 import TorontoFoodBankMembers from './screens/TorontoFoodBankMembers';
 import CommunityList from "./screens/CommunityList";
+import CreateProposal from "./screens/CreateProposal";
 
 // KeyCloak
 import * as React from 'react';
@@ -36,23 +37,38 @@ const screens = {
     },
 
     Login: {
-        screen: Login
+        screen: Login,
+        navigationOptions: {
+            header: null,
+        }
     },
 
     Signup: {
-        screen: Signup
+        screen: Signup,
+        navigationOptions: {
+            header: null,
+        }
     },
 
     Picture: {
-        screen: Picture
+        screen: Picture,
+        navigationOptions: {
+            header: null,
+        }
     },
 
     ProfileHeader: {
-        screen: ProfileHeader
+        screen: ProfileHeader,
+        navigationOptions: {
+            header: null,
+        }
     },
 
     Bio: {
-        screen: Bio
+        screen: Bio,
+        navigationOptions: {
+            header: null,
+        }
     },
   
     Placeholder: {
@@ -60,7 +76,10 @@ const screens = {
     },
 
     StitchedPlaceholder: {
-        screen: StitchedPlaceholder
+        screen: StitchedPlaceholder,
+        navigationOptions: {
+            header: null,
+        }
     },
 
     Community: {
@@ -68,7 +87,8 @@ const screens = {
     },
   
     TorontoFoodBankMembers: {
-        screen: TorontoFoodBankMembers
+        screen: TorontoFoodBankMembers,
+        
     },
       
     CommunityList: {
@@ -77,6 +97,13 @@ const screens = {
             header: null,
         }
     },
+
+    CreateProposal: {
+        screen: CreateProposal,
+        navigationOptions: {
+            header: null,
+        }
+    }
 };
 
 const HomeStack = createStackNavigator(screens);

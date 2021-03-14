@@ -114,6 +114,14 @@ export default {
         fontWeight: '600',
         paddingHorizontal: 20,
     },
+
+    "RedSubtitleLeftPadded": {
+		color: '#f85f69',
+        fontSize: 18,
+        fontWeight: '700',
+        paddingLeft: 35,
+        marginTop: 20
+    },
     
     "textOverInput": {
         color: 'grey',
@@ -137,6 +145,9 @@ export default {
     "icon": {
         width: 128,
         height: 128,
+        alignSelf: "center",
+        borderColor: "#808080",
+        borderWidth: 1
     },
 
     "logoContainer": {

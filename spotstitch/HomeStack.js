@@ -9,9 +9,11 @@ import ProfileHeader from "./screens/signup/ProfileHeader";
 import Bio from "./screens/signup/Bio";
 import Placeholder from "./screens/signup/Placeholder";
 import StitchedPlaceholder from "./screens/signup/StitchedPlaceholder";
-import Community from "./screens/Community";
+import Community from "./screens/community/Community";
+import ModifyRoles from "./screens/community/ModifyRoles";
 import TorontoFoodBankMembers from './screens/TorontoFoodBankMembers';
-import CommunityList from "./screens/CommunityList";
+import CommunityList from "./screens/community/CommunityList";
+import CreateProposal from "./screens/CreateProposal";
 
 // KeyCloak
 import * as React from 'react';
@@ -36,23 +38,38 @@ const screens = {
     },
 
     Login: {
-        screen: Login
+        screen: Login,
+        navigationOptions: {
+            header: null,
+        }
     },
 
     Signup: {
-        screen: Signup
+        screen: Signup,
+        navigationOptions: {
+            header: null,
+        }
     },
 
     Picture: {
-        screen: Picture
+        screen: Picture,
+        navigationOptions: {
+            header: null,
+        }
     },
 
     ProfileHeader: {
-        screen: ProfileHeader
+        screen: ProfileHeader,
+        navigationOptions: {
+            header: null,
+        }
     },
 
     Bio: {
-        screen: Bio
+        screen: Bio,
+        navigationOptions: {
+            header: null,
+        }
     },
   
     Placeholder: {
@@ -60,7 +77,10 @@ const screens = {
     },
 
     StitchedPlaceholder: {
-        screen: StitchedPlaceholder
+        screen: StitchedPlaceholder,
+        navigationOptions: {
+            header: null,
+        }
     },
 
     Community: {
@@ -68,7 +88,8 @@ const screens = {
     },
   
     TorontoFoodBankMembers: {
-        screen: TorontoFoodBankMembers
+        screen: TorontoFoodBankMembers,
+        
     },
       
     CommunityList: {
@@ -77,6 +98,20 @@ const screens = {
             header: null,
         }
     },
+
+    CreateProposal: {
+        screen: CreateProposal,
+        navigationOptions: {
+            header: null,
+        }
+    },
+
+    ModifyRoles: {
+        screen: ModifyRoles,
+        navigationOptions: {
+            header: null
+        }
+    }
 };
 
 const HomeStack = createStackNavigator(screens);

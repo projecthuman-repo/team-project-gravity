@@ -21,8 +21,14 @@ export default function CommunityList({ navigation }) {
 
     return(
         <SafeAreaView style={{backgroundColor: 'white', height: '100%'}}>
-            <Text style={Styles.BlackTitle}>Community List</Text>
-            <Text> </Text>
+            <View style={{flexDirection: "row", marginHorizontal: 20, paddingBottom: 10}}>
+                <Text style={Styles.BlackTitle}>Community List</Text>
+                
+                <TouchableWithoutFeedback onPress={() => navigation.navigate("Profile")}>
+                    <Image style={{height: 26, width: 26, marginLeft: "44%"}} source={require('../../assets/profileIcon.png')} />
+                </TouchableWithoutFeedback>
+            </View>
+            
 
             <View>
                 <Text style={Styles.RedSubtitle}>Communities by location</Text>

@@ -10,10 +10,11 @@ import Bio from "./screens/signup/Bio";
 import Placeholder from "./screens/signup/Placeholder";
 import StitchedPlaceholder from "./screens/signup/StitchedPlaceholder";
 import Community from "./screens/community/Community";
+import CreateProposal from "./screens/community/CreateProposal";
 import ModifyRoles from "./screens/community/ModifyRoles";
-import TorontoFoodBankMembers from './screens/TorontoFoodBankMembers';
+import CommunityFiltration from "./screens/community/CommunityFiltration"
+import MemberList from './screens/community/MemberList';
 import CommunityList from "./screens/community/CommunityList";
-import CreateProposal from "./screens/CreateProposal";
 
 // KeyCloak
 import * as React from 'react';
@@ -84,12 +85,17 @@ const screens = {
     },
 
     Community: {
-        screen: Community
+        screen: Community,
+        navigationOptions: {
+            header: null,
+        }
     },
   
-    TorontoFoodBankMembers: {
-        screen: TorontoFoodBankMembers,
-        
+    MemberList: {
+        screen: MemberList,
+        navigationOptions: {
+            header: null,
+        }
     },
       
     CommunityList: {
@@ -108,6 +114,13 @@ const screens = {
 
     ModifyRoles: {
         screen: ModifyRoles,
+        navigationOptions: {
+            header: null
+        }
+    },
+
+    CommunityFiltration: {
+        screen: CommunityFiltration,
         navigationOptions: {
             header: null
         }

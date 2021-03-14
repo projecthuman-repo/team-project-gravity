@@ -1,11 +1,11 @@
 import React from "react";
-import {View, Text, TouchableWithoutFeedback, Image, ScrollView} from "react-native";
+import {View, Text, TouchableWithoutFeedback, Image, ScrollView, SafeAreaView} from "react-native";
 import Styles from "../../style/CommunityStyle";
 
 export default function Community({ navigation }) {
 
     const seeMembers = () => {
-        navigation.navigate("TorontoFoodBankMembers")
+        navigation.navigate("MemberList")
     }
 
     const createAProposal = () => {
@@ -17,12 +17,15 @@ export default function Community({ navigation }) {
     }
 
     return(
-        <View>
-            <View style={Styles.MiddleOfScreen}>
-                <Text style={Styles.CommunityTitle}> Toronto Food Bank </Text>
+        <SafeAreaView style={{backgroundColor: "white", height: "100%"}}>
+             <TouchableWithoutFeedback onPress={() => navigation.navigate("CommunityList")}>
+                <Image style={{height: 40, width: 40, marginLeft: 30, marginTop: 25}} source={require('../../assets/arrow.png')} />
+            </TouchableWithoutFeedback>
 
+            <View style={Styles.MiddleOfScreen}>
+                <Text style={{color: "black", fontSize: 26, fontWeight: '700', textAlign: "center", paddingTop: 10}}>Toronto Food Bank</Text>
                 <TouchableWithoutFeedback onPress={seeMembers}>
-                        <Text style={Styles.SeeMembers}> See Members </Text>
+                    <Text style={Styles.SeeMembers}> See Members </Text>
                 </TouchableWithoutFeedback>
             </View> 
             
@@ -48,13 +51,8 @@ export default function Community({ navigation }) {
                             <Text style={Styles.ButtonText}> Nutrition </Text>
                         </TouchableWithoutFeedback>
                     </View>
-                    <View style={Styles.CreateProposal}>
-                    <TouchableWithoutFeedback onPress={createAProposal}>
-                        <Text style={Styles.CreateProposalText}> Create a Proposal </Text>
-                    </TouchableWithoutFeedback>
-                    </View>
             </View>
-        </View>
+        </SafeAreaView>
 
     );
 

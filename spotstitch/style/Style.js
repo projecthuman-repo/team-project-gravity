@@ -120,6 +120,7 @@ export default {
         fontSize: 18,
         fontWeight: '700',
         paddingLeft: 35,
+        marginTop: 20
     },
     
     "textOverInput": {

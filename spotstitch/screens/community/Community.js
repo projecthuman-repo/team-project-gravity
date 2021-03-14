@@ -1,6 +1,6 @@
 import React from "react";
 import {View, Text, TouchableWithoutFeedback, Image, ScrollView} from "react-native";
-import Styles from "../style/CommunityStyle";
+import Styles from "../../style/CommunityStyle";
 
 export default function Community({ navigation }) {
 
@@ -9,7 +9,7 @@ export default function Community({ navigation }) {
     }
 
     const createAProposal = () => {
-        navigation.navigate("CreateAProposal")
+        navigation.navigate("CreateProposal")
     }
 
     const seeTags = () => {

@@ -1,7 +1,7 @@
 import React from "react";
-import {View, Text, Button, ScrollView, SafeAreaView, Image, TouchableWithoutFeedback, TouchableHighlight} from "react-native";
-import Styles from "../style/Style";
-import {SmallTile, LargeTile} from "./components/community_explore/Tiles"
+import {View, Text, Button, ScrollView, SafeAreaView, Image, TouchableWithoutFeedback, TouchableHighlight, Alert} from "react-native";
+import Styles from "../../style/Style";
+import {SmallTile, LargeTile} from "../components/community_explore/Tiles"
 
 export default function CommunityList({ navigation }) {
 
@@ -27,19 +27,19 @@ export default function CommunityList({ navigation }) {
             <View style={{height:130, marginTop: 20}}>
                 <ScrollView horizontal={true}>
                     <TouchableHighlight onclick={goToCommunity}>
-                        <SmallTile imageUri={require('../assets/community_list/small/toronto.jpg')} name="Toronto" />
+                        <SmallTile imageUri={require('../../assets/community_list/small/toronto.jpg')} name="Toronto" />
                     </TouchableHighlight>
 
                     <TouchableHighlight onclick={goToCommunity}>                
-                        <SmallTile imageUri={require('../assets/community_list/small/vancouver.jpg')} name="Vancouver" />
+                        <SmallTile imageUri={require('../../assets/community_list/small/vancouver.jpg')} name="Vancouver" />
                     </TouchableHighlight>  
 
                     <TouchableHighlight onclick={goToCommunity}>
-                        <SmallTile imageUri={require('../assets/community_list/small/nyc.jpg')} name="NYC" />
+                        <SmallTile imageUri={require('../../assets/community_list/small/nyc.jpg')} name="NYC" />
                     </TouchableHighlight>
 
                     <TouchableHighlight onclick={goToCommunity}>
-                        <SmallTile imageUri={require('../assets/community_list/small/la.jpg')} name="LA" />
+                        <SmallTile imageUri={require('../../assets/community_list/small/la.jpg')} name="LA" />
                     </TouchableHighlight>
                 </ScrollView>
             </View>
@@ -48,15 +48,15 @@ export default function CommunityList({ navigation }) {
                 <Text style={Styles.RedSubtitle}>All communities</Text>
                 <ScrollView style={{paddingTop: 10, paddingLeft: 20, paddingRight: 20}}>
                     <TouchableHighlight onclick={goToCommunity}>
-                        <LargeTile imageUri={require('../assets/community_list/large/uoft.jpg')} name="UofT" description={lorem} />
+                        <LargeTile imageUri={require('../../assets/community_list/large/uoft.jpg')} name="UofT" description={lorem} />
                     </TouchableHighlight>
 
                     <TouchableHighlight onclick={goToCommunity}>
-                    <LargeTile imageUri={require('../assets/community_list/large/western.jpg')} name="Western" description={lorem} />
+                    <LargeTile imageUri={require('../../assets/community_list/large/western.jpg')} name="Western" description={lorem} />
                     </TouchableHighlight>
 
                     <TouchableHighlight onclick={goToCommunity}>
-                    <LargeTile imageUri={require('../assets/community_list/large/mcmaster.png')} name="McMaster" description={lorem} />
+                    <LargeTile imageUri={require('../../assets/community_list/large/mcmaster.png')} name="McMaster" description={lorem} />
                     </TouchableHighlight>
                 </ScrollView>
             </View>

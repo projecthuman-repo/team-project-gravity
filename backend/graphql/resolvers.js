@@ -6,35 +6,59 @@ const resolvers = {
   Query: {
     user: async (parent, { userID }, { User }) => {
       const userInfo = await User.findOne({ where : {id: userID}});
-      return {"userID": userInfo.dataValues.id};
+      if (userInfo) {
+        return {"userID": userInfo.dataValues.id};
+      } else {
+        throw new ApolloError(`userID:${userID} doesn't exist`);
+      }
     },
     community: async (parent, { communityID }, { Community }) => {
       const communityInfo = await Community.findOne({ where : {id: communityID}});
-      return {
-        "communityID": communityInfo.dataValues.id,
-        "communityName": communityInfo.dataValues.name,
-        "communityDescription": communityInfo.dataValues.description
+      if (communityInfo) {
+        return {
+          "communityID": communityInfo.dataValues.id,
+          "communityName": communityInfo.dataValues.name,
+          "communityDescription": communityInfo.dataValues.description
+        }
+      } else {
+        throw new ApolloError(`communityID:${communityID} doesn't exist`);
       }
     },
     status: async (parent, { userID}, { CommunityMember, CommunityStatus }) => {
       const communityMemberInfo = await CommunityMember.findOne({ where : {userId: userID}});
-      const communityStatusID = communityMemberInfo.dataValues.communityStatusId;
-      const communityStatusInfo = await CommunityStatus.findOne({ where : {id: communityStatusID}});
-      return {
-        "communityStatusID": communityStatusInfo.dataValues.id,
-        "communityStatus": communityStatusInfo.dataValues.status,
+      if (communityMemberInfo) {
+        const communityStatusID = communityMemberInfo.dataValues.communityStatusId;
+        const communityStatusInfo = await CommunityStatus.findOne({ where : {id: communityStatusID}});
+        if (communityStatusInfo) {
+          return {
+            "communityStatusID": communityStatusInfo.dataValues.id,
+            "communityStatus": communityStatusInfo.dataValues.status,
+          }
+        } else {
+          throw new ApolloError(`communityStatusID:${communityStatusID} doesn't exist`);
+        }
+      } else {
+        throw new ApolloError(`userID:${userID} doesn't exist`);
       }
     },
     communityProposalMember: async (parent, { userID, communityProposalID}, { CommunityProposalMember}) => {
       if(userID){
         communityProposalMemberInfo = await CommunityProposalMember.findOne({ where : {userId: userID}});
+        if (!communityProposalMemberInfo) {
+          throw new ApolloError(`userID:${userID} doesn't exist`);
+        }
       }
       if(communityProposalID){
         communityProposalMemberInfo = await CommunityProposalMember.findOne({ where : {communityProposalId: communityProposalID}});
+        if (!communityProposalMemberInfo) {
+          throw new ApolloError(`communityProposalID:${communityProposalID} doesn't exist`);
+        }
       }
-      return {
-        "communityProposalID": communityProposalMemberInfo.dataValues.communityProposalId,
-        "communityProposalMemberID": communityProposalMemberInfo.dataValues.userId,
+      if (communityProposalMemberInfo) {
+        return {
+          "communityProposalID": communityProposalMemberInfo.dataValues.communityProposalId,
+          "communityProposalMemberID": communityProposalMemberInfo.dataValues.userId,
+        }
       }
     }
   },

@@ -158,4 +158,46 @@ export default {
     "VerticalScrollMenu": {
         paddingHorizontal: 20,
     },
+
+    // Profile page
+    "ProfilePicture": {
+		width: 150,
+		height: 150,
+	},
+
+    "ProfileNameText": {
+        color: '#f85f69',
+        fontSize: 26,
+		fontWeight: 'bold',     
+    },
+	
+	"ReputationContainer": {
+		backgroundColor: '#f85f69',
+        borderRadius: 10,
+        borderStyle: 'solid',
+        padding: 10,
+        marginTop: 20,
+        marginBottom: 40,
+        width: "80%"
+	},
+
+    "ReputationText": {
+		color: 'white',
+        fontSize: 20,
+        fontWeight: 'bold',
+        textAlign: "center"
+	},
+	
+	"ColoredTitleText": {
+		color: '#f85f69',
+		fontSize: 18,
+		fontWeight: 'bold',
+	},
+	
+	"CommunityListItem": {
+        color: "#1464f6", 
+		fontSize: 14,
+        fontWeight: "bold",
+        paddingTop: 5
+    },
 }

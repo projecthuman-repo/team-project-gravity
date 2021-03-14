@@ -15,6 +15,7 @@ import ModifyRoles from "./screens/community/ModifyRoles";
 import CommunityFiltration from "./screens/community/CommunityFiltration"
 import MemberList from './screens/community/MemberList';
 import CommunityList from "./screens/community/CommunityList";
+import Profile from "./screens/Profile";
 
 // KeyCloak
 import * as React from 'react';
@@ -121,6 +122,13 @@ const screens = {
 
     CommunityFiltration: {
         screen: CommunityFiltration,
+        navigationOptions: {
+            header: null
+        }
+    },
+
+    Profile: {
+        screen: Profile,
         navigationOptions: {
             header: null
         }

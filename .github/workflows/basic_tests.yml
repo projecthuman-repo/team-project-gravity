@@ -1,6 +1,6 @@
 name: basic_tests
 
-on: [pull_request]
+on: [push]
 
 jobs:
   build:

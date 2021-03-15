@@ -49,7 +49,9 @@ Past this, any significant features we complete are auxillary, as this core func
 
 **Before examining the website, please change the aspect ratio of your tab to that similar of a phone**, as this is a mobile app. This is the simplest solution given the difficult/cost of using simulators and deploying to app stores.
 
-The app is currently deployed on Heroku. You can find our app here: https://spotstitch.herokuapp.com/
+To see a short video walking through our app on a simulator, download the iOS demo file from [here](https://github.com/csc301-winter-2021/team-project-gravity/blob/main/deliverable-2/iOS%20demo.mov)
+
+The app is currently deployed on Heroku. You can find our production app here: https://spotstitch.herokuapp.com/
 
 In the future, this snapshot of our deployed application will be available and unchanged under the branch *deliverable-2-snapshot*.
 
@@ -121,7 +123,7 @@ Overall, our tests so far are light since there are still so many moving pieces,
 The overall deployment process consists of the developer's local environment, a staging / development environment, and a production environment. Every developer on our team would make changes locally, and once the changes were completed and didn't cause any issues or bugs, they would be pushed to a branch off of the main (master) branch of the repository. Once the branch was approved, it was merged into the main branch of the repository, which would automatically re-deploy the staging environment. Once the changes that were just merged into the main branch were manually tested in the staging environment and they all functioned as they should, we manually deploy these changes to the production environment.
 
 The production environment can be found here: https://spotstitch.herokuapp.com/
-The staging environment can be found here:
+The staging environment can be found here: https://spotstitch-staging.herokuapp.com/
 
 We used Heroku to deploy our application. The reason we made this decision was because after speaking with HumanCity, they made it apparent to us that they desired a robust backend. Keeping that in mind, it made sense to be able to use a deployment tool that would allow us to deploy as frequently as we desired when making changes or updates to the backend. Heroku is a great deployment tool that allows us to do exactly this!
 In addition, as we are creating a mobile app, to be able to truly deploy would be to deploy on the app store (for iOS) and the play store (for Android), which can take weeks to gain approval for each deployment. Since we are using React Native as our front end, we also have the ability of creating a web app at the same time as the mobile applications. In this sense, we can currently approach deployment as if we are creating a web app, since this way we can have our robust backend deployed appropriately while having a working version of our front-end. Until our application is ready to be shipped, we will use Heroku for deployment, and switch to other methods of deployment for mobile apps once we are ready to be shipped.

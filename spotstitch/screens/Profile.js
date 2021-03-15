@@ -8,6 +8,10 @@ export default function Home({ navigation }) {
     const goToLogin = () => {
         navigation.navigate("Login")
     }
+
+    const logout = () => {
+        navigation.navigate("Home")
+    }
     
     // The text things are for spaces, not sure of a better way to do it
     return(
@@ -51,7 +55,13 @@ export default function Home({ navigation }) {
                 />
             </View>
 
-           
+            <View style={{marginHorizontal: 20, position: "absolute", bottom: 30, width: "90%"}}>
+                <TouchableWithoutFeedback onPress={logout}>
+                    <View style={{justifyContent: "center", alignItems: "center", backgroundColor: "#fa5f6a", width: "100%", height: 45, borderRadius: 10}}>
+                        <Text style={{color: "white", fontWeight: "500", fontSize: 20}}> Logout </Text>
+                    </View>
+                </TouchableWithoutFeedback>
+            </View>
         </SafeAreaView>
     );
 }

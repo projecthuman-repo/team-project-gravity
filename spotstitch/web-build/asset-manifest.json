@@ -1,0 +1,34 @@
+{
+  "files": {
+    "app.js": "/static/js/app.c8d29841.chunk.js",
+    "app.js.map": "/static/js/app.c8d29841.chunk.js.map",
+    "runtime~app.js": "/static/js/runtime~app.2e9f1821.js",
+    "runtime~app.js.map": "/static/js/runtime~app.2e9f1821.js.map",
+    "static/js/2.1eb99704.chunk.js": "/static/js/2.1eb99704.chunk.js",
+    "static/js/2.1eb99704.chunk.js.map": "/static/js/2.1eb99704.chunk.js.map",
+    "favicon-16.png": "/favicon-16.png",
+    "favicon-32.png": "/favicon-32.png",
+    "favicon.ico": "/favicon.ico",
+    "index.html": "/index.html",
+    "manifest.json": "/manifest.json",
+    "serve.json": "/serve.json",
+    "static/js/2.1eb99704.chunk.js.LICENSE.txt": "/static/js/2.1eb99704.chunk.js.LICENSE.txt",
+    "static/media/arrow.png": "/static/media/arrow.3eef146f.png",
+    "static/media/camera.png": "/static/media/camera.61f05a8f.png",
+    "static/media/la.jpg": "/static/media/la.773b4878.jpg",
+    "static/media/logo.jpeg": "/static/media/logo.9612317d.jpeg",
+    "static/media/mcmaster.png": "/static/media/mcmaster.ed136a45.png",
+    "static/media/nyc.jpg": "/static/media/nyc.0e71ff29.jpg",
+    "static/media/profileIcon.png": "/static/media/profileIcon.89abd72e.png",
+    "static/media/profilePicture.png": "/static/media/profilePicture.9dce7035.png",
+    "static/media/toronto.jpg": "/static/media/toronto.e5319d24.jpg",
+    "static/media/uoft.jpg": "/static/media/uoft.b61d53b1.jpg",
+    "static/media/vancouver.jpg": "/static/media/vancouver.f54a4b51.jpg",
+    "static/media/western.jpg": "/static/media/western.3f249873.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime~app.2e9f1821.js",
+    "static/js/2.1eb99704.chunk.js",
+    "static/js/app.c8d29841.chunk.js"
+  ]
+}

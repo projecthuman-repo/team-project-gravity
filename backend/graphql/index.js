@@ -1,5 +1,6 @@
-const { ApolloServer, gql } = require('apollo-server');
-
+const { ApolloServer } = require('apollo-server-express');
+const path = require('path');
+const express = require("express");
 
 const database = require('../database/db')
 const sequelizeConnection = database.Conn
@@ -26,33 +27,25 @@ const context = async ({ req }) => {
   }
 }
 
-// const books = [
-//     {
-//       title: 'The Awakening',
-//       author: 'Kate Chopin',
-//     },
-//     {
-//       title: 'City of Glass',
-//       author: 'Paul Auster',
-//     },
-//   ];
-
-
-
 // The ApolloServer constructor requires two parameters: your schema
 // definition and your set of resolvers.
+const app = express();
 const server = new ApolloServer({ typeDefs, resolvers, context });
+server.applyMiddleware({ app });
+
+app.use(express.static(path.join(__dirname, "../../spotstitch/web-build")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../../spotstitch/web-build/index.html"));
+});
 
 //START GRAPHQL SERVER ONCE DATABASE CONNECTED & MODELS AVAILABLE
-// The `listen` method launches a web server.
 sequelizeConnection.authenticate().then(() => {
       console.log('mySQL database connection established successfully')
-      server.listen().then(({ url }) => {
-        console.log(`🚀  Server ready at ${url}`);
+
+      app.listen({ port: process.env.PORT || 4000 })
+      .then(({ url }) => {
+        console.log(`Server ready at ${url}`);
       })
       .catch(err => console.log('Unable to connect to mySQL database: ', err))
     })
-
-// server.listen().then(({ url }) => {
-//   console.log(`🚀  Server ready at ${url}`);
-// })

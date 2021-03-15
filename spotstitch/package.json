@@ -5,7 +5,8 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "build": "expo build:web"
   },
   "dependencies": {
     "@apollo/client": "^3.3.11",
@@ -20,6 +21,7 @@
     "keycloak": "^1.2.0",
     "keycloak-js": "^12.0.4",
     "react": "16.13.1",
+    "react-apollo": "^3.1.5",
     "react-dom": "16.13.1",
     "react-keycloak": "^8.0.1-191210",
     "react-native": "https://github.com/expo/react-native/archive/sdk-40.0.1.tar.gz",
@@ -48,7 +50,6 @@
       "fonts"
     ]
   },
-  "private": true
-
-  
+  "private": true,
+  "proxy": "http://localhost:4000"
 }

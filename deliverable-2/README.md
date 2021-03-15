@@ -118,12 +118,13 @@ Overall, our tests so far are light since there are still so many moving pieces,
 
 ### Deployment
 
-**Dianna**
+The overall deployment process consists of the developer's local environment, a staging / development environment, and a production environment. Every developer on our team would make changes locally, and once the changes were completed and didn't cause any issues or bugs, they would be pushed to a branch off of the main (master) branch of the repository. Once the branch was approved, it was merged into the main branch of the repository, which would automatically re-deploy the staging environment. Once the changes that were just merged into the main branch were manually tested in the staging environment and they all functioned as they should, we manually deploy these changes to the production environment.
 
-* Describe your overall deployment process from writing code to viewing a live applicatioon
- * What deployment tool(s) are you using and how
+The production environment can be found here: https://spotstitch.herokuapp.com/
+The staging environment can be found here:
 
- And why?
+We used Heroku to deploy our application. The reason we made this decision was because after speaking with HumanCity, they made it apparent to us that they desired a robust backend. Keeping that in mind, it made sense to be able to use a deployment tool that would allow us to deploy as frequently as we desired when making changes or updates to the backend. Heroku is a great deployment tool that allows us to do exactly this!
+In addition, as we are creating a mobile app, to be able to truly deploy would be to deploy on the app store (for iOS) and the play store (for Android), which can take weeks to gain approval for each deployment. Since we are using React Native as our front end, we also have the ability of creating a web app at the same time as the mobile applications. In this sense, we can currently approach deployment as if we are creating a web app, since this way we can have our robust backend deployed appropriately while having a working version of our front-end. Until our application is ready to be shipped, we will use Heroku for deployment, and switch to other methods of deployment for mobile apps once we are ready to be shipped.
 
 
 ## Licenses 

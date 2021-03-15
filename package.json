@@ -1,0 +1,23 @@
+{
+    "name": "spotstitch",
+    "version": "1.0.0",
+    "description": "",
+    "main": "/backend/graphql/index.js",
+    "scripts": {
+      "setup": "cd backend && npm install && cd ../spotstitch && npm install && cd ..",
+      "build-run": "cd spotstitch && npm run-script build && cd ../backend && node ./graphql/index.js",
+      "start": "cd backend && node ./graphql/index.js",
+      "heroku-postbuild": "cd backend/graphql && npm install && cd ../../spotstitch && npm install && npm run-script build",
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/csc301-winter-2021/team-project-gravity.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/csc301-winter-2021/team-project-gravity/issues"
+    },
+    "homepage": "https://github.com/csc301-winter-2021/team-project-gravity#readme"
+}

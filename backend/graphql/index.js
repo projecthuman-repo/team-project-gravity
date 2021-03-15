@@ -45,6 +45,6 @@ const port = process.env.PORT || 4000;
 sequelizeConnection.authenticate().then(() => {
     console.log('mySQL database connection established successfully')
     app.listen(port, () => {
-      console.log(`Server ready at ${url}`);
+      console.log(`Server ready at ${port}`);
     })
 })

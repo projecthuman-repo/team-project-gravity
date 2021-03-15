@@ -7,7 +7,7 @@
       "setup": "cd backend && npm install && cd ../spotstitch && npm install && cd ..",
       "build-run": "cd spotstitch && npm run-script build && cd ../backend && node ./graphql/index.js",
       "start": "cd backend && node ./graphql/index.js",
-      "heroku-postbuild": "cd backend/graphql && npm install && cd ../spotstitch && npm install && npm run-script build",
+      "heroku-postbuild": "cd backend/graphql && npm install && cd ../../spotstitch && npm install && npm run-script build",
       "test": "echo \"Error: no test specified\" && exit 1"
     },
     "repository": {

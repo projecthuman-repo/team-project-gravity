@@ -53,13 +53,15 @@ Past this, any significant features we complete are auxillary, as this core will
 ## Workflows
 
 ### Git/GitHub Workflow
-
 Our GitHub workflow was shaped by adopting a modified Trunk-Based Development (TBD) strategy. Put simply, this is a structured way of creating many short-lived branches, each of which includes a new, finished feature when merged. All branch names are descriptive and concise concerning the feature being implemented. Each commit contains a working version such that multiple people can develop on any given branch without issue. Each pull-request consists of a code review, where members of the team can share input on changes that may need to be made.
 
 When a significant feature is done being implemented, the branch is further reviewed by the team. If the code is up to our standards, the branch is then merged, as is prescribed in Trunk-Based Development.
 
 
-### **< (TO-DO) TESTING WORKFLOW EXPLAINED >**
+### Testing Workflow
+Furthermore, the structure for basic CI has been implemented, and a suite of tests run upon each pull request. Soon we will have another suite of tests to run upon individual pushes, and another upon deployment. Using Jest and Yarn, we have a test that compares the version of a page in the current PR, to the version prior to the PR. If the snapshots or different the test forces the pusher to either override the existing snapshot (if they meant to update a screen), or, the test fails if the user did not mean to update the selected screen. For now, since all of our screens are in a fairly constant state of flux, these tests are run manually. But once we have a more complete base, these tests will run automatically in our CI workflow files (see .github/workflows/basic_tests.yml for the details; the code for automatically running the snapshot comparison is commented out but will be ran shortly). 
+
+Overall, our tests so far are light since there are still so many moving pieces, but they provide a good foundation and structure for future expansion. 
 
 
 ### Product Workflow

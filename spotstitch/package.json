@@ -6,7 +6,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "build": "expo build:web"
+    "build": "expo build:web",
+    "test": "jest"
   },
   "dependencies": {
     "@apollo/client": "^3.3.11",
@@ -36,6 +37,7 @@
     "react-navigation": "^4.4.4",
     "react-navigation-stack": "^2.10.4",
     "react-router-native": "^5.2.0",
+    "react-test-renderer": "^17.0.1",
     "rnpm": "^1.9.0",
     "uri-scheme": "^1.0.68"
   },
@@ -51,5 +53,11 @@
     ]
   },
   "private": true,
+<<<<<<< HEAD
   "proxy": "http://localhost:4000"
+=======
+  "jest": {
+    "preset": "react-native"
+  }
+>>>>>>> 213e2a66a927e182729673949907b78d5cdf19b2
 }

@@ -5,7 +5,8 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "test": "jest"
   },
   "dependencies": {
     "@apollo/client": "^3.3.11",
@@ -34,6 +35,7 @@
     "react-navigation": "^4.4.4",
     "react-navigation-stack": "^2.10.4",
     "react-router-native": "^5.2.0",
+    "react-test-renderer": "^17.0.1",
     "rnpm": "^1.9.0",
     "uri-scheme": "^1.0.68"
   },
@@ -48,7 +50,8 @@
       "fonts"
     ]
   },
-  "private": true
-
-  
+  "private": true,
+  "jest": {
+    "preset": "react-native"
+  }
 }

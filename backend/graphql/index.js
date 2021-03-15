@@ -34,18 +34,19 @@ const server = new ApolloServer({ typeDefs, resolvers, context });
 server.applyMiddleware({ app });
 
 app.use(express.static(path.join(__dirname, "../../spotstitch/web-build")));
+console.log(path.join(__dirname));
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../../spotstitch/web-build/index.html"));
 });
 
 //START GRAPHQL SERVER ONCE DATABASE CONNECTED & MODELS AVAILABLE
+
+const port = process.env.PORT || 4000;
 sequelizeConnection.authenticate().then(() => {
       console.log('mySQL database connection established successfully')
 
-      app.listen({ port: process.env.PORT || 4000 })
-      .then(({ url }) => {
-        console.log(`Server ready at ${url}`);
+      app.listen(port, () => {
+        console.log(`Server ready at ${port}`);
       })
-      .catch(err => console.log('Unable to connect to mySQL database: ', err))
     })

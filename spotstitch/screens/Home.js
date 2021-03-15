@@ -36,12 +36,6 @@ export default function Home({ navigation }) {
                     <Text style={Styles.ButtonText}> SIGN UP </Text>
                 </View>
             </TouchableWithoutFeedback>
-            
-            <TouchableWithoutFeedback onPress={goToCommunity}>
-                <View style={Styles.Button}>
-                    <Text style={Styles.ButtonText}> SEE A COMMUNITY </Text>
-                </View>
-            </TouchableWithoutFeedback>
         </View>
     )
 }

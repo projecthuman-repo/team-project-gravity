@@ -53,11 +53,8 @@
     ]
   },
   "private": true,
-<<<<<<< HEAD
-  "proxy": "http://localhost:4000"
-=======
+  "proxy": "http://localhost:4000",
   "jest": {
     "preset": "react-native"
   }
->>>>>>> 213e2a66a927e182729673949907b78d5cdf19b2
 }

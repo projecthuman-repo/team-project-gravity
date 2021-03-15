@@ -57,15 +57,15 @@ In the future, this snapshot of our deployed application will be available and u
 ### **Product Layout**
 The product layout matches that of the Moqups designed during the planning phase. For testing purposes, we've made it so that all pages are easily accessible at all times (i.e. just a few clicks away).
 
-The registration phase takes a reference from the "Citylayer App Inference" Moqup provided in deliverable 1. In the application, the sign-up page leads to a page where the user can select a profile picture to display. From there they can also choose a profile header to personalize their profile. Lastly, they can choose to enter a bio and choose other social medias to migrate/connect with their SpotStitch account (with the exception of the location, which can automatically be retrieved through the phone services). 
+The registration phase takes a reference from the "Citylayer App Inference" Moqup provided in deliverable 1. In the application, the sign-up page leads to a page where the user can select a profile picture to display. From there they can also choose a profile header to personalize their profile. Lastly, they can choose to enter a biography and choose other social medias to connect their SpotStitch account with (with the exception of location, which can automatically be retrieved through the phone services). 
 
-The community aspects can be found in the "Mobile App Wireframe" and "Mobile App Wireframe (Proposal)" Moqups, where all pages are connected to the home screen (the community list page). The user can return to this page from any derivative through the back arrows implemented at the top left of each page. The user can access their profile, filter communities based off location, individual communities and create proposals.
+The community aspects can be found in the "Mobile App Wireframe" and "Mobile App Wireframe (Proposal)" Moqups, where all pages are connected to the home screen (the community list page). The user can return to this page from any derivative through the back arrows implemented at the top left of each page. The user can access their profile, filter communities based off location, view individual communities and create proposals.
 
 Upon viewing their profile, they will be able to see information such as their reputation, what communities they may be a part of, and their recent activity. They will also have an opportunity to modify and details on their profile as well as logout of their account.
 
-When viewing specific community pages, they will be able to see the member list, proposals, recent activities, and tags.
+When viewing specific community pages, they will be able to see the member list, proposals, recent activities, and tags associated with that community.
 
-For proposal creation, the user can add photos, details, roles, and tags that are relevant to the activity, along with publishing the proposal. After the proposal is submitted, the user is brought back to the community list page, where they are alerted that their proposal has been published to the respective communities the provided tags apply to.
+On the proposal creation page, the user can add photos, details, roles/type of help needed, and tags that are relevant to the activity, along the option to publish the proposal. After the proposal is submitted, the user is brought back to the community list page, where they are alerted that their proposal has been published to the respective communities the provided tags are relevant to.
 
 
  ## Development requirements

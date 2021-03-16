@@ -40,15 +40,31 @@ List any **process-related** (i.e. team organization and how you work) changes y
 ## Product - Review
 
 #### Q4. How was your product demo?
- * How did you prepare your demo?
- * We recorded a simulation of our front end functionality to Spotstitch and sent it to them. 
- * What did you manage to demo to your partner?
- * Only the front end flow of user login to community pages and their associated pages. We were hoping to demo the functionalities of the requests able to be made on the backend and the robustness of the database design and graphQL schema as well, but due to issues scheduling meetings with Spotstitch were unable to.
- * Did your partner accept the features?
- * Yes.
- * Were there change requests?
- * Yes. Primarily focused on the way we were describing communities, but this was simply placeholder data. We are waiting to hear more thorough feedback also based on the way we have organized the backend at our proper demo meeting happening soon.
- * What did you learn from the demo from either a process or product perspective?
- * We learned that we need to schedule more regular meetings with the Spotstitch team. We misinterpreted a few of their specifications they mentioned just over email, or in passing, but that we didn't get to clarify in a meeting. This really cemented to us that we need to have more meetings with the team to avoid these situations and get clarity earlier on before building out functionality without being at least 90% sure.
+ 
+How did you prepare your demo?
 
+> We recorded a demo showcasing front-end functionalities. Additionally, we composed an explanation regarding developments in the back-end, such as database design (tables & their relationships) and GraphQL schema, KeyCloak authentication, and the coupling between the back-end and front-end. 
 
+What did you manage to demo to your partner?
+
+> Due to schedulding and East-West coast time-zone difficulties, a demo could not be set up before the due date. We sent the materials described in the above question and we are still waiting on feedback.
+
+Did your partner accept the features?
+
+> See above.
+
+Were there change requests?
+
+> See above.
+
+What did you learn from the demo from either a process or product perspective?
+
+> We learned the importance of regularly scheduled meeting with our partner, Human City. 
+
+> Furthermore, we realized just how important it is to have a stable version of the application come time to demo. The team was forced into a time crunch in order to have a functional, asthetically pleasing demo.
+
+> For example, we'd scheduled to develop a broad range of features for this deliverable. This resulted in an influx of unconnected pages nearing the end of the developmental cycle. In hindsight, it would have been more appropriate to create less content overall, but a more robust and connected application.
+
+> There was also a pesky error regarding a non-existent font which created an on-screen pop-up. Obviously, this couldn't be seen during the demo, so someone spent far too long pin-pointing the error to change a single line.
+
+> In short, we learned that, in preparation for a deadline such as a demo, a plan should be created such that relevant features are completed well beforehand, since unforseen issues can (and will) arise.

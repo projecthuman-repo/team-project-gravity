@@ -2,6 +2,7 @@ import React from "react";
 import {View, Text, TouchableWithoutFeedback, TouchableHighlight, Image, SafeAreaView, TextInput} from "react-native";
 
 import Styles from "../../style/Style";
+import {BottomButton} from "../components/Buttons"
 
 export default function CreateProposal ({ navigation }) {
 
@@ -53,13 +54,7 @@ export default function CreateProposal ({ navigation }) {
                 <Text style={Styles.RedSubtitleLeftPadded}>Tags</Text>
             </View>
 
-            <View style={{marginHorizontal: 20, position: "absolute", bottom: 30, width: "90%"}}>
-                <TouchableWithoutFeedback onPress={createProposal}>
-                    <View style={{justifyContent: "center", alignItems: "center", backgroundColor: "#fa5f6a", width: "100%", height: 45, borderRadius: 10}}>
-                        <Text style={{color: "white", fontWeight: "500", fontSize: 20}}> Publish </Text>
-                    </View>
-                </TouchableWithoutFeedback>
-            </View>
+            <BottomButton text="Submit" function={() => createProposal()} />
         </SafeAreaView>
     )
 }

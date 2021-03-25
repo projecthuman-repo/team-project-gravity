@@ -1,14 +1,12 @@
 import React from "react";
 import {View, Text, TextInput, TouchableWithoutFeedback, Image, SafeAreaView} from "react-native";
-import Styles from "../../style/Style";
+import {BackArrow} from "../components/Buttons";
 
 export default function MemberList ({ navigation }) {
 
     return(
         <SafeAreaView style={{backgroundColor: "white", height: "100%", width: "100%"}}>
-            <TouchableWithoutFeedback onPress={() => navigation.navigate("Community")}>
-                <Image style={{height: 40, width: 40, marginLeft: 30, marginTop: 25}} source={require('../../images/arrow.png')} />
-            </TouchableWithoutFeedback>
+            <BackArrow function={() =>navigation.navigate("Community")} />
 
             <View style={{alignItems: "center"}}>          
                 <Text style={{color: "black", fontSize: 26, fontWeight: '700', textAlign: "center", paddingTop: 10, paddingBottom: 5}}>Community Members</Text>

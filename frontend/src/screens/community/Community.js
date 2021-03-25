@@ -1,6 +1,7 @@
 import React from "react";
 import {View, Text, TouchableWithoutFeedback, Image, ScrollView, SafeAreaView} from "react-native";
 import Styles from "../../style/CommunityStyle";
+import {BackArrow} from "../components/Buttons";
 
 export default function Community({ navigation }) {
 
@@ -18,9 +19,7 @@ export default function Community({ navigation }) {
 
     return(
         <SafeAreaView style={{backgroundColor: "white", height: "100%"}}>
-             <TouchableWithoutFeedback onPress={() => navigation.navigate("CommunityList")}>
-                <Image style={{height: 40, width: 40, marginLeft: 30, marginTop: 25}} source={require('../../images/arrow.png')} />
-            </TouchableWithoutFeedback>
+            <BackArrow function={() =>navigation.navigate("CommunityList")} />
 
             <View style={Styles.MiddleOfScreen}>
                 <Text style={{color: "black", fontSize: 26, fontWeight: '700', textAlign: "center", paddingTop: 10}}>Toronto Food Bank</Text>

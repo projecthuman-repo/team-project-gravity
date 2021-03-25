@@ -1,0 +1,11 @@
+--- node_modules/react-native/Libraries/Image/RCTUIImageViewAnimated.m	2021-03-24 23:43:29.000000000 -0400
++++ patches/RCTUIImageViewAnimated.m	2021-03-25 14:23:37.000000000 -0400
+@@ -275,6 +275,8 @@
+   if (_currentFrame) {
+     layer.contentsScale = self.animatedImageScale;
+     layer.contents = (__bridge id)_currentFrame.CGImage;
++  } else {
++    [super displayLayer:layer];
+   }
+ }
+ 

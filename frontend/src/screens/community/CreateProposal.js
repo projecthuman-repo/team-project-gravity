@@ -1,8 +1,8 @@
 import React from "react";
 import {View, Text, TouchableWithoutFeedback, TouchableHighlight, Image, SafeAreaView, TextInput} from "react-native";
-
 import Styles from "../../style/Style";
 import {BackArrow, BottomButton} from "../components/Buttons"
+import {Title} from "../components/Text";
 
 export default function CreateProposal ({ navigation }) {
 
@@ -24,7 +24,7 @@ export default function CreateProposal ({ navigation }) {
         <SafeAreaView style={{backgroundColor: 'white', height: '100%'}}>
             <BackArrow function={() => navigation.navigate("CommunityList")} />
 
-            <Text style={{color: "black", fontSize: 26, fontWeight: '700', textAlign: "center", paddingTop: 10, paddingBottom: 10}}>Create Proposal</Text>
+            <Title title="Create Proposal"/>
 
             <Text style={Styles.RedSubtitleLeftPadded}>Add Photos</Text>
         

@@ -2,7 +2,7 @@ import React from "react";
 import {View, Text, TouchableWithoutFeedback, Image, ScrollView, SafeAreaView} from "react-native";
 import Styles from "../../style/CommunityStyle";
 import {BackArrow} from "../components/Buttons";
-import {CategoricalListActive} from "../components/Text";
+import {TitleSubtitleActive, CategoricalListActive} from "../components/Text";
 
 export default function Community({ navigation }) {
 
@@ -22,12 +22,7 @@ export default function Community({ navigation }) {
         <SafeAreaView style={{backgroundColor: "white", height: "100%"}}>
             <BackArrow function={() => navigation.navigate("CommunityList")} />
 
-            <View style={Styles.MiddleOfScreen}>
-                <Text style={{color: "black", fontSize: 26, fontWeight: '700', textAlign: "center", paddingTop: 10}}>Toronto Food Bank</Text>
-                <TouchableWithoutFeedback onPress={seeMembers}>
-                    <Text style={Styles.SeeMembers}> See Members </Text>
-                </TouchableWithoutFeedback>
-            </View> 
+            <TitleSubtitleActive title="Toronto Food Bank" subtitle="See Members" link={() => seeMembers()}/>
             
             <CategoricalListActive title="Proposals" content={[
                 {key: "Expand reach to Hamilton and other areas outside the city.", link: () => navigation.navigate("Proposal")},
@@ -36,9 +31,8 @@ export default function Community({ navigation }) {
                 {key: "Education campaign for healthy eating habits in low income neighbourhoods.", link: () => navigation.navigate("Proposal")}
             ]}/>
 
-            <View style={Styles.RecentActivityView}>
-                <Text style={Styles.miniTitle}>Recent Activity </Text>
-            </View>
+            <CategoricalListActive title="Recent Activity" content={[
+            ]}/>
 
             <View style={Styles.Tags}>
                 <Text style={Styles.miniTitle}>Tags</Text>

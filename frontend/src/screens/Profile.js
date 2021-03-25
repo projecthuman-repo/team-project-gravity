@@ -2,6 +2,7 @@ import React from "react";
 import {View, Text, TouchableWithoutFeedback, Image, FlatList, SafeAreaView} from "react-native";
 import Styles from "../style/Style";
 import {BackArrow} from "./components/Buttons";
+import {CategoricalListActive} from "./components/Text";
 
 export default function Home({ navigation }) {
     
@@ -28,18 +29,12 @@ export default function Home({ navigation }) {
                 </View>
             </View>
 
-            <View style={{paddingBottom: 15, marginHorizontal: 20}}>
-                <Text selectable={false} style={Styles.ColoredTitleText}>My Communities</Text>
-                <FlatList
-                    data={[
-                        {key: 'Community 1'},
-                        {key: 'Community 2'},
-                        {key: 'Community 3'},
-                        {key: 'Community 4'},
-                    ]}
-                    renderItem={({item}) => <Text selectable={false} style={Styles.CommunityListItem}>{item.key}</Text>}
-                />
-            </View>
+            <CategoricalListActive title="My Communities" content={[
+                {key: "Community 1", link: () => navigation.navigate("Community")},
+                {key: "Community 2", link: () => navigation.navigate("Community")},
+                {key: "Community 3", link: () => navigation.navigate("Community")},
+                {key: "Community 4", link: () => navigation.navigate("Community")}
+            ]}/>
 
             <View style={{marginHorizontal: 20, borderColor: "#778899", borderTopWidth: 1, paddingTop: 15}}>
                 <Text selectable={false} style={Styles.ColoredTitleText}>Recent Activity</Text>

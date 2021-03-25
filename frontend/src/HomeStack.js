@@ -15,11 +15,12 @@ import ModifyRoles from "./screens/community/ModifyRoles";
 import CommunityFiltration from "./screens/community/CommunityFiltration"
 import MemberList from './screens/community/MemberList';
 import CommunityList from "./screens/community/CommunityList";
+import Proposal from "./screens/community/Proposal";
 import Profile from "./screens/Profile";
 
 const screens = {
     Home: {
-        screen: Home,
+        screen: Community,
         navigationOptions: {
             headerShown: false,
         }
@@ -94,6 +95,13 @@ const screens = {
 
     CreateProposal: {
         screen: CreateProposal,
+        navigationOptions: {
+            headerShown: false,
+        }
+    },
+
+    Proposal: {
+        screen: Proposal,
         navigationOptions: {
             headerShown: false,
         }

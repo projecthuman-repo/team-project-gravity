@@ -2,6 +2,7 @@ import React from "react";
 import {View, Text, TouchableWithoutFeedback, Image, ScrollView, SafeAreaView} from "react-native";
 import Styles from "../../style/CommunityStyle";
 import {BackArrow} from "../components/Buttons";
+import {CategoricalListActive} from "../components/Text";
 
 export default function Community({ navigation }) {
 
@@ -19,7 +20,7 @@ export default function Community({ navigation }) {
 
     return(
         <SafeAreaView style={{backgroundColor: "white", height: "100%"}}>
-            <BackArrow function={() =>navigation.navigate("CommunityList")} />
+            <BackArrow function={() => navigation.navigate("CommunityList")} />
 
             <View style={Styles.MiddleOfScreen}>
                 <Text style={{color: "black", fontSize: 26, fontWeight: '700', textAlign: "center", paddingTop: 10}}>Toronto Food Bank</Text>
@@ -28,16 +29,12 @@ export default function Community({ navigation }) {
                 </TouchableWithoutFeedback>
             </View> 
             
-            <View style={Styles.ProposalsView}>
-                <Text style={Styles.miniTitle}> Proposals </Text>
-                <ScrollView style={Styles.ScrollView}>
-                    <Text style={Styles.ScrollViewText} numberOfLines={1}> Expand reach to Hamilton and other areas outside the city.</Text>
-                    <Text style={Styles.ScrollViewText} numberOfLines={1}> Provide aid to shelters in the downtown core.</Text>
-                    <Text style={Styles.ScrollViewText} numberOfLines={1}> Awareness campaign for hunger in single parent families.</Text>
-                    <Text style={Styles.ScrollViewText} numberOfLines={1}> Education campaign for healthy eating habits in low 
-                                                                           income neighbourhoods.</Text>
-                </ScrollView>
-            </View>
+            <CategoricalListActive title="Proposals" content={[
+                {key: "Expand reach to Hamilton and other areas outside the city.", link: () => navigation.navigate("Proposal")},
+                {key: "Provide aid to shelters in the downtown core", link: () => navigation.navigate("Proposal")},
+                {key: "Awareness campaign for hunger in single parent families.", link: () => navigation.navigate("Proposal")},
+                {key: "Education campaign for healthy eating habits in low income neighbourhoods.", link: () => navigation.navigate("Proposal")}
+            ]}/>
 
             <View style={Styles.RecentActivityView}>
                 <Text style={Styles.miniTitle}>Recent Activity </Text>

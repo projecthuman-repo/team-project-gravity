@@ -1,6 +1,7 @@
 import React from "react";
 import {View, Text, TouchableWithoutFeedback, TouchableHighlight, Image, SafeAreaView} from "react-native";
 import Styles from "../../style/Style";
+import {BottomButton} from "../components/Buttons";
 
 export default function ProfileHeader({ navigation }) {
 
@@ -28,14 +29,9 @@ export default function ProfileHeader({ navigation }) {
                     </View>
                 </TouchableHighlight>
                 <Text>Set Your Profile Header</Text>
-                <Text>&nbsp;</Text>
-                
-                <TouchableWithoutFeedback onPress={pressHandler}>
-                    <View style={Styles.NextButton}>
-                        <Text style={Styles.ButtonText}> NEXT </Text>
-                    </View>
-                </TouchableWithoutFeedback>
+                <Text>&nbsp;</Text>                
             </View>
+            <BottomButton text="Next" function={() => pressHandler()} />
         </SafeAreaView>
     );
 }

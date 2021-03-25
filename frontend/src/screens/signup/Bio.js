@@ -1,6 +1,7 @@
 import React from "react";
 import {View, Text, TextInput, TouchableWithoutFeedback, Image, SafeAreaView} from "react-native";
 import Styles from "../../style/Style";
+import {BottomButton} from "../components/Buttons";
 
 export default function Bio({ navigation }) {
  
@@ -45,13 +46,8 @@ export default function Bio({ navigation }) {
                 </TouchableWithoutFeedback>
 
                 <Text>&nbsp;&nbsp;</Text>
-
-                <TouchableWithoutFeedback onPress={pressHandler}>
-                    <View style={Styles.NextButton}>
-                        <Text style={Styles.ButtonText}> LET'S GET YOU STITCHED IN! </Text>
-                    </View>
-                </TouchableWithoutFeedback>
             </View>
+            <BottomButton text="Let's Get You Stitched In!" function={() => pressHandler()} />
         </SafeAreaView>
     );
 }

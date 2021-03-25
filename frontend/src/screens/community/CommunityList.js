@@ -1,8 +1,8 @@
 import React from "react";
 import {View, Text, Button, ScrollView, SafeAreaView, Image, TouchableWithoutFeedback, TouchableHighlight, Alert} from "react-native";
 import Styles from "../../style/Style";
-import {SmallTile, LargeTile} from "../components/community_explore/Tiles"
-import {BottomButton} from "../components/Buttons"
+import {SmallTile, LargeTile} from "../components/community_explore/Tiles";
+import {BottomButton} from "../components/Buttons";
 
 export default function CommunityList({ navigation }) {
 

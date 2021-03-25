@@ -1,7 +1,7 @@
 import React from "react";
 import {View, Text, TouchableWithoutFeedback, TouchableHighlight, Image, SafeAreaView} from "react-native";
 import Styles from "../../style/Style";
-import Style from "../../style/Style";
+import {BottomButton} from "../components/Buttons";
 
 export default function Picture({ navigation }) {
         
@@ -30,13 +30,8 @@ export default function Picture({ navigation }) {
                 </TouchableHighlight>
                 <Text>Set a Profile Picture</Text>
                 <Text>&nbsp;</Text>
-
-                <TouchableWithoutFeedback onPress={pressHandler}>
-                    <View style={Styles.NextButton}>
-                        <Text style={Styles.ButtonText}> NEXT </Text>
-                    </View>
-                </TouchableWithoutFeedback>
             </View>
+            <BottomButton text="Next" function={() => pressHandler()} />
         </SafeAreaView>
     );
 }

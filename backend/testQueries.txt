@@ -26,6 +26,21 @@ query CommunityProposalMember($communityProposalID: ID){
       communityProposalMemberID
     }
   }
+
+query FindUsersCommunities($userID: ID){
+    findUsersCommunities(userID: $userID){
+    communityName
+    communityID
+  }
+}
+
+query FindCommunitysUsers($communityID: ID){
+    findCommunitysUsers(communityID: $communityID){
+    userID
+  }
+}
+
+
   
 query CommunityProposalMember2($userID: ID){
     communityProposalMember(userID: $userID) {

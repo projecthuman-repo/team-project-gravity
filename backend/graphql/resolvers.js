@@ -60,8 +60,59 @@ const resolvers = {
           "communityProposalMemberID": communityProposalMemberInfo.dataValues.userId,
         }
       }
-    }
-  },
+    },
+  findUsersCommunities: async (parent, { userID}, { CommunityMember, Community}) => {
+      //CommunityMember.findAll({include: Community})
+      communityInfo= await CommunityMember.findAll({ where: {userId : userID}, attributes: ['userId', 'communityId']});
+      if (!communityInfo) {
+        throw new ApolloError(`userID:${userID} is not a member of a community`);
+      }
+      let communityArray;
+      for (i = 0; i < communityInfo.length; i++) {
+          let communityID = communityInfo[i].dataValues.communityId
+          latestCommunityInfo= await Community.findOne({ where : {id: communityID}});
+          if (latestCommunityInfo) {
+            if(i==0){
+              communityArray = [{
+                "communityID": latestCommunityInfo.dataValues.id,
+                "communityName": latestCommunityInfo.dataValues.name,
+                "communityDescription": latestCommunityInfo.dataValues.description
+              }]
+            }
+            else {
+              communityArray.push({
+                "communityID": latestCommunityInfo.dataValues.id,
+                "communityName": latestCommunityInfo.dataValues.name,
+                "communityDescription": latestCommunityInfo.dataValues.description
+              })
+            }
+          } 
+      }
+      return communityArray
+    },
+    findCommunitysUsers: async (parent, {communityID}, { CommunityMember, User}) => {
+      communityMemberInfo = await CommunityMember.findAll({ where : {communityId: communityID}, attributes: ['userId', 'communityId']});
+      if (!communityMemberInfo) {
+        throw new ApolloError(`communityID:${communityID} doesn't have any members`);
+      }
+      let userArray;
+      for (i = 0; i < communityMemberInfo.length; i++) {
+          let userID = communityMemberInfo[i].dataValues.userId
+          latestUserInfo= await User.findOne({ where : {id: userID}});
+          if (latestUserInfo) {
+            if(i==0){
+              userArray = [{
+                "userID": latestUserInfo.dataValues.id
+              }]
+            }
+            else {
+              userArray.push({"userID": latestUserInfo.dataValues.id})
+            }
+          } 
+      }
+      return userArray
+  }
+},
   Mutation: {
     register: async (parent, { userID, username, password }, { User }) => {
       const existing = await User.findOne({ where : {id: userID}});

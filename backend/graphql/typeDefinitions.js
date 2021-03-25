@@ -73,6 +73,8 @@ const typeDefs = gql`
     status(userID: ID): CommunityStatus
     communityProposal(communityProposalID: ID): CommunityProposal
     communityProposalMember(userID: ID, communityProposalID: ID): CommunityProposalMember
+    findUsersCommunities(userID: ID): [Community]
+    findCommunitysUsers(communityID: ID): [User]
   }
 
   type Mutation {

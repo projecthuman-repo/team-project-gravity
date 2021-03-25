@@ -1,7 +1,7 @@
 import React from "react";
 import {View, Text, TouchableWithoutFeedback, TouchableHighlight, Image, SafeAreaView} from "react-native";
 import Styles from "../../style/Style";
-import {BottomButton} from "../components/Buttons";
+import {BackArrow, BottomButton} from "../components/Buttons";
 
 export default function ProfileHeader({ navigation }) {
 
@@ -15,9 +15,7 @@ export default function ProfileHeader({ navigation }) {
 
     return(
         <SafeAreaView style={{backgroundColor: "white", height: "100%", width: "100%"}}>
-            <TouchableWithoutFeedback onPress={() => navigation.navigate("Picture")}>
-                <Image style={{height: 40, width: 40, marginLeft: 30, marginTop: 25}} source={require('../../images/arrow.png')} />
-            </TouchableWithoutFeedback>
+            <BackArrow function={() => navigation.navigate("Picture")} />
 
             <View style={Styles.MiddleOfScreen}>
                 <Text style={Styles.RedSubtitle}> Personalize Your Profile </Text>

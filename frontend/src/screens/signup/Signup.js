@@ -1,6 +1,7 @@
 import React from "react";
 import {View, Text, TextInput, TouchableWithoutFeedback, Image, SafeAreaView} from "react-native";
 import Styles from "../../style/Style";
+import {BackArrow} from "../components/Buttons";
 
 export default function Signup({ navigation }) {
         
@@ -10,9 +11,7 @@ export default function Signup({ navigation }) {
 
     return(
         <SafeAreaView style={Styles.container}>
-            <TouchableWithoutFeedback onPress={() => navigation.navigate("Home")}>
-                <Image style={{height: 40, width: 40, marginLeft: 30, marginTop: 25}} source={require('../../images/arrow.png')} />
-            </TouchableWithoutFeedback>
+            <BackArrow function={() => navigation.navigate("Home")} />
 
             <View style={Styles.logoContainer}>
                 <Image style={Styles.logo} source={require('../../images/logo.jpeg')}></Image>

@@ -1,5 +1,17 @@
 import React, { Component } from 'react';
-import {View, Text, TouchableWithoutFeedback} from "react-native";
+import {View, Text, TouchableWithoutFeedback, Image} from "react-native";
+
+class BackArrow extends Component {
+    render() {
+        return (
+            <View>
+                <TouchableWithoutFeedback onPress={this.props.function}>
+                    <Image style={{height: 40, width: 40, marginLeft: 30, marginTop: 25}} source={require('../../images/arrow.png')} />
+                </TouchableWithoutFeedback>
+            </View>
+        )
+    }
+}
 
 class BottomButton extends Component {
     render() {
@@ -16,5 +28,6 @@ class BottomButton extends Component {
 }
 
 export {
+    BackArrow,
     BottomButton
 }

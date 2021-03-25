@@ -1,7 +1,7 @@
 import React from "react";
 import {View, Text, TouchableWithoutFeedback, Image, FlatList, SafeAreaView} from "react-native";
-
 import Styles from "../style/Style";
+import {BackArrow} from "./components/Buttons";
 
 export default function Home({ navigation }) {
     
@@ -16,9 +16,7 @@ export default function Home({ navigation }) {
     // The text things are for spaces, not sure of a better way to do it
     return(
         <SafeAreaView style={{backgroundColor: 'white', height: '100%'}}>
-            <TouchableWithoutFeedback onPress={() => navigation.navigate("CommunityList")}>
-                <Image style={{height: 40, width: 40, marginLeft: 30, marginTop: 25}} source={require('../images/arrow.png')} />
-            </TouchableWithoutFeedback>
+            <BackArrow function={() => navigation.navigate("CommunityList")} />
 
             <View style={{alignItems: "center"}}>
                 <Image style={Styles.ProfilePicture} source={require("../images/profilePicture.png")}/>

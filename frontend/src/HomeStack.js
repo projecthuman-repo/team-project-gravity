@@ -20,7 +20,7 @@ import Profile from "./screens/Profile";
 
 const screens = {
     Home: {
-        screen: Community,
+        screen: Home,
         navigationOptions: {
             headerShown: false,
         }

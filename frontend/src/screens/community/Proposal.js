@@ -6,15 +6,15 @@ import {BottomButton} from "../components/Buttons";
 export default function Placeholder({ navigation }) {
         
     const pressHandler = () => {
-        navigation.navigate("Home")
+        navigation.navigate("Community")
     }
 
     return(
         <View style={Styles.MiddleOfScreen}>
-            <Text style={Styles.RedSubtitle}> Placeholder For Social Media Migration </Text>
+            <Text style={Styles.RedSubtitle}> Placeholder For Proposal Stuff </Text>
             <Text> </Text>
 
-            <BottomButton text="Return To Home" function={() => pressHandler()} />
+            <BottomButton text="Return To Community" function={() => pressHandler()} />
         </View>
     );
 }

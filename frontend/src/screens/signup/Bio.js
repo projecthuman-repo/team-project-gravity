@@ -1,6 +1,7 @@
 import React from "react";
 import {View, Text, TextInput, TouchableWithoutFeedback, Image, SafeAreaView} from "react-native";
 import Styles from "../../style/Style";
+import {BackArrow, BottomButton} from "../components/Buttons";
 
 export default function Bio({ navigation }) {
  
@@ -14,9 +15,7 @@ export default function Bio({ navigation }) {
 
     return(
         <SafeAreaView style={{backgroundColor: "white", height: "100%", width: "100%"}}>
-            <TouchableWithoutFeedback onPress={() => navigation.navigate("ProfileHeader")}>
-                <Image style={{height: 40, width: 40, marginLeft: 30, marginTop: 25}} source={require('../../images/arrow.png')} />
-            </TouchableWithoutFeedback>
+            <BackArrow function={() => navigation.navigate("ProfileHeader")} />
 
             <View style={Styles.MiddleOfScreen}>
                 <Text style={Styles.RedSubtitle}> What Makes You, YOU? </Text>
@@ -45,13 +44,8 @@ export default function Bio({ navigation }) {
                 </TouchableWithoutFeedback>
 
                 <Text>&nbsp;&nbsp;</Text>
-
-                <TouchableWithoutFeedback onPress={pressHandler}>
-                    <View style={Styles.NextButton}>
-                        <Text style={Styles.ButtonText}> LET'S GET YOU STITCHED IN! </Text>
-                    </View>
-                </TouchableWithoutFeedback>
             </View>
+            <BottomButton text="Let's Get You Stitched In!" function={() => pressHandler()} />
         </SafeAreaView>
     );
 }

@@ -1,7 +1,8 @@
 import React from "react";
 import {View, Text, TouchableWithoutFeedback, TouchableHighlight, Image, SafeAreaView, TextInput} from "react-native";
-
 import Styles from "../../style/Style";
+import {BackArrow, BottomButton} from "../components/Buttons"
+import {Title} from "../components/Text";
 
 export default function CreateProposal ({ navigation }) {
 
@@ -21,11 +22,9 @@ export default function CreateProposal ({ navigation }) {
     // The text things are for spaces, not sure of a better way to do it
     return(
         <SafeAreaView style={{backgroundColor: 'white', height: '100%'}}>
-            <TouchableWithoutFeedback onPress={() => navigation.navigate("CommunityList")}>
-                <Image style={{height: 40, width: 40, marginLeft: 30, marginTop: 25}} source={require('../../images/arrow.png')} />
-            </TouchableWithoutFeedback>
+            <BackArrow function={() => navigation.navigate("CommunityList")} />
 
-            <Text style={{color: "black", fontSize: 26, fontWeight: '700', textAlign: "center", paddingTop: 10, paddingBottom: 10}}>Create Proposal</Text>
+            <Title title="Create Proposal"/>
 
             <Text style={Styles.RedSubtitleLeftPadded}>Add Photos</Text>
         
@@ -53,13 +52,7 @@ export default function CreateProposal ({ navigation }) {
                 <Text style={Styles.RedSubtitleLeftPadded}>Tags</Text>
             </View>
 
-            <View style={{marginHorizontal: 20, position: "absolute", bottom: 30, width: "90%"}}>
-                <TouchableWithoutFeedback onPress={createProposal}>
-                    <View style={{justifyContent: "center", alignItems: "center", backgroundColor: "#fa5f6a", width: "100%", height: 45, borderRadius: 10}}>
-                        <Text style={{color: "white", fontWeight: "500", fontSize: 20}}> Publish </Text>
-                    </View>
-                </TouchableWithoutFeedback>
-            </View>
+            <BottomButton text="Submit" function={() => createProposal()} />
         </SafeAreaView>
     )
 }

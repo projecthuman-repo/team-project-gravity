@@ -1,35 +1,33 @@
 import React from "react";
 import {View, Text, TextInput, TouchableWithoutFeedback, Image, SafeAreaView} from "react-native";
-import Styles from "../../style/Style";
+import {BackArrow} from "../components/Buttons";
+import {TitleSubtitleInactive, CategoricalListInactive} from "../components/Text";
 
 export default function MemberList ({ navigation }) {
 
     return(
         <SafeAreaView style={{backgroundColor: "white", height: "100%", width: "100%"}}>
-            <TouchableWithoutFeedback onPress={() => navigation.navigate("Community")}>
-                <Image style={{height: 40, width: 40, marginLeft: 30, marginTop: 25}} source={require('../../images/arrow.png')} />
-            </TouchableWithoutFeedback>
+            <BackArrow function={() =>navigation.navigate("Community")} />
 
-            <View style={{alignItems: "center"}}>          
-                <Text style={{color: "black", fontSize: 26, fontWeight: '700', textAlign: "center", paddingTop: 10, paddingBottom: 5}}>Community Members</Text>
-                <Text style={{color: '#f85f69', fontSize: 18, fontWeight: "600", paddingBottom: 30}}>Toronto Food Bank</Text>
-            </View>  
-            <View style={{marginHorizontal: 20}}>
-                <Text style={{fontWeight: "bold"}}>Rank #1</Text>
-                <Text>Carlos, Ward</Text>
-                <Text>Johnny, Kelly</Text>
-                <Text>Martha, Long</Text>
-                <Text>Rachel, Williamson</Text>
-                <Text>Earl, Turner</Text>
+            <TitleSubtitleInactive title="Community Members" subtitle="Toronto Food Bank" />
 
-                <Text style={{fontWeight: "bold", paddingTop: 30}}>Rank #2</Text>
-                <Text>Thersa, Peterson</Text>
-                <Text>Howard, Carr</Text>
-                <Text>Jaqueline, Barnes</Text>
+            <CategoricalListInactive title="Rank #1" content={[
+                {key: "Carlos, Ward"},
+                {key: "Johnny, Kell"},
+                {key: "Martha, Long"},
+                {key: "Rachel, Williamson"},
+                {key: "Earl, Turner"},
+            ]}/>
 
-                <Text style={{fontWeight: "bold", paddingTop: 30}}>Rank #3</Text>
-                <Text>Jane, Fowler</Text>
-            </View>
+            <CategoricalListInactive title="Rank #2" content={[
+                {key: "Thersa, Peterson"},
+                {key: "Howard, Carr"},
+                {key: "Jaqueline, Barnes"},
+            ]}/>
+
+            <CategoricalListInactive title="Rank #3" content={[
+                {key: "Jane, Fowler"},
+            ]}/>
         </SafeAreaView>
     );
 }

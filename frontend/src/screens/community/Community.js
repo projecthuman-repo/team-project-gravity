@@ -5,6 +5,8 @@ import {BackArrow, BottomButton} from "../components/Buttons";
 import {TitleSubtitleActive, CategoricalListActive} from "../components/Text";
 
 export default function Community({ navigation }) {
+    
+    const title = navigation.getParam("title");
 
     const seeMembers = () => {
         navigation.navigate("MemberList")
@@ -22,7 +24,7 @@ export default function Community({ navigation }) {
         <SafeAreaView style={{backgroundColor: "white", height: "100%"}}>
             <BackArrow function={() => navigation.navigate("CommunityList")} />
 
-            <TitleSubtitleActive title="Toronto Food Bank" subtitle="See Members" link={() => seeMembers()}/>
+            <TitleSubtitleActive title={title} subtitle="Members" link={() => seeMembers()}/>
             
             <CategoricalListActive title="Proposals" content={[
                 {key: "Expand reach to Hamilton and other areas outside the city.", link: () => navigation.navigate("Proposal")},

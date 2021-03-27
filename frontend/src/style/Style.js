@@ -204,7 +204,6 @@ export default {
     "CommunityListItemUncolored": {
         color: "black", 
 		fontSize: 14,
-        fontWeight: "bold",
-        paddingTop: 5
+        paddingTop: 1
     },
 }

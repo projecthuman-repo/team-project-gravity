@@ -1,7 +1,7 @@
 import React from "react";
 import {View, Text, Button, ScrollView, SafeAreaView, Image, TouchableWithoutFeedback, TouchableHighlight, Alert} from "react-native";
 import Styles from "../../style/Style";
-import {SmallTile, LargeTile} from "../components/community_explore/Tiles";
+import {SmallTile, LargeTile, LargeTileList} from "../components/community_explore/Tiles";
 import {BottomButton, ProfileButton} from "../components/Buttons";
 
 export default function CommunityList({ navigation }) {
@@ -9,7 +9,7 @@ export default function CommunityList({ navigation }) {
     const lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Gravida in fermentum et sollicitudin ac. Ultrices dui sapien eget mi proin sed libero enim sed. Magna fermentum iaculis eu non diam phasellus vestibulum lorem sed. At risus viverra adipiscing at in tellus integer feugiat scelerisque. Nec ullamcorper sit amet risus nullam eget felis eget nunc. Lacus vel facilisis volutpat est velit egestas dui. Dignissim cras tincidunt lobortis feugiat vivamus at. Sit amet nulla facilisi morbi tempus. Massa tempor nec feugiat nisl pretium fusce id. Nulla porttitor massa id neque. At risus viverra adipiscing at in tellus. Turpis cursus in hac habitasse. Sed faucibus turpis in eu. Sit amet venenatis urna cursus eget nunc scelerisque viverra. Et malesuada fames ac turpis egestas sed tempus. Odio facilisis mauris sit amet. Id porta nibh venenatis cras sed felis eget velit aliquet. Amet justo donec enim diam. Venenatis tellus in metus vulputate."
 
     const goToCommunity = () => {
-        navigation.navigate("Community")
+        navigation.navigate("Community", {title: "Toronto Food Bank"})
     }
 
     const createCommunity = () => {
@@ -28,7 +28,6 @@ export default function CommunityList({ navigation }) {
                 <ProfileButton function={() => navigation.navigate("Profile")}/>
             </View>
             
-
             <View>
                 <Text style={Styles.RedSubtitle}>Communities by location</Text>
             </View>
@@ -55,19 +54,12 @@ export default function CommunityList({ navigation }) {
 
             <View style={{paddingTop: 20, backgroundColor: 'white', height: '67%'}}>
                 <Text style={Styles.RedSubtitle}>All communities</Text>
-                <ScrollView style={{paddingTop: 10, paddingLeft: 20, paddingRight: 20}}>
-                    <TouchableHighlight onPress={goToCommunity}>
-                        <LargeTile imageUri={require('../../images/community_list/large/uoft.jpg')} name="UofT" description={lorem} />
-                    </TouchableHighlight>
-
-                    <TouchableHighlight onPress={goToCommunity}>
-                    <LargeTile imageUri={require('../../images/community_list/large/western.jpg')} name="Western" description={lorem} />
-                    </TouchableHighlight>
-
-                    <TouchableHighlight onPress={goToCommunity}>
-                    <LargeTile imageUri={require('../../images/community_list/large/mcmaster.png')} name="McMaster" description={lorem} />
-                    </TouchableHighlight>
-                </ScrollView>
+                
+                <LargeTileList content={[
+                    {name: "Toronto Food Bank", link: goToCommunity, image: require('../../images/community_list/large/uoft.jpg'), description: lorem},
+                    {name: "Western", link: goToCommunity, image: require('../../images/community_list/large/western.jpg'), description: lorem},
+                    {name: "McMaster", link: goToCommunity, image: require('../../images/community_list/large/mcmaster.png'), description: lorem},
+                ]} />
             </View>
 
             <BottomButton text="Create Community" function={() => createCommunity()} />

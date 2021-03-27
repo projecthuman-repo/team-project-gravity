@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {View, Text, Image} from "react-native";
+import {View, Text, Image, TouchableHighlight, ScrollView} from "react-native";
+import Styles from "../../../style/Style";
 
 class SmallTile extends Component {
     render() {
@@ -39,7 +40,30 @@ class LargeTile extends Component {
     }
 }
 
+class LargeTileList extends Component {
+    render() {
+        var tiles = [];
+
+        for (let i = 0; i < this.props.content.length; i++) {
+            tiles.push(
+                <TouchableHighlight onPress={this.props.content[i].link}>
+                    <LargeTile imageUri={this.props.content[i].image} name={this.props.content[i].name} description={this.props.content[i].description} />
+                </TouchableHighlight>
+            )
+        }
+
+        return (
+            <View style={{marginBottom: 20}}>
+                <ScrollView style={{paddingTop: 10, paddingLeft: 20, paddingRight: 20}}>
+                    { tiles }
+                </ScrollView>
+            </View>
+        )
+    }
+}
+
 export {
     SmallTile,
-    LargeTile
+    LargeTile,
+    LargeTileList
 }

@@ -7,7 +7,7 @@ class BackArrow extends Component {
         return (
             <View>
                 <TouchableWithoutFeedback onPress={this.props.function}>
-                    <Image style={{height: 40, width: 40, marginLeft: 30, marginTop: 25}} source={require('../../images/arrow.png')} />
+                    <Image style={{height: 40, width: 40, marginLeft: 20, marginTop: 20}} source={require('../../images/arrow.png')} />
                 </TouchableWithoutFeedback>
             </View>
         )

@@ -15,7 +15,7 @@ class Title extends Component {
 class TitleSubtitleActive extends Component {
     render() {
         return (
-            <View style={{alignItems: "center"}}>          
+            <View style={{alignItems: "center"}}>
                 <Text style={{color: "black", fontSize: 26, fontWeight: '700', textAlign: "center", paddingTop: 10, paddingBottom: 5}}>{this.props.title}</Text>
                 <TouchableOpacity onPress={this.props.link}>
                     <Text style={{color: '#1464f6', fontSize: 18, fontWeight: "600", paddingBottom: 30}}>{this.props.subtitle}</Text>
@@ -90,11 +90,25 @@ class DetailsBlock extends Component {
     }
 }
 
+class DisplayTextBlock extends Component {
+    render() {
+        return (
+            <View style={{paddingVertical: 15, marginHorizontal: 20}}>
+                <Text selectable={false} style={Styles.ColoredTitleText}>{this.props.title}</Text>
+                
+                <Text>{this.props.text}</Text>
+                
+            </View>
+        )
+    }
+}
+
 export {
     Title,
     TitleSubtitleActive,
     TitleSubtitleInactive,
     CategoricalListActive,
     CategoricalListInactive,
-    DetailsBlock
+    DetailsBlock,
+    DisplayTextBlock
 }

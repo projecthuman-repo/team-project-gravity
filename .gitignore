@@ -3,6 +3,7 @@
 .env
 backend/node_modules
 
+frontend/android/gradlew.bat
 
 
 # ==========================

@@ -12,8 +12,8 @@ export default function CommunityList({ navigation }) {
         navigation.navigate("Community")
     }
 
-    const createProposal = () => {
-        navigation.navigate("CreateProposal")
+    const createCommunity = () => {
+        navigation.navigate("CreateCommunity")
     }
 
     const filter = () => {
@@ -72,7 +72,7 @@ export default function CommunityList({ navigation }) {
                 </ScrollView>
             </View>
 
-            <BottomButton text="Create Proposal" function={() => createProposal()} />
+            <BottomButton text="Create Community" function={() => createCommunity()} />
         </SafeAreaView>
     )
 }

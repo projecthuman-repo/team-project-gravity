@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {View, Text, FlatList, TouchableOpacity} from "react-native";
+import {View, Text, FlatList, TouchableOpacity, TextInput} from "react-native";
 import Styles from "../../style/Style";
 
 class Title extends Component {
@@ -73,10 +73,28 @@ class CategoricalListInactive extends Component {
     }
 }
 
+class DetailsBlock extends Component {
+    render() {
+        return (
+            <View>
+                <Text style={Styles.RedSubtitleLeftPadded}>Details</Text>
+
+                <View style={{marginHorizontal: 35, paddingVertical: 8}}>
+                    <TextInput style={{height: 35, width: "100%", borderColor: "black", borderWidth: 1, alignSelf: "center", borderRadius: 6, paddingLeft: 5}} multiline={true} placeholder="Name"></TextInput>
+                </View>
+                <View style={{marginHorizontal: 35, paddingVertical: 5}}>
+                    <TextInput style={{height: 170, width: "100%", borderColor: "black", borderWidth: 1, alignSelf: "center", borderRadius: 6, paddingLeft: 5}} multiline={true} placeholder="Description"></TextInput>
+                </View>
+            </View>
+        )
+    }
+}
+
 export {
     Title,
     TitleSubtitleActive,
     TitleSubtitleInactive,
     CategoricalListActive,
-    CategoricalListInactive
+    CategoricalListInactive,
+    DetailsBlock
 }

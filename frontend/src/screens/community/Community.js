@@ -1,7 +1,7 @@
 import React from "react";
 import {View, Text, TouchableWithoutFeedback, Image, ScrollView, SafeAreaView} from "react-native";
 import Styles from "../../style/CommunityStyle";
-import {BackArrow} from "../components/Buttons";
+import {BackArrow, BottomButton} from "../components/Buttons";
 import {TitleSubtitleActive, CategoricalListActive} from "../components/Text";
 
 export default function Community({ navigation }) {
@@ -36,12 +36,14 @@ export default function Community({ navigation }) {
 
             <View style={Styles.Tags}>
                 <Text style={Styles.miniTitle}>Tags</Text>
-                    <View style={Styles.Button}>
-                        <TouchableWithoutFeedback onPress={seeTags}>
-                            <Text style={Styles.ButtonText}> Nutrition </Text>
-                        </TouchableWithoutFeedback>
-                    </View>
+                <View style={Styles.Button}>
+                    <TouchableWithoutFeedback onPress={seeTags}>
+                        <Text style={Styles.ButtonText}> Nutrition </Text>
+                    </TouchableWithoutFeedback>
+                </View>
             </View>
+
+            <BottomButton text="Create Proposal" function={() => createAProposal()} />
         </SafeAreaView>
 
     );

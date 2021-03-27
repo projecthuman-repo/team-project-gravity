@@ -11,6 +11,7 @@ import Placeholder from "./screens/signup/Placeholder";
 import StitchedPlaceholder from "./screens/signup/StitchedPlaceholder";
 import Community from "./screens/community/Community";
 import CreateProposal from "./screens/community/CreateProposal";
+import CreateCommunity from "./screens/community/CreateCommunity";
 import ModifyRoles from "./screens/community/ModifyRoles";
 import CommunityFiltration from "./screens/community/CommunityFiltration"
 import MemberList from './screens/community/MemberList';
@@ -95,6 +96,13 @@ const screens = {
 
     CreateProposal: {
         screen: CreateProposal,
+        navigationOptions: {
+            headerShown: false,
+        }
+    },
+
+    CreateCommunity: {
+        screen: CreateCommunity,
         navigationOptions: {
             headerShown: false,
         }

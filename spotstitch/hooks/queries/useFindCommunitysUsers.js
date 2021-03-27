@@ -1,6 +1,4 @@
 import {useState, useEffect} from 'react';
-import * as R from 'ramda'
-import * as RA from 'ramda-adjunct'
 
 import { useQuery } from '@apollo/react-hooks'
 import { gql } from 'apollo-boost'

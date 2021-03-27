@@ -2,7 +2,7 @@ import React from "react";
 import {View, Text, Button, ScrollView, SafeAreaView, Image, TouchableWithoutFeedback, TouchableHighlight, Alert} from "react-native";
 import Styles from "../../style/Style";
 import {SmallTile, LargeTile} from "../components/community_explore/Tiles";
-import {BottomButton} from "../components/Buttons";
+import {BottomButton, ProfileButton} from "../components/Buttons";
 
 export default function CommunityList({ navigation }) {
 
@@ -24,10 +24,8 @@ export default function CommunityList({ navigation }) {
         <SafeAreaView style={{backgroundColor: 'white', height: '100%'}}>
             <View style={{flexDirection: "row", marginHorizontal: 20, paddingBottom: 10}}>
                 <Text style={Styles.BlackTitle}>Community List</Text>
-                
-                <TouchableWithoutFeedback onPress={() => navigation.navigate("Profile")}>
-                    <Image style={{height: 26, width: 26, marginLeft: "44%"}} source={require('../../images/profileIcon.png')} />
-                </TouchableWithoutFeedback>
+
+                <ProfileButton function={() => navigation.navigate("Profile")}/>
             </View>
             
 

@@ -16,7 +16,8 @@ import {
     TextInput,
     TouchableWithoutFeedback,
     Image,
-    SafeAreaView
+    SafeAreaView,
+    Platform
 } from 'react-native';
 import Styles from "../style/Style";
 import Auth0 from 'react-native-auth0';
@@ -32,7 +33,10 @@ class Login extends Component {
     }
 
     _onLogin = () => {
-        auth0.webAuth
+        if (Platform.OS === 'web') {
+            this.props.navigation.navigate("CommunityList");
+        } else {
+            auth0.webAuth
             .authorize({
                 scope: 'openid profile email'
             })
@@ -43,6 +47,7 @@ class Login extends Component {
                 this.props.navigation.navigate("CommunityList")
             })
             .catch(error => console.log(error));
+        }
     };
 
     _onLogout = () => {

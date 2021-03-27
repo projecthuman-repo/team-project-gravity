@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {View, Text, TouchableWithoutFeedback, Image} from "react-native";
+import Styles from "../../style/Style";
+import {View, Text, TouchableWithoutFeedback, Image, TouchableHighlight} from "react-native";
 
 class BackArrow extends Component {
     render() {
@@ -27,7 +28,33 @@ class BottomButton extends Component {
     }
 }
 
+// Create a camera function in here
+class CameraButton extends Component {
+    render() {
+        return (
+            <TouchableHighlight onPress={() => {}}>
+                <Image style={Styles.icon} source={require('../../images/camera.png')}/>
+            </TouchableHighlight>
+        )
+    }
+}
+
+class CameraButtonWithTitle extends Component {
+    render () {
+        return (
+            <View>
+                <Text style={Styles.RedSubtitleLeftPadded}>{this.props.title}</Text>
+                <TouchableHighlight onPress={() => {}}>
+                <Image style={Styles.icon} source={require('../../images/camera.png')}/>
+                </TouchableHighlight>
+            </View>
+        )
+    }
+}
+
 export {
     BackArrow,
-    BottomButton
+    BottomButton,
+    CameraButton,
+    CameraButtonWithTitle
 }

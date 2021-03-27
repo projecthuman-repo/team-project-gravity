@@ -1,7 +1,8 @@
 import React from "react";
 import {View, Text, Button, ScrollView, SafeAreaView, Image, TouchableWithoutFeedback, TouchableHighlight, Alert} from "react-native";
 import Styles from "../../style/Style";
-import {SmallTile, LargeTile} from "../components/community_explore/Tiles"
+import {SmallTile, LargeTile} from "../components/community_explore/Tiles";
+import {BottomButton} from "../components/Buttons";
 
 export default function CommunityList({ navigation }) {
 
@@ -11,8 +12,8 @@ export default function CommunityList({ navigation }) {
         navigation.navigate("Community")
     }
 
-    const createProposal = () => {
-        navigation.navigate("CreateProposal")
+    const createCommunity = () => {
+        navigation.navigate("CreateCommunity")
     }
 
     const filter = () => {
@@ -71,13 +72,7 @@ export default function CommunityList({ navigation }) {
                 </ScrollView>
             </View>
 
-            <View style={{marginVertical: 9, marginHorizontal: 20}}>
-                <TouchableWithoutFeedback onPress={createProposal}>
-                    <View style={{justifyContent: "center", alignItems: "center", backgroundColor: "#fa5f6a", width: "100%", height: 45, borderRadius: 10}}>
-                        <Text style={{color: "white", fontWeight: "500", fontSize: 20}}> Create Proposal </Text>
-                    </View>
-                </TouchableWithoutFeedback>
-            </View>
+            <BottomButton text="Create Community" function={() => createCommunity()} />
         </SafeAreaView>
     )
 }

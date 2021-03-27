@@ -1,6 +1,7 @@
 import React from "react";
 import {View, Text, TextInput, TouchableWithoutFeedback, Image} from "react-native";
 import Styles from "../../style/Style";
+import {BottomButton} from "../components/Buttons";
 
 export default function StitchedPlaceholder({ navigation }) {
  
@@ -14,11 +15,7 @@ export default function StitchedPlaceholder({ navigation }) {
         
             <Text>&nbsp;&nbsp;</Text>
 
-            <TouchableWithoutFeedback onPress={pressHandler}>
-                <View style={Styles.NextButton}>
-                    <Text style={Styles.ButtonText}> View Communities </Text>
-                </View>
-            </TouchableWithoutFeedback>
+            <BottomButton text="View Communities" function={() => pressHandler()} />
         </View>
     );
 }

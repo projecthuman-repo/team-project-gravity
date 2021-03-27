@@ -1,7 +1,8 @@
 import React from "react";
 import {View, Text, TouchableWithoutFeedback, Image, FlatList, SafeAreaView} from "react-native";
-
 import Styles from "../style/Style";
+import {BackArrow} from "./components/Buttons";
+import {CategoricalListActive} from "./components/Text";
 
 export default function Home({ navigation }) {
     
@@ -16,9 +17,7 @@ export default function Home({ navigation }) {
     // The text things are for spaces, not sure of a better way to do it
     return(
         <SafeAreaView style={{backgroundColor: 'white', height: '100%'}}>
-            <TouchableWithoutFeedback onPress={() => navigation.navigate("CommunityList")}>
-                <Image style={{height: 40, width: 40, marginLeft: 30, marginTop: 25}} source={require('../images/arrow.png')} />
-            </TouchableWithoutFeedback>
+            <BackArrow function={() => navigation.navigate("CommunityList")} />
 
             <View style={{alignItems: "center"}}>
                 <Image style={Styles.ProfilePicture} source={require("../images/profilePicture.png")}/>
@@ -30,18 +29,12 @@ export default function Home({ navigation }) {
                 </View>
             </View>
 
-            <View style={{paddingBottom: 15, marginHorizontal: 20}}>
-                <Text selectable={false} style={Styles.ColoredTitleText}>My Communities</Text>
-                <FlatList
-                    data={[
-                        {key: 'Community 1'},
-                        {key: 'Community 2'},
-                        {key: 'Community 3'},
-                        {key: 'Community 4'},
-                    ]}
-                    renderItem={({item}) => <Text selectable={false} style={Styles.CommunityListItem}>{item.key}</Text>}
-                />
-            </View>
+            <CategoricalListActive title="My Communities" content={[
+                {key: "Community 1", link: () => navigation.navigate("Community")},
+                {key: "Community 2", link: () => navigation.navigate("Community")},
+                {key: "Community 3", link: () => navigation.navigate("Community")},
+                {key: "Community 4", link: () => navigation.navigate("Community")}
+            ]}/>
 
             <View style={{marginHorizontal: 20, borderColor: "#778899", borderTopWidth: 1, paddingTop: 15}}>
                 <Text selectable={false} style={Styles.ColoredTitleText}>Recent Activity</Text>

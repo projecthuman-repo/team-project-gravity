@@ -10,6 +10,12 @@ const typeDefs = gql`
     communityName: String
     communityDescription: String
   }
+ 
+  type File {
+    filename: String!
+    mimetype: String!
+    encoding: String!
+  }
 
   enum Status {
     admin
@@ -75,12 +81,14 @@ const typeDefs = gql`
     communityProposalMember(userID: ID, communityProposalID: ID): CommunityProposalMember
     findUsersCommunities(userID: ID): [Community]
     findCommunitysUsers(communityID: ID): [User]
+    createPresignedLink(bucketName: String, type: String,  filename: String): String
   }
 
   type Mutation {
     register(userID: ID, username: String, password: String): User
     createCommunity(userID: ID, communityName: String, communityDescription: String): Community
     createCommunityProposal(userID: ID, communityID: ID, communityProposalName: String, communityProposalDescription: String): CommunityProposal
+    addFileUpload(bucketname: String, type: String, file: Upload!, filename: String): File
     }
 `
 

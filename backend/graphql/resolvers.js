@@ -1,6 +1,7 @@
 const { gql, ApolloError } = require('apollo-server');
 const R = require('ramda')
 const { v4: uuidv4 } = require('uuid')
+const { minioClient } = require('../minioClient')
 
 const resolvers = {
   Query: {
@@ -111,6 +112,23 @@ const resolvers = {
           } 
       }
       return userArray
+  },
+  createPresignedLink: async (parent, { bucketName, filename, type },{ }) => {
+     //if type is user : user- if type is community, community- for bucketname
+    return new Promise((resolve, reject) => {
+      minioClient.presignedGetObject(
+        `${bucketName}`,
+        `${objectName}`,
+        24 * 60 * 60,
+        {
+          'response-content-disposition': `attachment; filename=${filename}`
+        },
+        function(err, presignedUrl) {
+          if (err) return reject(err)
+          resolve(presignedUrl)
+        }
+      )
+    })
   }
 },
   Mutation: {
@@ -119,6 +137,10 @@ const resolvers = {
       if (!existing) {
         const newUser = new User({id: userID})
         await newUser.save()
+        minioClient.makeBucket(`user-${newUser.dataValues.id}`, 'us-east-1', function(err) {
+          if (err) return console.log(err)
+          console.log('Users bucket created successfully in "us-east-1".')
+        })
         return {"userID": newUser.dataValues.id};
       } else {
         throw new ApolloError('User already exists')
@@ -131,6 +153,11 @@ const resolvers = {
       if (!existing) {
         const newCommunity = new Community({id: uuidv4(), name: communityName, description: communityDescription})
         await newCommunity.save()
+        console.log(newCommunity.dataValues.id)
+        minioClient.makeBucket(`community-${newCommunity.dataValues.id}`, 'us-east-1', function(err) {
+          if (err) return console.log(err)
+          console.log('Communitys bucket created successfully in "us-east-1".')
+        })
         return {
           "communityID": newCommunity.dataValues.id,
           "communityName": newCommunity.dataValues.name,
@@ -157,6 +184,20 @@ const resolvers = {
         throw new ApolloError('Community Proposal with this name already exists')
       }
     },
+    addFileUpload: async (parent, { bucketname, type, file, filename}, {}) => {
+      const {mimetype, encoding, createReadStream } = await file
+      const stream = createReadStream()
+      //if type is user : user- if type is community, community- for bucketname
+      minioClient.putObject(`${bucketname}`, `${filename}`, stream, function(
+        err,
+        etag
+      ) {
+        if (err) {
+          return console.log(err)
+        }
+      })
+      return null
+    }
   }
 
   

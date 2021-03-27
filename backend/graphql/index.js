@@ -34,10 +34,10 @@ const app = express();
 const server = new ApolloServer({ typeDefs, resolvers, context });
 server.applyMiddleware({ app });
 
-app.use(express.static(path.join(__dirname, "../../spotstitch/web-build")));
+app.use(express.static(path.join(__dirname, "../../frontend/web-build")));
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../../spotstitch/web-build/index.html"));
+  res.sendFile(path.join(__dirname, "../../frontend/web-build/index.html"));
 });
 
 //START GRAPHQL SERVER ONCE DATABASE CONNECTED & MODELS AVAILABLE

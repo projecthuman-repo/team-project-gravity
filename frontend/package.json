@@ -1,0 +1,65 @@
+{
+  "name": "frontend",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start",
+    "web": "react-scripts start",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.3.13",
+    "expo": "^40.0.1",
+    "graphql": "^15.5.0",
+    "react": "16.11.0",
+    "react-dom": "^17.0.2",
+    "react-native": "0.62.2",
+    "react-native-asset": "^2.0.1",
+    "react-native-auth0": "2.5.0",
+    "react-native-eject": "^0.1.2",
+    "react-native-elements": "^3.3.2",
+    "react-native-gesture-handler": "^1.10.3",
+    "react-native-reanimated": "^2.0.1",
+    "react-native-responsive-screen": "^1.4.2",
+    "react-native-safe-area-context": "^3.2.0",
+    "react-native-screens": "^2.18.1",
+    "react-native-vector-icons": "^8.1.0",
+    "react-native-web": "^0.15.0",
+    "react-navigation": "^4.4.4",
+    "react-navigation-stack": "^2.10.4",
+    "react-router": "^5.2.0",
+    "react-router-native": "^5.2.0",
+    "rnpm": "^1.9.0",
+    "yarn-audit-fix": "^4.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.2",
+    "@babel/runtime": "^7.6.2",
+    "@react-native-community/eslint-config": "^0.0.5",
+    "metro-react-native-babel-preset": "^0.58.0",
+    "react-scripts": "3.4.3",
+    "react-test-renderer": "16.11.0"
+  },
+  "jest": {
+    "preset": "react-native"
+  },
+  "rnpm": {
+    "assets": [
+      "fonts"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

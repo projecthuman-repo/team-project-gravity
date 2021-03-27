@@ -4,10 +4,10 @@
     "description": "",
     "main": "/backend/graphql/index.js",
     "scripts": {
-      "setup": "cd backend && npm install && cd ../spotstitch && npm install && cd ..",
-      "build-run": "cd spotstitch && npm run-script build && cd ../backend && node ./graphql/index.js",
+      "setup": "cd backend && npm install && cd ../frontend && yarn install && patch --forward node_modules/react-native/Libraries/Image/RCTUIImageViewAnimated.m < patches/show-image-RCTUIImageViewAnimated.patch && cd ..",
+      "build-run": "cd frontend && react-scripts start && cd ../backend && node ./graphql/index.js",
       "start": "cd backend && node ./graphql/index.js",
-      "heroku-postbuild": "cd backend/graphql && npm install && cd ../../spotstitch && npm install && npm run-script build",
+      "heroku-postbuild": "cd backend/graphql && npm install",
       "test": "echo \"Error: no test specified\" && exit 1"
     },
     "repository": {

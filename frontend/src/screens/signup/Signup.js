@@ -8,10 +8,11 @@ import { gql } from 'apollo-boost'
 
 
 const REGISTER = gql`
-mutation Register($userID:ID, $bio: String){
-  register(userID:$userID, bio: $bio) {
+mutation Register($userID:ID, $bio: String, $name: String){
+  register(userID:$userID, bio: $bio, name: $name) {
     userID
     bio
+    name
   }
 }`
 
@@ -24,10 +25,11 @@ export default function Signup({ navigation }) {
     const [userIDReturned, setUserIDReturned] = useState('')
     let userID = "33"
     let bio = "nice"
+    let name = "name"
 
     const submit = async () => {
         const {data} = await (register({
-            variables: { userID, bio },
+            variables: { userID, bio, name },
           }))
         console.log(data.register.userID)
         const newID = data.register.userID

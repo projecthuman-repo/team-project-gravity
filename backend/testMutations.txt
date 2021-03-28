@@ -1,10 +1,11 @@
 Input the following queries into playground to test:
   
   
-  mutation Register($userID:ID, $bio: String){
-    register(userID:$userID, bio: $bio) {
+   mutation Register($userID:ID, $bio: String, $name: String){
+    register(userID:$userID, bio: $bio, name:$name) {
       userID
       bio
+      name
     }
   }
   
@@ -22,6 +23,14 @@ mutation CreateCommunityProposal($userID:ID, $communityID:ID, $communityProposal
     }
   }
 
+  mutation addCommunityMember($userID:ID, $communityID:ID, $status: String){
+    addCommunityMember(userID:$userID, communityID: $communityID, status: $status) {
+      userID
+      communityID
+      communityStatusID
+    }
+  }
+
 
 
 Example Query Variables:
@@ -30,6 +39,7 @@ Example Query Variables:
   "password": "123",
   "userID": 1,
   "communityID": 1,
+  "status":"admin"
   "communityName": "farms&stuff",
   "communityDescription": "we rly love some farms",
   "communityProposalName": "planting shrubs",

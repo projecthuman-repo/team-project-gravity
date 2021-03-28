@@ -11,6 +11,7 @@ export default function useUser(userID) {
         user(userID: $userID) {
         userID
         bio
+        name
         }
     }
   `, {

@@ -60,18 +60,18 @@ const CommunityStatus = Conn.define('community_status', {
 })
 
 const CommunityMember = Conn.define('community_member', {
-    // userId: {
-    //     type: Sequelize.UUID,
-    //     allowNull: false
-    // },
-    // communityId: {
-    //     type: Sequelize.UUID,
-    //     allowNull: false
-    // },
-    // communityStatus: {
-    //     type: Sequelize.UUID,
-    //     allowNull: false
-    // }
+    userId: {
+        type: Sequelize.UUID,
+        allowNull: false
+    },
+    communityId: {
+        type: Sequelize.UUID,
+        allowNull: false
+    },
+    communityStatusId: {
+        type: Sequelize.UUID,
+        allowNull: false
+    }
 });
 
 const CommunityProposal = Conn.define('community_proposal', {

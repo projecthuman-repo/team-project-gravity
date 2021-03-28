@@ -59,13 +59,6 @@ class Login extends Component {
     render() {
         let loggedIn = this.state.accessToken === null ? false : true;
         return (
-        // <View style = { styles.container }>
-        //     <Text style = { styles.header }> Auth0Sample - Login </Text>
-        //     <Text>
-        //         You are{ loggedIn ? ' ' : ' not ' }logged in . </Text>
-        //         <Button onPress = { loggedIn ? this._onLogout : this._onLogin }
-        //         title = { loggedIn ? 'Log Out' : 'Log In' }/>
-        // </View >
 
         <SafeAreaView style={{backgroundColor: 'white', height: '100%'}}>
         <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Home")}>

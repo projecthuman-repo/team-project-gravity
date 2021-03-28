@@ -1,17 +1,26 @@
-import React from "react";
-import {View, Text, TouchableWithoutFeedback, Image, FlatList, SafeAreaView} from "react-native";
+import React, { useState} from "react";
+import {View, Text, TouchableWithoutFeedback, Image, FlatList, SafeAreaView, Alert} from "react-native";
+import Auth0 from 'react-native-auth0';
 import Styles from "../style/Style";
 import {BackArrow} from "./components/Buttons";
 import {CategoricalListActive} from "./components/Text";
 
 export default function Home({ navigation }) {
-    
-    const goToLogin = () => {
-        navigation.navigate("Login")
-    }
+
+    var mobile_credentials = require('../auth0-configuration-mobile');
+    const auth0 = new Auth0(mobile_credentials);
 
     const logout = () => {
-        navigation.navigate("Home")
+        auth0.webAuth
+            .clearSession({})
+            .then(success => {
+                Alert.alert('Logged out!');
+                navigation.navigate("Home")
+            })
+            .catch(error => {
+                console.log(error);
+                console.log('Log out cancelled');
+        });
     }
     
     // The text things are for spaces, not sure of a better way to do it

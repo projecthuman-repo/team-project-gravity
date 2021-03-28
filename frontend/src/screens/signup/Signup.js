@@ -1,10 +1,9 @@
 import React, {useState} from "react";
 import {View, Text, TextInput, TouchableWithoutFeedback, Image, SafeAreaView, StyleSheet, TouchableOpacity} from "react-native";
 import Styles from "../../style/Style";
-import { useMutation } from '@apollo/react-hooks';
 import {BackArrow} from "../components/Buttons";
 import useCommunity from '../../hooks/queries/useCommunity'
-import useRegister from '../../hooks/mutations/useRegister'
+import { useMutation } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost'
 
 

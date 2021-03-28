@@ -1,16 +1,62 @@
-import React from "react";
+import React, {useState} from "react";
 import {View, Text, TouchableWithoutFeedback, TouchableHighlight, Image, SafeAreaView, TextInput} from "react-native";
 import Styles from "../../style/Style";
 import {BackArrow, BottomButton, CameraButtonWithTitle} from "../components/Buttons"
 import {Title, DetailsBlock} from "../components/Text";
+import { useMutation } from '@apollo/react-hooks';
+import { gql } from 'apollo-boost'
+
+
+const CREATE_PROPOSAL = gql`
+mutation CreateCommunityProposal($userID:ID, $communityID:ID, $communityProposalName: String, $communityProposalDescription: String){
+  createCommunityProposal(userID:$userID, communityID: $communityID, communityProposalName: $communityProposalName, communityProposalDescription: $communityProposalDescription) {
+    communityProposalID
+    communityProposalName
+  }
+}
+`
+
+const ADD_FILE_UPLOAD = gql`
+  mutation addFileUpload($file: Upload!, $type: String, $bucketname: String) {
+    addFileUpload(file: $file, type: $type, bucketname: $bucketname) {
+      filename
+    }
+  }
+`
 
 export default function CreateProposal ({ navigation }) {
+    let userID = "33"
+    let communityID = "3"
+    let communityProposalName = "okay"
+    let communityProposalDescription = "proposal about proposals"
+    let bucketname = "2"
+    const type ="communityProposal"
+    let file=""
 
-    const choosePhoto = () => {
-        // pick photo
+    const [addFileUpload, { loading, error }] = useMutation(ADD_FILE_UPLOAD);
+    const [filenameReturned, setFilenameReturned] = useState('')
+    const choosePhoto = async () => {
+        const {data} = await (addFileUpload({
+            variables: {bucketname, file, type },
+          }))
+        console.log(data.addFileUpload.filename)
+        const newFilename = data.addFileUpload.filename
+        console.log(newFilename)
+        setFilenameReturned(newFilename)
+        console.log("hey" + filenameReturned)
     }
 
-    const createProposal = () => {
+    const [createCommunityProposal, { proposalLoading, proposalError }] = useMutation(CREATE_PROPOSAL);
+    const [communityPropIDReturned, setCommunityPropIDReturned] = useState('')
+    const submit = async () => {
+        const {data} = await (createCommunityProposal({
+            variables: { userID, communityID, communityProposalName, communityProposalDescription },
+          }))
+        console.log(data.createCommunity.communityProposalID)
+        const newID = data.createCommunity.communityProposalID
+        console.log(newID)
+        setCommunityPropIDReturned(newID)
+        console.log("hey" + communityPropIDReturned)
         alert("Proposal was published")
         navigation.navigate("CommunityList")
     }
@@ -26,7 +72,11 @@ export default function CreateProposal ({ navigation }) {
 
             <Title title="Create Proposal"/>
         
-            <CameraButtonWithTitle title="Add Photos" />
+            <TouchableHighlight onPress={choosePhoto}>
+                    <View>
+                        <Image style={Styles.icon} source={require('../../images/camera.png')}/>
+                    </View>
+            </TouchableHighlight>
 
             <DetailsBlock />
 
@@ -39,7 +89,11 @@ export default function CreateProposal ({ navigation }) {
                 <Text style={Styles.RedSubtitleLeftPadded}>Tags</Text>
             </View>
 
-            <BottomButton text="Submit" function={() => createProposal()} />
+            <TouchableWithoutFeedback onPress={submit} >
+            <View style={Styles.Button}>
+                <Text style={Styles.ButtonText}> Create </Text>
+            </View>
+          </TouchableWithoutFeedback>
         </SafeAreaView>
     )
 }

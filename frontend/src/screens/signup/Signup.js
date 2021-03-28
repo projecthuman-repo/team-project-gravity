@@ -4,9 +4,17 @@ import Styles from "../../style/Style";
 import {BackArrow} from "../components/Buttons";
 import useCommunity from '../../hooks/queries/useCommunity'
 import useAllCommunities from '../../hooks/queries/useAllCommunities'
-import { useMutation } from '@apollo/react-hooks';
+import { useMutation, useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost'
+import * as R from 'ramda'
+import * as RA from 'ramda-adjunct'
 
+const queryIsNotNil = R.curry(
+    (query, data) => R.both(
+      RA.isNotNilOrEmpty,
+      R.propSatisfies(RA.isNotNil, query)
+    )(data)
+  )
 
 const REGISTER = gql`
 mutation Register($userID:ID, $bio: String, $name: String){
@@ -22,7 +30,8 @@ export default function Signup({ navigation }) {
     const pressHandler = () => {
         navigation.navigate("Picture")
     }
-    const [register, { loading, error }] = useMutation(REGISTER);
+    
+    const [register, { loading2, error2 }] = useMutation(REGISTER);
     const [userIDReturned, setUserIDReturned] = useState('')
     let userID = "50"
     let bio = "nice"
@@ -40,11 +49,33 @@ export default function Signup({ navigation }) {
       }
 
     let community = useCommunity("f1f6b9fc-85f5-4cfc-8af7-8d807e09a768")
-    let communities = useAllCommunities()
+    //let communities = useAllCommunities()
+
+
+    const {loading, data, error} = useQuery(gql`
+    query {
+        findAllCommunities{
+            communityName
+            communityID
+    }
+    }
+  `, {
+    fetchPolicy: 'cache-and-network'
+  })
+
+  const communities = R.ifElse(
+      queryIsNotNil('findAllCommunities'),
+      R.prop('findAllCommunities'),
+      R.always([]),
+    )(data)
+
+    console.log(communities)
+
     return(
         <SafeAreaView style={Styles.container}>
             <BackArrow function={() => navigation.navigate("Home")} />
-            {console.log(community) && console.log(communities)
+            {
+            //console.log(communities)
             }
             <View style={Styles.logoContainer}>
                 <Image style={Styles.logo} source={require('../../images/logo.jpeg')}></Image>

@@ -5,17 +5,17 @@ import { useQuery } from '@apollo/react-hooks'
 import { gql } from 'apollo-boost'
 
 export default function useAllCommunities() {
-  const [communities, setCommunities] = useState(null)
+  const [communities, setCommunities] = useState([])
   const {loading, data, error} = useQuery(gql`
   query FindAllCommunities{
     findAllCommunities{
-    communityName
-    communityID
+        communityName
+        communityID
   }
 }
   `, {
-    variables: { },
     onCompleted: ({communities}) => {
+        console.log("INSIDE" + communities)
       setCommunities(communities)
     }
   })

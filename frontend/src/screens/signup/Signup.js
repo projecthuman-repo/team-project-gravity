@@ -1,22 +1,47 @@
-import React from "react";
-import {View, Text, TextInput, TouchableWithoutFeedback, Image, SafeAreaView, Button} from "react-native";
+import React, {useState} from "react";
+import {View, Text, TextInput, TouchableWithoutFeedback, Image, SafeAreaView, StyleSheet, TouchableOpacity} from "react-native";
 import Styles from "../../style/Style";
+import { useMutation } from '@apollo/react-hooks';
 import {BackArrow} from "../components/Buttons";
 import useCommunity from '../../hooks/queries/useCommunity'
 import useRegister from '../../hooks/mutations/useRegister'
+import { gql } from 'apollo-boost'
+
+
+const REGISTER = gql`
+mutation Register($userID:ID, $bio: String){
+  register(userID:$userID, bio: $bio) {
+    userID
+    bio
+  }
+}`
 
 export default function Signup({ navigation }) {
         
     const pressHandler = () => {
         navigation.navigate("Picture")
     }
+    const [register, { loading, error }] = useMutation(REGISTER);
+    const [userIDReturned, setUserIDReturned] = useState('')
+    let userID = "33"
+    let bio = "nice"
+
+    const submit = async () => {
+        const {data} = await (register({
+            variables: { userID, bio },
+          }))
+        console.log(data.register.userID)
+        const newID = data.register.userID
+        console.log(newID)
+        setUserIDReturned(newID)
+        console.log("hey" + userIDReturned)
+      }
+
     let community = useCommunity("fd67eee3-9d30-485a-8732-67e66071b0d8")
-    let user = useRegister("3", "bio")
     return(
         <SafeAreaView style={Styles.container}>
             <BackArrow function={() => navigation.navigate("Home")} />
-            {console.log(community) &&
-            console.log(user)
+            {console.log(community)
             }
             <View style={Styles.logoContainer}>
                 <Image style={Styles.logo} source={require('../../images/logo.jpeg')}></Image>
@@ -45,6 +70,11 @@ export default function Signup({ navigation }) {
                     <Text style={Styles.ButtonText}> SIGN UP </Text>
                 </View>
             </TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={submit} >
+            <View style={Styles.Button}>
+                <Text style={Styles.ButtonText}> Add </Text>
+            </View>
+          </TouchableWithoutFeedback>
             </View>
         </SafeAreaView>
     );

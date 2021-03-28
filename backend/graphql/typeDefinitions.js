@@ -82,6 +82,7 @@ const typeDefs = gql`
     communityProposal(communityProposalID: ID): CommunityProposal
     communityProposalMember(userID: ID, communityProposalID: ID): CommunityProposalMember
     findUsersCommunities(userID: ID): [Community]
+    findAllCommunities: [Community]
     findCommunitysUsers(communityID: ID): [User]
     createPresignedLink(bucketName: String, type: String,  filename: String): String
   }

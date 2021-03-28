@@ -17,7 +17,7 @@ export default function Home({ navigation }) {
     const goToCommunityList = () => {
         //TODO: update userId to be something like "guest" which indicates no one has signed in
         // then anywhere that Platform.OS is used, replace with check to see if userId === 'guest'
-        navigation.navigate("CommunityList")
+        navigation.navigate("Signup")
     }
     
     const checkUserExists = () => {

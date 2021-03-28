@@ -35,6 +35,13 @@ query FindUsersCommunities($userID: ID){
   }
 }
 
+query FindAllCommunities{
+    findAllCommunities{
+    communityName
+    communityID
+  }
+}
+
 query FindCommunitysUsers($communityID: ID){
     findCommunitysUsers(communityID: $communityID){
     userID

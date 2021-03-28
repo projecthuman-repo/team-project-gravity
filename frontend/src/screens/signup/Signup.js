@@ -3,6 +3,7 @@ import {View, Text, TextInput, TouchableWithoutFeedback, Image, SafeAreaView, St
 import Styles from "../../style/Style";
 import {BackArrow} from "../components/Buttons";
 import useCommunity from '../../hooks/queries/useCommunity'
+import useAllCommunities from '../../hooks/queries/useAllCommunities'
 import { useMutation } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost'
 
@@ -23,7 +24,7 @@ export default function Signup({ navigation }) {
     }
     const [register, { loading, error }] = useMutation(REGISTER);
     const [userIDReturned, setUserIDReturned] = useState('')
-    let userID = "33"
+    let userID = "50"
     let bio = "nice"
     let name = "name"
 
@@ -38,11 +39,12 @@ export default function Signup({ navigation }) {
         console.log("hey" + userIDReturned)
       }
 
-    let community = useCommunity("fd67eee3-9d30-485a-8732-67e66071b0d8")
+    let community = useCommunity("f1f6b9fc-85f5-4cfc-8af7-8d807e09a768")
+    let communities = useAllCommunities()
     return(
         <SafeAreaView style={Styles.container}>
             <BackArrow function={() => navigation.navigate("Home")} />
-            {console.log(community)
+            {console.log(community) && console.log(communities)
             }
             <View style={Styles.logoContainer}>
                 <Image style={Styles.logo} source={require('../../images/logo.jpeg')}></Image>

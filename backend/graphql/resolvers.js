@@ -95,6 +95,27 @@ const resolvers = {
       }
       return communityArray
     },
+    findAllCommunities: async (parent, {}, { Community}) => {
+      communityInfo= await Community.findAll();
+      let communityArray;
+      for (i = 0; i < communityInfo.length; i++) {
+            if(i==0){
+              communityArray = [{
+                "communityID": communityInfo[i].dataValues.id,
+                "communityName": communityInfo[i].dataValues.name,
+                "communityDescription": communityInfo[i].dataValues.description
+              }]
+            }
+            else {
+              communityArray.push({
+                "communityID": communityInfo[i].dataValues.id,
+                "communityName": communityInfo[i].dataValues.name,
+                "communityDescription": communityInfo[i].dataValues.description
+              })
+            }
+      }
+      return communityArray
+    },
     findCommunitysUsers: async (parent, {communityID}, { CommunityMember, User}) => {
       communityMemberInfo = await CommunityMember.findAll({ where : {communityId: communityID}, attributes: ['userId', 'communityId']});
       if (!communityMemberInfo) {

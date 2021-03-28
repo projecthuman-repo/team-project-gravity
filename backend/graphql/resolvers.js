@@ -118,11 +118,40 @@ const resolvers = {
       }
       return userArray
   },
-  createPresignedLink: async (parent, { bucketName, filename, type },{ }) => {
-     //if type is user : user- if type is community, community- for bucketname
+  createPresignedLink: async (parent, { bucketname, filename, type },{ }) => {
+    let bucketnameFinal
+      if(type == "community"){
+        let existing = await Community.findOne({ where : {id: bucketname}});
+        if(existing){
+          bucketnameFinal= 'community-'+ bucketname
+        }
+        else{
+          console.log("community doesn't exist")
+          return null
+        }
+      }
+      else if(type == "communityProposal"){
+        let existing = await CommunityProposal.findOne({ where : {id: bucketname}});
+        if(existing){
+            bucketnameFinal= 'communityProposal-'+ bucketname
+        }
+        else{
+          return null
+        }
+      
+      }
+      else{
+        let existing = await User.findOne({ where : {id: bucketname}});
+        if(existing){
+          bucketnameFinal= 'user-'+ bucketname
+        }
+        else{
+          return null
+        }
+      }
     return new Promise((resolve, reject) => {
       minioClient.presignedGetObject(
-        `${bucketName}`,
+        `${bucketnameFinal}`,
         `${objectName}`,
         24 * 60 * 60,
         {
@@ -184,6 +213,10 @@ const resolvers = {
       if (!existing && userRank.dataValues.score >= reqScore){
         const newCommunityProposal = new CommunityProposal({id: uuidv4(), communityId: communityID, name: communityProposalName, description: communityProposalDescription})
         await newCommunityProposal.save()
+        minioClient.makeBucket(`communityProposal-${newCommunityProposal.dataValues.id}`, 'us-east-1', function(err) {
+          if (err) return console.log(err)
+          console.log('CommunityProposal bucket created successfully in "us-east-1".')
+        })
         return {
           "communityProposalID": newCommunityProposal.dataValues.id,
           "communityProposalName": newCommunityProposal.dataValues.name,
@@ -193,11 +226,41 @@ const resolvers = {
         throw new ApolloError('Community Proposal with this name already exists')
       }
     },
-    addFileUpload: async (parent, { bucketname, type, file, filename}, {}) => {
-      const {mimetype, encoding, createReadStream } = await file
-      const stream = createReadStream()
-      //if type is user : user- if type is community, community- for bucketname
-      minioClient.putObject(`${bucketname}`, `${filename}`, stream, function(
+    addFileUpload: async (parent, { bucketname, type, file, filename}, {Community, CommunityProposal, User}) => {
+      const {mimetype, encoding, stream } = await file
+      console.log("TYPE" + type)
+      let bucketnameFinal
+      if(type == "community"){
+        let existing = await Community.findOne({ where : {id: bucketname}});
+        if(existing){
+          bucketnameFinal= 'community-'+ bucketname
+        }
+        else{
+          console.log("community doesn't exist")
+          return null
+        }
+      }
+      else if(type == "communityProposal"){
+        let existing = await CommunityProposal.findOne({ where : {id: bucketname}});
+        if(existing){
+            bucketnameFinal= 'communityProposal-'+ bucketname
+        }
+        else{
+          return null
+        }
+      
+      }
+      else{
+        let existing = await User.findOne({ where : {id: bucketname}});
+        if(existing){
+          bucketnameFinal= 'user-'+ bucketname
+        }
+        else{
+          return null
+        }
+      }
+      console.log("BUCKETNAME" + bucketnameFinal)
+      minioClient.putObject(`${bucketnameFinal}`, `${filename}`, stream, function(
         err,
         etag
       ) {

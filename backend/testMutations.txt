@@ -1,9 +1,10 @@
 Input the following queries into playground to test:
   
   
-  mutation Register($userID:ID, $username: String, $password: String){
-    register(userID:$userID, username: $username, password: $password) {
+  mutation Register($userID:ID, $bio: String){
+    register(userID:$userID, bio: $bio) {
       userID
+      bio
     }
   }
   

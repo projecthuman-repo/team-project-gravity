@@ -3,6 +3,7 @@ Input the following queries into playground to test:
 query User($userID: ID){
     user(userID: $userID) {
       userID
+      bio
     }
 }
   

@@ -8,7 +8,9 @@ const resolvers = {
     user: async (parent, { userID }, { User }) => {
       const userInfo = await User.findOne({ where : {id: userID}});
       if (userInfo) {
-        return {"userID": userInfo.dataValues.id};
+        return {
+          "userID": userInfo.dataValues.id,
+          "bio": userInfo.dataValues.bio};
       } else {
         throw new ApolloError(`userID:${userID} doesn't exist`);
       }
@@ -103,11 +105,14 @@ const resolvers = {
           if (latestUserInfo) {
             if(i==0){
               userArray = [{
-                "userID": latestUserInfo.dataValues.id
+                "userID": latestUserInfo.dataValues.id,
+                "bio": latestUserInfo.dataValues.bio
               }]
             }
             else {
-              userArray.push({"userID": latestUserInfo.dataValues.id})
+              userArray.push({
+                "userID": latestUserInfo.dataValues.id,
+                "bio": latestUserInfo.dataValues.bio})
             }
           } 
       }
@@ -132,16 +137,20 @@ const resolvers = {
   }
 },
   Mutation: {
-    register: async (parent, { userID, username, password }, { User }) => {
+    register: async (parent, { userID, bio}, { User }) => {
+      console.log("register called")
       const existing = await User.findOne({ where : {id: userID}});
       if (!existing) {
-        const newUser = new User({id: userID})
+        const newUser = new User({id: userID, bio: bio})
         await newUser.save()
         minioClient.makeBucket(`user-${newUser.dataValues.id}`, 'us-east-1', function(err) {
           if (err) return console.log(err)
           console.log('Users bucket created successfully in "us-east-1".')
         })
-        return {"userID": newUser.dataValues.id};
+        return {
+          "userID": newUser.dataValues.id,
+          "bio": newUser.dataValues.bio
+      };
       } else {
         throw new ApolloError('User already exists')
       }

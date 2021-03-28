@@ -24,7 +24,6 @@ import Auth0 from 'react-native-auth0';
 var mobile_credentials = require('../auth0-configuration-mobile');
 const auth0 = new Auth0(mobile_credentials);
 
-
 class Login extends Component {
     constructor(props) {
         super(props);

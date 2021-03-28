@@ -15,7 +15,6 @@ export default function useCommunityQuery(communityID) {
   }
   `, {
     variables: { communityID },
-    skip: R.isNil(communityID),
     onCompleted: ({community}) => {
       setCommunity(community)
     }

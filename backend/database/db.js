@@ -19,7 +19,10 @@ const User = Conn.define('user', {
         type: Sequelize.UUID,
         allowNull: false,
         primaryKey: true
-    }
+    },
+    bio:{
+        type: Sequelize.STRING,
+    },
 });
 
 const Community = Conn.define('community', {

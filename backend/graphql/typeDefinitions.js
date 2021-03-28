@@ -3,6 +3,7 @@ const { gql} = require('apollo-server');
 const typeDefs = gql`
   type User {
     userID: ID 
+    bio: String
   }
 
   type Community {
@@ -85,7 +86,7 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    register(userID: ID, username: String, password: String): User
+    register(userID: ID, bio: String): User
     createCommunity(userID: ID, communityName: String, communityDescription: String): Community
     createCommunityProposal(userID: ID, communityID: ID, communityProposalName: String, communityProposalDescription: String): CommunityProposal
     addFileUpload(bucketname: String, type: String, file: Upload!, filename: String): File

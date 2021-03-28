@@ -8,7 +8,8 @@ export default function useFindCommunitysUsers(communityID) {
   const {loading, data, error} = useQuery(gql`
   query FindCommunitysUsers($communityID: ID){
     findCommunitysUsers(communityID: $communityID){
-    userID
+      userID
+      bio
   }
 }`, {
     variables: { communityID },

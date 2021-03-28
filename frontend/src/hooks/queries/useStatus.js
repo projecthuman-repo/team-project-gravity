@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
 
-
+import * as R from 'ramda'
 import { useQuery } from '@apollo/react-hooks'
 import { gql } from 'apollo-boost'
 
@@ -13,8 +13,8 @@ query Status($userID: ID){
       communityStatusID
     }
   }  `, {
-    variables: { communityID },
-    skip: R.isNil(communityID),
+    variables: { userID },
+    skip: R.isNil(userID),
     onCompleted: ({status}) => {
       setStatus(status)
     }

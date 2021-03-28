@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
 
-
+import * as R from 'ramda'
 import { useQuery } from '@apollo/react-hooks'
 import { gql } from 'apollo-boost'
 
@@ -15,6 +15,7 @@ export default function useCommunityQuery(communityID) {
   }
   `, {
     variables: { communityID },
+    skip: R.isNil(communityID),
     onCompleted: ({community}) => {
       setCommunity(community)
     }

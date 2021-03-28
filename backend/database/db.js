@@ -19,6 +19,14 @@ const User = Conn.define('user', {
         type: Sequelize.UUID,
         allowNull: false,
         primaryKey: true
+    },
+    name: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    bio: {
+        type: Sequelize.STRING,
+        allowNull: false
     }
 });
 

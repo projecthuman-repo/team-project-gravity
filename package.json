@@ -8,6 +8,7 @@
       "build-run": "cd frontend && react-scripts start && cd ../backend && node ./graphql/index.js",
       "start": "cd backend && node ./graphql/index.js",
       "heroku-postbuild": "cd backend/graphql && npm install",
+      "build-frontend": "cd frontend && expo build:web",
       "test": "echo \"Error: no test specified\" && exit 1"
     },
     "repository": {

@@ -18,6 +18,11 @@ export default function Bio({ navigation }) {
             <BackArrow function={() => navigation.navigate("ProfileHeader")} />
 
             <View style={Styles.MiddleOfScreen}>
+                <Text style={Styles.RedSubtitle}> What's Your Name? </Text>
+                <Text> </Text>
+                <TextInput style={{height: "15%", width: "60%"}} multiline={true} placeholder="Enter your name here"></TextInput>
+                <Text>&nbsp;</Text>
+
                 <Text style={Styles.RedSubtitle}> What Makes You, YOU? </Text>
                 <Text> </Text>
                 <TextInput style={{height: "15%", width: "60%"}} multiline={true} placeholder="Enter user bio in this field"></TextInput>

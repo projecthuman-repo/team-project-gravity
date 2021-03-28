@@ -12,6 +12,8 @@ export default function Home({ navigation }) {
     const auth0 = new Auth0(mobile_credentials);
 
     const goToCommunityList = () => {
+        //TODO: update userId to be something like "guest" which indicates no one has signed in
+        // then anywhere that Platform.OS is used, replace with check to see if userId === 'guest'
         navigation.navigate("CommunityList")
     }
     

@@ -206,4 +206,16 @@ export default {
 		fontSize: 14,
         paddingTop: 1
     },
+
+    "something": {
+            width: 28,
+            height: 32,
+            backgroundColor: "#f85f6a"
+    },
+
+    "NavBarBottom": {
+        width = wp("100%"),
+        height = hp("10%"),
+        
+    }
 }

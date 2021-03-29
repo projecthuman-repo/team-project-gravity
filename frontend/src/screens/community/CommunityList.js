@@ -3,6 +3,7 @@ import {View, Text, Button, ScrollView, SafeAreaView, Image, TouchableWithoutFee
 import Styles from "../../style/Style";
 import {SmallTile, LargeTile, LargeTileList} from "../components/community_explore/Tiles";
 import {BottomButton, ProfileButton} from "../components/Buttons";
+import Tab from "../components/NavBar";
 
 export default function CommunityList({ navigation }) {
 
@@ -63,6 +64,10 @@ export default function CommunityList({ navigation }) {
             </View>
 
             <BottomButton text="Create Community" function={() => createCommunity()} />
+            <Tab>
+
+            </Tab>
+            
         </SafeAreaView>
     )
 }

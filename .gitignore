@@ -3,8 +3,6 @@
 .env
 backend/node_modules
 
-frontend/android/gradlew.bat
-
 
 # ==========================
 # Copied from KeyCloak repo

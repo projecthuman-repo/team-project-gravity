@@ -25,6 +25,7 @@ const ADD_FILE_UPLOAD = gql`
 `
 
 export default function CreateProposal ({ navigation }) {
+
     let userID = "33"
     let communityID = "3"
     let communityProposalName = "okay"
@@ -32,6 +33,9 @@ export default function CreateProposal ({ navigation }) {
     let bucketname = "2"
     const type ="communityProposal"
     let file=""
+
+    const [name, setName] = useState('')
+    const [description, setDescription] = useState('')
 
     const [addFileUpload, { loading, error }] = useMutation(ADD_FILE_UPLOAD);
     const [filenameReturned, setFilenameReturned] = useState('')
@@ -45,6 +49,7 @@ export default function CreateProposal ({ navigation }) {
         setFilenameReturned(newFilename)
         console.log("hey" + filenameReturned)
     }
+
 
     const [createCommunityProposal, { proposalLoading, proposalError }] = useMutation(CREATE_PROPOSAL);
     const [communityPropIDReturned, setCommunityPropIDReturned] = useState('')
@@ -78,7 +83,7 @@ export default function CreateProposal ({ navigation }) {
                     </View>
             </TouchableHighlight>
 
-            <DetailsBlock />
+            <DetailsBlock toSetName={setName} toSetDescriptionpls={setDescription}/>
 
             <Text style={Styles.RedSubtitleLeftPadded}>Help Needed</Text>
             <TouchableWithoutFeedback onPress={() => modifyRoles()}>

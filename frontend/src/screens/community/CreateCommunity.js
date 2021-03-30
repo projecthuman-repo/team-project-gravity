@@ -5,6 +5,8 @@ import {BackArrow, BottomButton, CameraButtonWithTitle} from "../components/Butt
 import {Title, DetailsBlock} from "../components/Text";
 import { useMutation } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost'
+import { SafeAreaInsetsContext } from "react-native-safe-area-context";
+import { State } from "react-native-gesture-handler";
 
 
 
@@ -37,6 +39,10 @@ export default function CreateCommunity ({ navigation }) {
 
     const [addFileUpload, { loading, error }] = useMutation(ADD_FILE_UPLOAD);
     const [filenameReturned, setFilenameReturned] = useState('')
+    // values from text input
+    const [name, setName] = useState('')
+    const [description, setDescription] = useState('')
+
 
     const choosePhoto = async () => {
         const {data} = await (addFileUpload({
@@ -65,6 +71,21 @@ export default function CreateCommunity ({ navigation }) {
         navigation.navigate("CommunityList")
       }
 
+      const updateUserEntry = e => {
+        const target = e.target;
+        const value = target.value;
+        const name = target.name;
+        console.log("reached")
+
+        if (name == 'name') {
+          setName(value)
+          console.log(name + value)
+        } else if (name == 'description') {
+          setDescription(value)
+        }
+        // this.setState({[name]: value})
+    }  
+      
 
     // The text things are for spaces, not sure of a better way to do it
     return(
@@ -79,7 +100,19 @@ export default function CreateCommunity ({ navigation }) {
                     </View>
             </TouchableHighlight>
 
-            <DetailsBlock />
+            <DetailsBlock setNamepls={setName} setDescriptionpls={setDescription}/>
+            {/* FIGURE OUT HOW TO DO BELOW WITH IMPORTED COMPONENT */}
+            {/* <View>
+                <Text style={Styles.RedSubtitleLeftPadded}>Details</Text>
+
+                <View style={{marginHorizontal: 35, paddingVertical: 8}}>
+                    <TextInput style={{height: 35, width: "100%", borderColor: "black", borderWidth: 1, alignSelf: "center", borderRadius: 6, paddingLeft: 5}} multiline={true} placeholder="Name" name="name" onChangeText={text => setName(text)}></TextInput>
+                </View>
+                <View style={{marginHorizontal: 35, paddingVertical: 5}}>
+                    <TextInput style={{height: 170, width: "100%", borderColor: "black", borderWidth: 1, alignSelf: "center", borderRadius: 6, paddingLeft: 5}} multiline={true} placeholder="Description" name="description"onChangeText={text => setDescription(text)}></TextInput>
+                </View>
+            </View> */}
+            <Text>{name}</Text>
 
             <View style={{marginTop: 10, marginBottom: 60}}>
                 <Text style={Styles.RedSubtitleLeftPadded}>Tags</Text>

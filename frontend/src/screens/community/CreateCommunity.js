@@ -101,18 +101,6 @@ export default function CreateCommunity ({ navigation }) {
             </TouchableHighlight>
 
             <DetailsBlock setNamepls={setName} setDescriptionpls={setDescription}/>
-            {/* FIGURE OUT HOW TO DO BELOW WITH IMPORTED COMPONENT */}
-            {/* <View>
-                <Text style={Styles.RedSubtitleLeftPadded}>Details</Text>
-
-                <View style={{marginHorizontal: 35, paddingVertical: 8}}>
-                    <TextInput style={{height: 35, width: "100%", borderColor: "black", borderWidth: 1, alignSelf: "center", borderRadius: 6, paddingLeft: 5}} multiline={true} placeholder="Name" name="name" onChangeText={text => setName(text)}></TextInput>
-                </View>
-                <View style={{marginHorizontal: 35, paddingVertical: 5}}>
-                    <TextInput style={{height: 170, width: "100%", borderColor: "black", borderWidth: 1, alignSelf: "center", borderRadius: 6, paddingLeft: 5}} multiline={true} placeholder="Description" name="description"onChangeText={text => setDescription(text)}></TextInput>
-                </View>
-            </View> */}
-            <Text>{name}</Text>
 
             <View style={{marginTop: 10, marginBottom: 60}}>
                 <Text style={Styles.RedSubtitleLeftPadded}>Tags</Text>

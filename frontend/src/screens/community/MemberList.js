@@ -1,25 +1,54 @@
 import React from "react";
 import {View, Text, TextInput, TouchableWithoutFeedback, Image, SafeAreaView} from "react-native";
 import {BackArrow} from "../components/Buttons";
-import {TitleSubtitleInactive, CategoricalListInactive} from "../components/Text";
+import {TitleSubtitleInactive, UserList} from "../components/Text";
+import { useQuery } from '@apollo/react-hooks';
+import { gql } from 'apollo-boost'
+import * as R from 'ramda';
+import * as RA from 'ramda-adjunct';
+
+const queryIsNotNil = R.curry(
+    (query, data) => R.both(
+      RA.isNotNilOrEmpty,
+      R.propSatisfies(RA.isNotNil, query)
+    )(data)
+)
 
 export default function MemberList ({ navigation }) {
+
+    const communityID = navigation.getParam("communityID");
+    const communityName = navigation.getParam("communityName");
+
+    const {loading, data, error} = useQuery(gql`
+    query Community($communityID: ID) {
+        findCommunitysUsers(communityID: $communityID) {
+          userID
+          bio
+          name
+      }
+    }
+    `, {
+        variables: { communityID },
+        fetchPolicy: 'cache-and-network'
+    })    
+
+    const users = R.ifElse(
+        queryIsNotNil('findCommunitysUsers'),
+        R.prop('findCommunitysUsers'),
+        R.always([]),
+    )(data)
+
+    console.log(users)
 
     return(
         <SafeAreaView style={{backgroundColor: "white", height: "100%", width: "100%"}}>
             <BackArrow function={() =>navigation.navigate("Community")} />
 
-            <TitleSubtitleInactive title="Community Members" subtitle="Toronto Food Bank" />
+            <TitleSubtitleInactive title="Community Members" subtitle={communityName} />
 
-            <CategoricalListInactive title="Rank #1" content={[
-                {key: "Carlos, Ward"},
-                {key: "Johnny, Kell"},
-                {key: "Martha, Long"},
-                {key: "Rachel, Williamson"},
-                {key: "Earl, Turner"},
-            ]}/>
+            <UserList title="Users" content={users} />
 
-            <CategoricalListInactive title="Rank #2" content={[
+            {/* <CategoricalListInactive title="Rank #2" content={[
                 {key: "Thersa, Peterson"},
                 {key: "Howard, Carr"},
                 {key: "Jaqueline, Barnes"},
@@ -27,7 +56,7 @@ export default function MemberList ({ navigation }) {
 
             <CategoricalListInactive title="Rank #3" content={[
                 {key: "Jane, Fowler"},
-            ]}/>
+            ]}/> */}
         </SafeAreaView>
     );
 }

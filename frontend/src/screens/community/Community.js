@@ -2,12 +2,51 @@ import React from "react";
 import {View, Text, TouchableWithoutFeedback, Image, ScrollView, SafeAreaView} from "react-native";
 import Styles from "../../style/CommunityStyle";
 import {BackArrow, BottomButton} from "../components/Buttons";
-import {TitleSubtitleActive, CategoricalListActive} from "../components/Text";
+import {TitleSubtitleActive, ProposalList, CategoricalListActive} from "../components/Text";
+import useCommunity from '../../hooks/queries/useCommunity';
+import { useQuery } from '@apollo/react-hooks';
+import { gql } from 'apollo-boost'
+import * as R from 'ramda';
+import * as RA from 'ramda-adjunct';
+
+const queryIsNotNil = R.curry(
+    (query, data) => R.both(
+      RA.isNotNilOrEmpty,
+      R.propSatisfies(RA.isNotNil, query)
+    )(data)
+)
 
 export default function Community({ navigation }) {
+    
+    const communityID = navigation.getParam("communityID");
+    console.log(communityID)
 
-    const seeMembers = () => {
-        navigation.navigate("MemberList")
+    const community = useCommunity(communityID);
+
+    const {loading, data, error} = useQuery(gql`
+    query Community($communityID: ID) {
+        findallCommunityProposals(communityID: $communityID) {
+            communityProposalName
+            communityProposalID
+            communityProposalDescription
+        }
+      }
+    `, {
+        variables: { communityID },
+        fetchPolicy: 'cache-and-network'
+    })    
+
+    const proposals = R.ifElse(
+        queryIsNotNil('findallCommunityProposals'),
+        R.prop('findallCommunityProposals'),
+        R.always([]),
+    )(data)
+
+    console.log(proposals)
+
+    let communityName;
+    if (RA.isNotNil(community) ){
+        communityName = community.communityName
     }
 
     const createAProposal = () => {
@@ -22,14 +61,9 @@ export default function Community({ navigation }) {
         <SafeAreaView style={{backgroundColor: "white", height: "100%"}}>
             <BackArrow function={() => navigation.navigate("CommunityList")} />
 
-            <TitleSubtitleActive title="Toronto Food Bank" subtitle="See Members" link={() => seeMembers()}/>
+            <TitleSubtitleActive title={communityName} subtitle="Members" link={() => navigation.navigate("MemberList", {communityID: communityID, communityName: communityName})}/>
             
-            <CategoricalListActive title="Proposals" content={[
-                {key: "Expand reach to Hamilton and other areas outside the city.", link: () => navigation.navigate("Proposal")},
-                {key: "Provide aid to shelters in the downtown core", link: () => navigation.navigate("Proposal")},
-                {key: "Awareness campaign for hunger in single parent families.", link: () => navigation.navigate("Proposal")},
-                {key: "Education campaign for healthy eating habits in low income neighbourhoods.", link: () => navigation.navigate("Proposal")}
-            ]}/>
+            <ProposalList title="Proposals" content={proposals} navigation={navigation} communityName={communityName} />
 
             <CategoricalListActive title="Recent Activity" content={[
             ]}/>

@@ -189,7 +189,31 @@ const resolvers = {
         }
       )
     })
-  }
+  },
+  findallCommunityProposals: async (parent, {communityID}, { CommunityProposal}) => {
+    communityProposalInfo = await CommunityProposal.findAll({ where : {communityId: communityID}});
+    if (!communityProposalInfo) {
+      throw new ApolloError(`communityID:${communityID} doesn't have any proposals`);
+    }
+    let proposalArray;
+    for (i = 0; i < communityProposalInfo.length; i++) {
+          if(i==0){
+            proposalArray = [{
+              "communityProposalID": communityProposalInfo[i].dataValues.id,
+              "communityProposalName": communityProposalInfo[i].dataValues.name,
+              "communityProposalDescription": communityProposalInfo[i].dataValues.description
+            }]
+          }
+          else {
+            proposalArray.push({
+              "communityProposalID": communityProposalInfo[i].dataValues.id,
+              "communityProposalName": communityProposalInfo[i].dataValues.name,
+              "communityProposalDescription": communityProposalInfo[i].dataValues.description
+            })
+          }
+    }
+    return proposalArray
+},
 },
   Mutation: {
     register: async (parent, { userID, bio, name}, { User }) => {
@@ -232,22 +256,21 @@ const resolvers = {
         throw new ApolloError('Community with this name already exists')
       }
     },
-    createCommunityProposal: async (parent, { userID, communityID, communityProposalName, communityProposalDescription }, { CommunityProposal, UserCommunityRank }) => {
-      const reqScore = 10
-      const userRank = await UserCommunityRank.findOne({ where : {userId: userID}});
+    createCommunityProposal: async (parent, { userID, communityID, communityProposalName, communityProposalDescription }, { CommunityProposal, CommunityMember }) => {
+      const userIn = await CommunityMember.findOne({ where : {userId: userID}});
       const allCommunityProposals = await CommunityProposal.findAll({ where : {communityId: communityID}});
       const existing = R.find(R.propEq('name', communityProposalName), allCommunityProposals)
-      if (!existing && userRank.dataValues.score >= reqScore){
+      if (!existing && userIn){
         const newCommunityProposal = new CommunityProposal({id: uuidv4(), communityId: communityID, name: communityProposalName, description: communityProposalDescription})
         await newCommunityProposal.save()
-        minioClient.makeBucket(`communityProposal-${newCommunityProposal.dataValues.id}`, 'us-east-1', function(err) {
+        minioClient.makeBucket(`proposal-${newCommunityProposal.dataValues.id}`, 'us-east-1', function(err) {
           if (err) return console.log(err)
           console.log('CommunityProposal bucket created successfully in "us-east-1".')
         })
         return {
           "communityProposalID": newCommunityProposal.dataValues.id,
           "communityProposalName": newCommunityProposal.dataValues.name,
-          "communityProposalDescription": newCommunityProposal.dataValues.description
+          "communityProposalDescription": newCommunityProposal.dataValues.description,
         }
       } else {
         throw new ApolloError('Community Proposal with this name already exists')
@@ -270,7 +293,7 @@ const resolvers = {
       else if(type == "communityProposal"){
         let existing = await CommunityProposal.findOne({ where : {id: bucketname}});
         if(existing){
-            bucketnameFinal= 'communityProposal-'+ bucketname
+            bucketnameFinal= 'proposal-'+ bucketname
         }
         else{
           return null
@@ -301,10 +324,11 @@ const resolvers = {
       console.log("add member called")
         const existing = await CommunityMember.findOne({ where : {userId: userID, communityId: communityID}});
         if (!existing) {
-          if (status == "admin"){
-            const newStatus = new CommunityStatus({id: uuidv4(), status: 'admin'})
+            const newStatus = new CommunityStatus({id: uuidv4(), status: status})
             await newStatus.save()
+            console.log(status)
             const communityStatusValue = newStatus.dataValues.id
+            console.log(communityStatusValue)
             const newMember = new CommunityMember({userId: userID, communityId: communityID, communityStatusId: communityStatusValue})
             await newMember.save()
             return {
@@ -312,19 +336,6 @@ const resolvers = {
               "communityID": newMember.dataValues.communityId,
               "communityStatusID": newMember.dataValues.communityStatusId,
             };
-          }
-          else{
-            const newStatus = new CommunityStatus({id: uuidv4(), status: 'user'})
-            await newStatus.save()
-            const communityStatusValue = newStatus.dataValues.id
-            const newMember = new CommunityMember({userId: userID, communityId: communityID, communityStatusId: communityStatusValue})
-            await newMember.save()
-            return {
-              "communityMemberID": newMember.dataValues.userId,
-              "communityID": newMember.dataValues.communityId,
-              "communityStatusID": newMember.dataValues.communityStatusId,
-            };
-          }
         } else {
           throw new ApolloError('CommunityMember already exists')
         }

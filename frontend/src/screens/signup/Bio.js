@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {View, Text, TextInput, TouchableWithoutFeedback, Image, SafeAreaView} from "react-native";
 import Styles from "../../style/Style";
 import {BackArrow, BottomButton} from "../components/Buttons";

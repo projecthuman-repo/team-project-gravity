@@ -17,11 +17,11 @@ export default function Home({ navigation }) {
     const goToCommunityList = () => {
         //TODO: update userId to be something like "guest" which indicates no one has signed in
         // then anywhere that Platform.OS is used, replace with check to see if userId === 'guest'
-        navigation.navigate("Signup")
+        navigation.navigate("CommunityList")
     }
     
     const checkUserExists = () => {
-        if (userID !== '') {
+        if (user) {
             navigation.navigate("CommunityList", {userID: userID})
         } else {
             navigation.navigate("Picture", {userID: userID})

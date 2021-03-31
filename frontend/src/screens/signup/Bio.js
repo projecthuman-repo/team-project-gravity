@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {View, Text, TextInput, TouchableWithoutFeedback, Image, SafeAreaView} from "react-native";
 import Styles from "../../style/Style";
 import {BackArrow, BottomButton} from "../components/Buttons";
@@ -13,9 +13,6 @@ export default function Bio({ navigation }) {
         navigation.navigate("Placeholder")
     }
 
-    const [name, setName] = useState('')
-    const [bio, setBio] = useState('')
-
     return(
         <SafeAreaView style={{backgroundColor: "white", height: "100%", width: "100%"}}>
             <BackArrow function={() => navigation.navigate("ProfileHeader")} />
@@ -23,12 +20,12 @@ export default function Bio({ navigation }) {
             <View style={Styles.MiddleOfScreen}>
                 <Text style={Styles.RedSubtitle}> What's Your Name? </Text>
                 <Text> </Text>
-                <TextInput style={{height: "15%", width: "60%"}} multiline={true} placeholder="Enter your name here" onChangeText={text => setName(text)}></TextInput>
+                <TextInput style={{height: "15%", width: "60%"}} multiline={true} placeholder="Enter your name here"></TextInput>
                 <Text>&nbsp;</Text>
 
                 <Text style={Styles.RedSubtitle}> What Makes You, YOU? </Text>
                 <Text> </Text>
-                <TextInput style={{height: "15%", width: "60%"}} multiline={true} placeholder="Enter user bio in this field" onChangeText={text => setBio(text)}></TextInput>
+                <TextInput style={{height: "15%", width: "60%"}} multiline={true} placeholder="Enter user bio in this field"></TextInput>
                 <Text>&nbsp;</Text>
 
                 <Text style={Styles.RedSubtitle}> Where Else Are You? </Text>

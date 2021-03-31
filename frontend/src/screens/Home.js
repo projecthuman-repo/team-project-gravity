@@ -24,7 +24,7 @@ export default function Home({ navigation }) {
         if (userID !== '') {
             navigation.navigate("CommunityList", {userID: userID})
         } else {
-            navigation.navigate("Picture")
+            navigation.navigate("Picture", {userID: userID})
         }
     }
 

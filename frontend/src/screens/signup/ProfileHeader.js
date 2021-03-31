@@ -16,11 +16,12 @@ mutation addFileUpload($file: Upload!, $type: String, $bucketname: String) {
 
 export default function ProfileHeader({ navigation }) {
 
+    const userID = navigation.getParam("userID")
     const pressHandler = () => {
-        navigation.navigate("Bio")
+        navigation.navigate("Bio", {userID: userID})
     }
     
-    let userID = "33"
+    // let userID = "33"
     let bucketname = userID
     let file=""
     const type= "user"

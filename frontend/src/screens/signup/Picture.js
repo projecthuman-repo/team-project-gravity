@@ -4,9 +4,10 @@ import Styles from "../../style/Style";
 import {BackArrow, BottomButton} from "../components/Buttons";
 
 export default function Picture({ navigation }) {
-        
+
+    const userID = navigation.getParam("userID");    
     const pressHandler = () => {
-        navigation.navigate("ProfileHeader")
+        navigation.navigate("ProfileHeader", {userID: userID})
     }
 
     const choosePhoto = () => {

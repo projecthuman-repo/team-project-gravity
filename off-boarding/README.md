@@ -86,7 +86,7 @@ Before running the application on an iOS emulator, the following steps must be p
 
     cd ./frontend #assuming you are currently at the root of the repository
     patch --forward node_modules/react-native/Libraries/Image/RCTUIImageViewAnimated.m < patches/show-image-RCTUIImageViewAnimated.patch
-    cd ios #assuming you are currently at the root of the repository
+    cd ios
     pod install
     
 Notes: 

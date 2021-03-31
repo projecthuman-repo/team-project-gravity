@@ -8,11 +8,11 @@ import Styles from "../style/Style";
 export default function Home({ navigation }) {
     
     const [accessToken, setAccessToken] = useState('');
-    const [userId, setUserId] = useState('');
+    const [userID, setUserID] = useState('');
     const mobile_credentials = require('../auth0-configuration-mobile');
     const auth0 = new Auth0(mobile_credentials);
 
-    const user = useUser(userId);
+    const user = useUser(userID);
 
     const goToCommunityList = () => {
         //TODO: update userId to be something like "guest" which indicates no one has signed in
@@ -21,15 +21,14 @@ export default function Home({ navigation }) {
     }
     
     const checkUserExists = () => {
-
-        if (user) {
-            navigation.navigate("CommunityList")
+        if (userID !== '') {
+            navigation.navigate("CommunityList", {userID: userID})
         } else {
             navigation.navigate("Picture")
         }
     }
 
-    const getUserId = async () => {
+    const getUserID = async () => {
         const url = `https://${mobile_credentials.domain}/userinfo`;
 
         var header = new Headers();
@@ -50,9 +49,9 @@ export default function Home({ navigation }) {
             Alert.alert('AccessToken: ' + credentials.accessToken);
             setAccessToken(credentials.accessToken);
 
-            const subUserId = await getUserId();
+            const subUserID = await getUserID();
 
-            setUserId(subUserId.replace("auth0|", ""));
+            setUserID(subUserID.replace("auth0|", ""));
             
             checkUserExists();
 
@@ -64,7 +63,6 @@ export default function Home({ navigation }) {
     // The text things are for spaces, not sure of a better way to do it
     return(
         <View style={Styles.MiddleOfScreen}>
-            {console.log(user)}
             <View style={Styles.logoContainer}>
                 <Image style={Styles.logo} source={require('../images/logo.jpeg')}></Image>
             </View>

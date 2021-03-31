@@ -25,8 +25,14 @@ const ADD_FILE_UPLOAD = gql`
 `
 
 export default function CreateProposal ({ navigation }) {
-    let userID = "33"
-    let communityID = "3"
+    const userID = navigation.getParam("userID")
+    const communityID = navigation.getParam("communityID")
+
+    console.log(userID)
+    console.log(communityID)
+
+    // let userID = "33"
+    // let communityID = "3"
     let communityProposalName = "okay"
     let communityProposalDescription = "proposal about proposals"
     let bucketname = "2"

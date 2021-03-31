@@ -64,11 +64,12 @@ class SmallTileList extends Component {
 class LargeTileList extends Component {
     render() {
         const navigation = this.props.navigation;
+        const userID = this.props.userID;
         var tiles = [];
 
         for (let i = 0; i < this.props.content.length; i++) {
             tiles.push(
-                <TouchableHighlight onPress={() => navigation.navigate("Community", {communityID: this.props.content[i].communityID})}>
+                <TouchableHighlight onPress={() => navigation.navigate("Community", {communityID: this.props.content[i].communityID, userID: userID})}>
                     <LargeTile name={this.props.content[i].communityName} imageUri={this.props.content[i].image} description={this.props.content[i].communityDescription} />
                 </TouchableHighlight>
             )

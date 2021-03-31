@@ -19,7 +19,9 @@ const queryIsNotNil = R.curry(
 export default function Community({ navigation }) {
     
     const communityID = navigation.getParam("communityID");
-    console.log(communityID)
+    const userID = navigation.getParam("userID");
+    console.log(communityID);
+    console.log(userID); 
 
     const community = useCommunity(communityID);
 
@@ -50,11 +52,11 @@ export default function Community({ navigation }) {
     }
 
     const createAProposal = () => {
-        navigation.navigate("CreateProposal")
+        navigation.navigate("CreateProposal", {communityID: communityID, userID: userID})
     }
 
     const seeTags = () => {
-        navigation.navigate("Tags")
+        navigation.navigate("Tags", {userID: userID})
     }
 
     return(

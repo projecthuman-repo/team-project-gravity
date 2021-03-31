@@ -5,6 +5,8 @@ import {BackArrow, BottomButton, CameraButtonWithTitle} from "../components/Butt
 import {Title, DetailsBlock} from "../components/Text";
 import { useMutation } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost'
+import { SafeAreaInsetsContext } from "react-native-safe-area-context";
+import { State } from "react-native-gesture-handler";
 
 
 
@@ -26,9 +28,10 @@ const CREATE_COMMUNITY = gql`
 `
 
 export default function CreateCommunity ({ navigation }) {
-
+    const userID = navigation.getParam("userID");
+    console.log(userID);
    
-    let userID = "33"
+    // let userID = "33"
     let communityName = "nice21"
     let communityDescription = "cool community vibes"
     let bucketname = "3"
@@ -37,6 +40,10 @@ export default function CreateCommunity ({ navigation }) {
 
     const [addFileUpload, { loading, error }] = useMutation(ADD_FILE_UPLOAD);
     const [filenameReturned, setFilenameReturned] = useState('')
+    // values from text input
+    const [name, setName] = useState('')
+    const [description, setDescription] = useState('')
+
 
     const choosePhoto = async () => {
         const {data} = await (addFileUpload({
@@ -65,6 +72,21 @@ export default function CreateCommunity ({ navigation }) {
         navigation.navigate("CommunityList")
       }
 
+      const updateUserEntry = e => {
+        const target = e.target;
+        const value = target.value;
+        const name = target.name;
+        console.log("reached")
+
+        if (name == 'name') {
+          setName(value)
+          console.log(name + value)
+        } else if (name == 'description') {
+          setDescription(value)
+        }
+        // this.setState({[name]: value})
+    }  
+      
 
     // The text things are for spaces, not sure of a better way to do it
     return(
@@ -79,7 +101,7 @@ export default function CreateCommunity ({ navigation }) {
                     </View>
             </TouchableHighlight>
 
-            <DetailsBlock />
+            <DetailsBlock setNamepls={setName} setDescriptionpls={setDescription}/>
 
             <View style={{marginTop: 10, marginBottom: 60}}>
                 <Text style={Styles.RedSubtitleLeftPadded}>Tags</Text>

@@ -25,7 +25,7 @@ mutation Register($userID:ID, $bio: String, $name: String){
   }
 }`
 
-export default function Signup({ navigation }) {
+export default function Signup({ navigation }, props) {
         
     const pressHandler = () => {
         navigation.navigate("Picture")
@@ -33,6 +33,9 @@ export default function Signup({ navigation }) {
     
     const [register, { loading2, error2 }] = useMutation(REGISTER);
     const [userIDReturned, setUserIDReturned] = useState('')
+    const [Fname, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
     let userID = "50"
     let bio = "nice"
     let name = "name"

@@ -120,10 +120,10 @@ class DetailsBlock extends Component {
                 <Text style={Styles.RedSubtitleLeftPadded}>Details</Text>
 
                 <View style={{marginHorizontal: 35, paddingVertical: 8}}>
-                    <TextInput style={{height: 35, width: "100%", borderColor: "black", borderWidth: 1, alignSelf: "center", borderRadius: 6, paddingLeft: 5}} multiline={true} placeholder="Name"></TextInput>
+                    <TextInput style={{height: 35, width: "100%", borderColor: "black", borderWidth: 1, alignSelf: "center", borderRadius: 6, paddingLeft: 5}} multiline={true} placeholder="Name" name="name" onChangeText={this.props.toSetName}></TextInput>
                 </View>
                 <View style={{marginHorizontal: 35, paddingVertical: 5}}>
-                    <TextInput style={{height: 170, width: "100%", borderColor: "black", borderWidth: 1, alignSelf: "center", borderRadius: 6, paddingLeft: 5}} multiline={true} placeholder="Description"></TextInput>
+                    <TextInput style={{height: 170, width: "100%", borderColor: "black", borderWidth: 1, alignSelf: "center", borderRadius: 6, paddingLeft: 5}} multiline={true} placeholder="Description" name="description" onChangeText={this.props.toSetDescription}></TextInput>
                 </View>
             </View>
         )

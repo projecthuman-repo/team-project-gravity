@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {View, Text, Image} from "react-native";
+import {View, Text, Image, TouchableHighlight, ScrollView} from "react-native";
 
 class SmallTile extends Component {
     render() {
@@ -39,7 +39,55 @@ class LargeTile extends Component {
     }
 }
 
+class SmallTileList extends Component {
+    render() {
+        var tiles = [];
+
+        for (let i = 0; i < this.props.content.length; i++) {
+            tiles.push(
+                <TouchableHighlight onPress={this.props.content[i].link}>
+                    <SmallTile name={this.props.content[i].name} imageUri={this.props.content[i].image}/>
+                </TouchableHighlight>
+            )
+        }
+
+        return (
+            <View style={{height:130, marginTop: 20}}>
+                <ScrollView horizontal={true}>
+                    { tiles }
+                </ScrollView>
+            </View>
+        )
+    }
+}
+
+class LargeTileList extends Component {
+    render() {
+        const navigation = this.props.navigation;
+        const userID = this.props.userID;
+        var tiles = [];
+
+        for (let i = 0; i < this.props.content.length; i++) {
+            tiles.push(
+                <TouchableHighlight onPress={() => navigation.navigate("Community", {communityID: this.props.content[i].communityID, userID: userID})}>
+                    <LargeTile name={this.props.content[i].communityName} imageUri={this.props.content[i].image} description={this.props.content[i].communityDescription} />
+                </TouchableHighlight>
+            )
+        }
+
+        return (
+            <View style={{marginBottom: 20}}>
+                <ScrollView style={{paddingTop: 10, paddingLeft: 20, paddingRight: 20}}>
+                    { tiles }
+                </ScrollView>
+            </View>
+        )
+    }
+}
+
 export {
     SmallTile,
-    LargeTile
+    LargeTile,
+    SmallTileList,
+    LargeTileList
 }

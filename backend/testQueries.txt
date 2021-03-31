@@ -21,6 +21,15 @@ query Status($userID: ID){
     }
   }
   
+
+query FindAllCommunityProposals($communityID: ID){
+    findallCommunityProposals(communityID: $communityID){
+    communityProposalID
+    communityProposalName
+    communityProposalDescription
+  }
+}
+
 query CommunityProposalMember($communityProposalID: ID){
     communityProposalMember(communityProposalID: $communityProposalID) {
       communityProposalID

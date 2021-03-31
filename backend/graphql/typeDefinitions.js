@@ -84,6 +84,7 @@ const typeDefs = gql`
     findUsersCommunities(userID: ID): [Community]
     findAllCommunities: [Community]
     findCommunitysUsers(communityID: ID): [User]
+    findallCommunityProposals(communityID: ID): [CommunityProposal]
     createPresignedLink(bucketName: String, type: String,  filename: String): String
   }
 
@@ -92,12 +93,11 @@ const typeDefs = gql`
     createCommunity(userID: ID, communityName: String, communityDescription: String): Community
     createCommunityProposal(userID: ID, communityID: ID, communityProposalName: String, communityProposalDescription: String): CommunityProposal
     addFileUpload(bucketname: String, type: String, file: Upload!, filename: String): File
-    addCommunityMember(userID: ID, communityID: ID, status: String): CommunityMember
+    addCommunityMember(userID: ID, communityID: ID, status: Status): CommunityMember
     }
 `
 
 module.exports = typeDefs
-
 
 
 

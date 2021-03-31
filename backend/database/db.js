@@ -54,8 +54,7 @@ const CommunityStatus = Conn.define('community_status', {
     },
     status: {
         type: Sequelize.ENUM('admin', 'user'),
-        allowNull: false,
-        unique: true
+        allowNull: false
     }
 })
 
@@ -88,10 +87,10 @@ const CommunityProposal = Conn.define('community_proposal', {
         type: Sequelize.STRING,
         allowNull: false
     },
-    // communityId: {
-    //     type: Sequelize.UUID,
-    //     allowNull: false
-    // }
+    communityId: {
+        type: Sequelize.UUID,
+        allowNull: false
+    }
 });
 
 const CommunityProposalMember = Conn.define('community_proposal_member', {

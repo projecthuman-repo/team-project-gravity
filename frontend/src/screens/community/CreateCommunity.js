@@ -28,7 +28,7 @@ const CREATE_COMMUNITY = gql`
 `
 
 export default function CreateCommunity ({ navigation }) {
-  
+
     const userID = navigation.getParam("userID");
    
     // let userID = "33"

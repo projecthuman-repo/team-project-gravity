@@ -4,8 +4,8 @@
 This repository is used to develop the mobile (iOS and Android) application SpotStitch, which is also functional as a web application. It is temporarily deployed on the web awaiting deployment on the Play Store & Apple Store.
 
 ### Tech Stack
-  - Frontend: React Native
-  - Backend: GraphQL with Express middleware and MinIO for image storage
+  - Front-end: React Native
+  - Back-end: GraphQL with Express middleware and MinIO for image storage
   - Database: MySQL (using the Sequelize library) 
   - CI/CD: Githib Actions
   - Deployment: Heroku
@@ -26,19 +26,19 @@ This repository is used to develop the mobile (iOS and Android) application Spot
       • Fake data that can be imported into the MySQL database
   |- graphql
     |- index.js:
-      • Main file where the backend is run from, connected to MySQL and the static UI pages, and listens for calls to the backend
+      • Main file where the back-end is run from, connected to MySQL and the static UI pages, and listens for calls to the back-end
     |- resolvers.js: 
       • Includes functions that generate a response from a GraphQL query or mutation
     |- typeDefinitions.js: 
-      • Includes the schema of the objects created and returned from the backend
+      • Includes the schema of the objects created and returned from the back-end
   |- .env-copy: 
       • configuration file required to be copied by the developer into a .env file (that the developer creates) to match the MySQL configurations of a developer (setup explained further below)
   |- minioClient.js: 
       • Includes the necessary configurations for MinIO
   |- testMutations.txt: 
-      • Examples of all the Mutations that can be performed by the GraphQL backend, which can be copy and pasted into the GraphQL Playground
+      • Examples of all the Mutations that can be performed by the GraphQL back-end, which can be copy and pasted into the GraphQL Playground
   |- testQueries.txt: 
-      • Examples of all the Queries that can be performed by the GraphQL backend, which can be copy and pasted into the GraphQL Playground
+      • Examples of all the Queries that can be performed by the GraphQL back-end, which can be copy and pasted into the GraphQL Playground
 - frontend
   |- android: 
       • Includes all the necessary configuration files to run the application on an Android emulator
@@ -51,11 +51,11 @@ This repository is used to develop the mobile (iOS and Android) application Spot
     |- hooks: 
       • Includes GraphQL Query hooks
       |- queries: 
-        • Includes all the necessary queries that are used by the frontend to perform queries or GET calls to the GraphQL backend
+        • Includes all the necessary queries that are used by the front-end to perform queries or GET calls to the GraphQL back-end
     |- images: 
       • Includes all images that are displayed statically throughout the screens / pages of the application
     |- screens: 
-      • Includes all the screens / UI display pages for the frontend
+      • Includes all the screens / UI display pages for the front-end
       |- community: 
          • Includes all the screens / UI display pages related to community pages
       |- components: 
@@ -69,12 +69,12 @@ This repository is used to develop the mobile (iOS and Android) application Spot
       |- HomeStack.js: 
           • File that allows for navigation between pages
   |- web-build: 
-      • The static build of the UI pages that will be used by the backend when deploying the application
+      • The static build of the UI pages that will be used by the back-end when deploying the application
 ```
 
 ---
 
-## Backend Setup: GraphQL, Express and MinIO
+## Back-end Setup: GraphQL, Express and MinIO
 
 NPM is our back-end package manager. Download the necessary packages outlined in the `package.lock` file via:
 
@@ -112,11 +112,10 @@ You should now see `root %`, or `%` underneath the command:
 
     select User, Host from mysql.user;
 
-That's it!
 
-**Connecting Backend and MySQL**
+**Connecting Back-end and MySQL**
 
-The configuration files for the database must be added to the backend code:
+The configuration files for the database must be added to the back-end code:
 
 1. In `./backend/`, create a file called `.env` (be very careful when creating this file - it MUST be called exactly this).
 2. Copy and paste the contents from `./backend/.env-copy` into your newly created `.env` file
@@ -126,7 +125,7 @@ The configuration files for the database must be added to the backend code:
    DB_PASSWORD=password
    DB_DB=spotstitch`
 
-## Running the Backend
+## Running the Back-end
 
 Before running the back-end, the database must running. Go to Docker Desktop and ensure the SpotStitch container is running.
 
@@ -136,7 +135,7 @@ Then, open the command-line interface and execute:
     CREATE DATABASE spotstitch;
     USE spotstitch;
 
-Now the database is running! You can run the backend via:
+Now the database is running! You can run the back-end via:
 
     cd ./backend #assuming you are currently at the root of the repository
     npm start
@@ -168,7 +167,7 @@ Notes:
   - The reason for the patch file is that without the modification, images on the application will not be displayed. Anytime that yarn install is re-run, the patch MUST be re-run as well.
   - you may have to install pod before being able to run the `pod install` command. If you run into issues when running `pod install`, you may need to install CocoaPods. More information on how to do so can be found here: https://cocoapods.org/
 
-**Frontend: Auth0**
+**Front-end: Auth0**
 
 To be able to use Auth0, a developer must create an Auth0 account, and within that account, create an application. Currently, the Auth0 account being used is under a previous developer of the app. If the new team wants to have full access to be able to view the accounts registered through Auth0, then the following steps must be taken:
 
@@ -187,7 +186,7 @@ To be able to use Auth0, a developer must create an Auth0 account, and within th
 
     NOTE: the {domain} should be replaced with the domain assigned to your application (which can be found at the top of the "Settings" page you are currently on.
    - Scroll to the bottom of the page and click on the blue button "Save Changes"
-4. Update the configuration file in this repository's frontend
+4. Update the configuration file in this repository's front-end
     - Keep the Auth0 tab open in your web browser, and in your code editor, navigate to `./frontend/src/atuh0-configuration-mobile.js`
     - Replace the string next to clientID with the clientID of your newly created Auth0 application, which can be found in the Auth0 Settings tab of your application (the page you were on in Step 3) just below where you found the Domain.
     - Replace the string next to domain with the domain of your newly created Auth0 application (it is the same domain that was found and used in step 3)
@@ -206,43 +205,11 @@ To run an iOS emulator, you must be on a Mac. Simply download Xcode off of the A
 
 Then, to run the application in the front-end:
 
-<<<<<<< Updated upstream
-    ```
-    docker run --name=spotstitch -p 3306:3306 -e MYSQL_ROOT_PASSWORD=password -d mysql/mysql-server:latest
-    docker start spotstitch
-
-3. In Docker Desktop, access the spotstitch container command-line interface and execute:
-    
-    ```
-    mysql -uroot -ppassword --host=localhost -P3306
-    CREATE DATABASE spotstitch;
-    USE spotstitch;
-
-NOTE: if you are running your docker container from a Windows computer, you may have to do this extra step before being able to have the repository's backend connect to your database:
-
-Kaden can you please add the extra steps you needed to do here?
-
-**Connecting Backend and MySQL**
-
-The configuration files for the database must be added to the backend code:
-
-1. In `./backend/`, create a file called `.env` (be very careful when creating this file - it MUST be called exactly this).
-2. Copy and paste the contents from `./backend/.env-copy` into your newly created `.env` file
-3. Replace each of the `<..>` with your local MySQL configurations. If you set up your docker container exactly as was done in steps 2&3, your configuration file should look like:
-  `DB_HOST=localhost
-   DB_USER=root
-   DB_PASSWORD=password
-   DB_DB=spotstitch`
-
-**Running the Backend**
-Now that both the backend and database is setup, you should be able to run the backend!
-=======
     cd ./frontend  # From repository root
     
     yarn run web # Running web app
     
     yarn run ios # Running iOS
->>>>>>> Stashed changes
 
     yarn run android # running Android
     
@@ -258,7 +225,7 @@ Tests are currently being implemented using Jest and Yarn.
 
 There is a GitHub Actions CI/CD pipeline implemented which will automatically run a suite of tests upon pushing to `main`. The results of these automated tests can be seen on the GitHub repository under the Actions tab.
 
-The existing tests can be found in the .github/workflows/ folder.
+The existing tests can be found in the .github/workflows folder.
 
 ---
 
@@ -266,9 +233,9 @@ The existing tests can be found in the .github/workflows/ folder.
 
 ### Deployment Description
 
-As the product is not ready to be shipped on mobile, the web verison of the application is currently deployed via Heroku. To do this, the entire repository is technically deployed, however the `package.json` file in the root directory runs the backend, which in turn hosts a minified version of the front-end pages.
+As the product is not ready to be shipped on mobile, the web verison of the application is currently deployed via Heroku. To do this, the entire repository is technically deployed, however the `package.json` file in the root directory runs the back-end, which in turn hosts a minified version of the front-end pages.
 
-The minified version of the frontend pages can be found in `./frontend/web-build/index.html`.
+The minified version of the front-end pages can be found in `./frontend/web-build/index.html`.
 
 The minfied version is NOT automatically updated whenever UI changes are made - the minified version of the UI MUST be updated everytime that UI changes are made. This is done via:
 

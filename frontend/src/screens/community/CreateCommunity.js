@@ -28,9 +28,10 @@ const CREATE_COMMUNITY = gql`
 `
 
 export default function CreateCommunity ({ navigation }) {
-
+    const userID = navigation.getParam("userID");
+    console.log(userID);
    
-    let userID = "33"
+    // let userID = "33"
     let communityName = "nice21"
     let communityDescription = "cool community vibes"
     let bucketname = "3"

@@ -11,6 +11,7 @@ export default function useCommunityQuery(communityID) {
     community(communityID: $communityID) {
       communityID
       communityName
+      communityDescription
     }
   }
   `, {
@@ -22,7 +23,3 @@ export default function useCommunityQuery(communityID) {
   })
   return community
 }
-
-
-
-

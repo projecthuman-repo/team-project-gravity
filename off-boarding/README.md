@@ -151,12 +151,14 @@ Before being able to fully run the backend, the database must also be set up as 
 
 2. Create a docker container and start it:
 
-    ```docker run --name=spotstitch -p 3306:3306 -e MYSQL_ROOT_PASSWORD=password -d mysql/mysql-server:latest
+    ```
+    docker run --name=spotstitch -p 3306:3306 -e MYSQL_ROOT_PASSWORD=password -d mysql/mysql-server:latest
     docker start spotstitch
 
 3. In Docker Desktop, access the spotstitch container command-line interface and execute:
     
-    ```mysql -uroot -ppassword --host=localhost -P3306
+    ```
+    mysql -uroot -ppassword --host=localhost -P3306
     CREATE DATABASE spotstitch;
     USE spotstitch;
 

@@ -1,9 +1,9 @@
 # SPOTSTITCH OFF-BOARDING
 
-## General Information Before Getting Started
-This repository is used to develop a mobile (iOS and Android) application, which is also deployed as a web application (as of right now since the product is still being built and has yet to be shipped and deployed on the Play or Apple Store).
+## General Information
+This repository is used to develop the mobile (iOS and Android) application SpotStitch, which is also functional as a web application. It is temporarily deployed on the web awaiting deployment on the Play Store & Apple Store.
 
-The tech stack that is being used is:
+### Tech Stack
   - Frontend: React Native
   - Backend: GraphQL with Express middleware and MinIO for image storage
   - Database: MySQL (using the Sequelize library) 
@@ -11,7 +11,9 @@ The tech stack that is being used is:
   - Deployment: Heroku
   - Third-party authentication: Auth0
 
-## Format of Important Files
+---
+
+## Relevant Repository Files
 ``` r
 - package.json: Used when deploying the repository on Heroku
 - backend
@@ -70,21 +72,93 @@ The tech stack that is being used is:
       • The static build of the UI pages that will be used by the backend when deploying the application
 ```
 
-## Developer Set-up & Requirements
+---
 
-**Frontend: React Native Application**
+## Backend Setup: GraphQL, Express and MinIO
+
+NPM is our back-end package manager. Download the necessary packages outlined in the `package.lock` file via:
+
+    cd ./backend # From repository root
+    npm install
+
+**Database: MySQL**
+
+If you don't already have Docker Desktop, you can download it here: https://www.docker.com/products/docker-desktop
+
+Create a docker container and start it:
+
+    docker run --name=spotstitch -p 3306:3306 -e MYSQL_ROOT_PASSWORD=password -d mysql/mysql-server:latest
+    docker start spotstitch
+
+In Docker Desktop, access the spotstitch container command-line interface and execute:
+    
+    mysql -uroot -ppassword --host=localhost -P3306
+    CREATE DATABASE spotstitch;
+    USE spotstitch;
+
+***The remaining steps for setting up the database are only relevant to Windows' users***.
+
+In the same terminal window, execute:
+
+    select User, Host from mysql.user;
+
+If you see `root %`, or simply `%` in the output generated, you're done! Otherwise, run these commands:
+
+    CREATE USER 'root'@'%' IDENTIFIED BY 'password';
+    GRANT ALL PRIVILEGES ON *.* TO 'root'@'%';
+    FLUSH PRIVILEGES;
+
+You should now see `root %`, or `%` underneath the command:
+
+    select User, Host from mysql.user;
+
+That's it!
+
+**Connecting Backend and MySQL**
+
+The configuration files for the database must be added to the backend code:
+
+1. In `./backend/`, create a file called `.env` (be very careful when creating this file - it MUST be called exactly this).
+2. Copy and paste the contents from `./backend/.env-copy` into your newly created `.env` file
+3. Replace each of the `<..>` with your local MySQL configurations. If you set up your docker container exactly as was done in steps 2&3, your configuration file should look like:
+  `DB_HOST=localhost
+   DB_USER=root
+   DB_PASSWORD=password
+   DB_DB=spotstitch`
+
+## Running the Backend
+
+Before running the back-end, the database must running. Go to Docker Desktop and ensure the SpotStitch container is running.
+
+Then, open the command-line interface and execute:
+
+    mysql -uroot -ppassword --host=localhost -P3306
+    CREATE DATABASE spotstitch;
+    USE spotstitch;
+
+Now the database is running! You can run the backend via:
+
+    cd ./backend #assuming you are currently at the root of the repository
+    npm start
+
+From here, run the front-end with the above steps and that's everything!    
+
+---
+
+## Front-end Setup
 
 **Installing Packages: General**
-The package manager used in the frontend is Yarn. Download the necessary packages outlined in the `yarn.lock` file by doing:
 
-    cd ./frontend #assuming you are currently at the root of the repository
+Yarn is our front-end package manager. Download the necessary packages outlined in the `yarn.lock` file via:
+
+    cd ./frontend # From repository root
     yarn install
     
 **Installing Packages: iOS**
 
-Before running the application on an iOS emulator, the following steps must be performed:
+In addition to the general install, the following steps must be performed before running the application on an iOS emulator:
 
-    cd ./frontend #assuming you are currently at the root of the repository
+    cd ./frontend # From repository root
     patch --forward node_modules/react-native/Libraries/Image/RCTUIImageViewAnimated.m < patches/show-image-RCTUIImageViewAnimated.patch
     cd ios
     pod install
@@ -93,23 +167,6 @@ Notes:
   - iOS seems to only be able to run using Xcode simulators, which are only accesbile through MacOS. If you are using a Windows computer, you will not be able to run an iOS simulator.
   - The reason for the patch file is that without the modification, images on the application will not be displayed. Anytime that yarn install is re-run, the patch MUST be re-run as well.
   - you may have to install pod before being able to run the `pod install` command. If you run into issues when running `pod install`, you may need to install CocoaPods. More information on how to do so can be found here: https://cocoapods.org/
-
-**Running the Frontend Application**
-
-The application can be ran on the Web, an iOS emulator or an Android emulator. To run each:
-
-    cd ./frontend/  #assuming you are currently at the root of the repository
-    
-    # to run web:
-    yarn run web
-    
-    # to run iOS:
-    yarn run ios
-    
-    # to run Android:
-    yarn run android
-    
-These commands can also be found within the `./frontend/package.json` file.
 
 **Frontend: Auth0**
 
@@ -127,6 +184,7 @@ To be able to use Auth0, a developer must create an Auth0 account, and within th
   - In this section, there should be "Allowed Callback URLs" and "Allowed Logout URLs"
   - In each of the "Allowed Callback URLs" and "Allowed Logout URLs" boxes, copy and paste:
   `com.frontend://{domain}/ios/com.frontend/callback, com.frontend://{domain}/android/com.frontend/callback`
+
     NOTE: the {domain} should be replaced with the domain assigned to your application (which can be found at the top of the "Settings" page you are currently on.
    - Scroll to the bottom of the page and click on the blue button "Save Changes"
 4. Update the configuration file in this repository's frontend
@@ -136,21 +194,19 @@ To be able to use Auth0, a developer must create an Auth0 account, and within th
 
 If there are any further difficulties with Auth0 or the new developers would like to discuss the auth0 configuration with the developer whose configurations are currently being used, please email dd.mcallister@hotmail.ca.
 
-**Backend: GraphQL, Express and MinIO**
+## Running the Front-end
 
-The package manager used in the backkend is NPM. Download the necessary packages outlined in the `package.lock` file by doing:
+The application can be ran on the Web, an iOS emulator or an Android emulator. Web requires no additional setup to run, however the mobile emulators will.
 
-    cd ./backend #assuming you are currently at the root of the repository
-    npm install
-    
-Before being able to fully run the backend, the database must also be set up as well:
+To use an Anrdoid emulator, download Android Studio and follow the steps outlined under 'Android development environment' here:
 
-**Database: MySQL**
+https://reactnative.dev/docs/next/environment-setup
 
-1. If you don't already have Docker, you can download Docker Desktop from here: https://www.docker.com/products/docker-desktop
+To run an iOS emulator, you must be on a Mac. Simply download Xcode off of the App Store!
 
-2. Create a docker container and start it:
+Then, to run the application in the front-end:
 
+<<<<<<< Updated upstream
     ```
     docker run --name=spotstitch -p 3306:3306 -e MYSQL_ROOT_PASSWORD=password -d mysql/mysql-server:latest
     docker start spotstitch
@@ -180,75 +236,82 @@ The configuration files for the database must be added to the backend code:
 
 **Running the Backend**
 Now that both the backend and database is setup, you should be able to run the backend!
-
-    cd ./backend #assuming you are currently at the root of the repository
-    npm start
+=======
+    cd ./frontend  # From repository root
     
+    yarn run web # Running web app
+    
+    yarn run ios # Running iOS
+>>>>>>> Stashed changes
+
+    yarn run android # running Android
+    
+These commands can be found within the `./frontend/package.json` file.
+
+Note: If running the front-end in conjunction with the back-end, it should be run last should be run last (i.e. after running the database and back-end)
+
+---
 
 ## Testing CI/CD
 
-There is GitHub Actions CI/CD implemented which will automatically run a suite of tests run upon each pull request.
+Tests are currently being implemented using Jest and Yarn.
 
-Using Jest and Yarn, we have a test that compares 
+There is a GitHub Actions CI/CD pipeline implemented which will automatically run a suite of tests upon pushing to `main`. The results of these automated tests can be seen on the GitHub repository under the Actions tab.
 
-Soon we will have another suite of tests to run upon individual pushes, and another upon deployment.
+The existing tests can be found in the .github/workflows/ folder.
 
-Using Jest and Yarn, we have a test that compares the version of a page in the current PR, to the version prior to the PR.
-
-If the snapshots or different the test forces the pusher to either override the existing snapshot (if they meant to update a screen), or, the test fails if the user did not mean to update the selected screen.
-
-These tests will run automatically in our CI workflow files (see .github/workflows/basic_tests.yml for the details; the code for automatically running the snapshot comparison is commented out but will be ran shortly).
+---
 
 ## Deployment
 
-### Important Warnings
+### Deployment Description
 
-Currently, deployment is set up by a previous developer of the app. This way, only they have access to deployment. If you would like to be able to control the deployment of the application, then you can either:
-
-- Add your own Heroku environments (and remove the connection of the current Heroku environments):
-```
-git remote rm production
-git remote rm staging
-```
-OR:
-
-- Contact the previous developer (at dd.mcallister@hotmail.ca) in charge of deployment to arrange a way for you to gain access to the current Heroku environments. 
-
-
-### General Description of How Deployment Works
-
-Currently, as the product is not ready to be shipped, the web verison of the application is deployed by Heroku. To do this, the entire repository is technically deployed, however the `package.json` file in the root directory runs the backend, which in turn hosts a minified version of the front-end pages.
+As the product is not ready to be shipped on mobile, the web verison of the application is currently deployed via Heroku. To do this, the entire repository is technically deployed, however the `package.json` file in the root directory runs the backend, which in turn hosts a minified version of the front-end pages.
 
 The minified version of the frontend pages can be found in `./frontend/web-build/index.html`.
 
-The minfied version is NOT automatically updated whenever UI changes are made - the minified version of the UI MUST be updated everytime that UI changes are made. This is done by:
+The minfied version is NOT automatically updated whenever UI changes are made - the minified version of the UI MUST be updated everytime that UI changes are made. This is done via:
 
-```
-#in the root directory:
-npm build-frontend
-```
-OR:
-```
-#in the root directory:
-cd frontend && expo build:web
-```
+
+    npm build-frontend # From repository root
+
+OR via:
+
+    ./cd frontend # From repository root
+    expo build:web
+
 
 NOTE: expo is required to perform this command. You may need to `npm install -g expo-cli` in the root directory before being able to perform either of the commands above.
 
 After peforming either of the above commands, the `./frontend/web-build` folder should be updated. This can now be pushed to the main branch to be used for deployment!
 
-### Staging Deployment
+### Current Staging Deployment
 
 The staging environment is currently deployed on Heroku and can be found here: https://spotstitch-staging.herokuapp.com/.
 
 Currently, when the branch `main` is changed on Github (by any changes, including a direct push to the main branch, merging a branch into main, etc.) the staging environment will automatically be redeployed by Heroku.
 
-### Production Deployment
+### Current Production Deployment
 
 The production app is currently deployed on Heroku here: https://spotstitch.herokuapp.com/.
 
 After testing any changes in the staging environment, the changes can be manually deployed to the production environment.
 
-This can be done by doing: 
-`git push production main`
+This can be done via:
 
+    git push production main
+
+
+### Transition of Deployment Ownership
+
+Currently, deployment is set up by a previous developer of the app. This way, only they have access to deployment.
+
+
+If you would like to be able to control the deployment of the application, then you can add your own Heroku environments, and remove the connection of the current Heroku environments via:
+```
+git remote rm production
+git remote rm staging
+```
+OR
+
+Contact the previous developer (at dd.mcallister@hotmail.ca) in charge of deployment to arrange a way for you to gain access to the current Heroku environments.

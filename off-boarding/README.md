@@ -183,7 +183,7 @@ Now that both the backend and database is setup, you should be able to run the b
     npm start
     
 
-##Testing CI/CD
+## Testing CI/CD
 
 There is GitHub Actions CI/CD implemented which will automatically run a suite of tests run upon each pull request.
 

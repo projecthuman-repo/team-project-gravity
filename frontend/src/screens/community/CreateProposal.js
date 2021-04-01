@@ -31,9 +31,9 @@ export default function CreateProposal ({ navigation }) {
     // let communityID = "3"
 
     //uncomment when not testing
-    const userID = navigation.getParam("userID")
+    // const userID = navigation.getParam("userID")
     //micas for testing so remove after
-    //const userID = "1234567"
+    const userID = "12"
     const communityID = navigation.getParam("communityID")
 
     console.log("USERID", userID);

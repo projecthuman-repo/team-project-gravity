@@ -41,9 +41,10 @@ export default function Bio({ navigation }) {
         }    
     }
     else{
-        if(nameEvent && bioEvent){
+        // if(nameEvent && bioEvent){
+            console.log("NAME AND BIO EVENT");
             console.log(nameEvent, bioEvent)
-        }
+        // }
         
     }
 
@@ -97,7 +98,7 @@ export default function Bio({ navigation }) {
             <View style={Styles.MiddleOfScreen}>
                 <Text style={Styles.RedSubtitle}> What's Your Name? </Text>
                 <Text> </Text>
-
+                
                 {Platform.OS === 'web' ? 
                 <View>
                 <TextInput style={{height: "15%", width: "60%"}} multiline={true} placeholder="Enter your name here" onChange={text => setNameEvent(text)}></TextInput>

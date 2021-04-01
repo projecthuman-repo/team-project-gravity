@@ -35,9 +35,9 @@ export default function Home({ navigation }) {
 
 
     //micas for testing so remove after
-    // const goToPicture = () => {
-    //     navigation.navigate("Picture",  {userID: "12"})
-    // }
+    const goToPicture = () => {
+        navigation.navigate("Picture",  {userID: "12"})
+    }
 
     const getUserID = async () => {
         const url = `https://${mobile_credentials.domain}/userinfo`;
@@ -52,6 +52,7 @@ export default function Home({ navigation }) {
         });
         const res = await fetch(request);
         try {
+            console.log(res.status);
             const userInfo = await res.json();
             return userInfo.sub;
         } catch(err) {
@@ -97,11 +98,11 @@ export default function Home({ navigation }) {
             </TouchableWithoutFeedback>
             {//micas for testing so remove after 
             }               
-            {/* <TouchableWithoutFeedback onPress={goToPicture}>
+            <TouchableWithoutFeedback onPress={goToPicture}>
                 <View style={Styles.Button}>
                     <Text style={Styles.ButtonText}> FOR TESTING </Text>
                 </View>
-            </TouchableWithoutFeedback> */}
+            </TouchableWithoutFeedback>
         </View>
     )
 }

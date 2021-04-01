@@ -25,7 +25,6 @@ import Auth0 from 'react-native-auth0';
 var mobile_credentials = require('../auth0-configuration-mobile');
 const auth0 = new Auth0(mobile_credentials);
 
-
 class Login extends Component {
     constructor(props) {
         super(props);
@@ -44,7 +43,7 @@ class Login extends Component {
                 Alert.alert('AccessToken: ' + credentials.accessToken);
                 console.log(credentials);
                 this.setState({ accessToken: credentials.accessToken });
-                this.props.navigation.navigate("CommunityList")
+                this.props.navigation.navigate("CommunityList") 
             })
             .catch(error => console.log(error));
         }
@@ -65,13 +64,6 @@ class Login extends Component {
     render() {
         let loggedIn = this.state.accessToken === null ? false : true;
         return (
-        // <View style = { styles.container }>
-        //     <Text style = { styles.header }> Auth0Sample - Login </Text>
-        //     <Text>
-        //         You are{ loggedIn ? ' ' : ' not ' }logged in . </Text>
-        //         <Button onPress = { loggedIn ? this._onLogout : this._onLogin }
-        //         title = { loggedIn ? 'Log Out' : 'Log In' }/>
-        // </View >
 
         <SafeAreaView style={{backgroundColor: 'white', height: '100%'}}>
         <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Home")}>

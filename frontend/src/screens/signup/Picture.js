@@ -4,9 +4,10 @@ import Styles from "../../style/Style";
 import {BackArrow, BottomButton} from "../components/Buttons";
 
 export default function Picture({ navigation }) {
-        
+
+    const userID = navigation.getParam("userID");    
     const pressHandler = () => {
-        navigation.navigate("ProfileHeader")
+        navigation.navigate("ProfileHeader", {userID: userID})
     }
 
     const choosePhoto = () => {
@@ -15,7 +16,7 @@ export default function Picture({ navigation }) {
 
     return(
         <SafeAreaView style={{backgroundColor: "white", height: "100%", width: "100%"}}>
-            <BackArrow function={() => navigation.navigate("Signup")} />
+            <BackArrow function={() => navigation.navigate("Home")} />
         
             <View style={Styles.MiddleOfScreen}>
                 <Text style={Styles.RedSubtitle}> Let's See You </Text>

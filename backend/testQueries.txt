@@ -3,6 +3,7 @@ Input the following queries into playground to test:
 query User($userID: ID){
     user(userID: $userID) {
       userID
+      bio
     }
 }
   
@@ -20,12 +21,43 @@ query Status($userID: ID){
     }
   }
   
+
+query FindAllCommunityProposals($communityID: ID){
+    findallCommunityProposals(communityID: $communityID){
+    communityProposalID
+    communityProposalName
+    communityProposalDescription
+  }
+}
+
 query CommunityProposalMember($communityProposalID: ID){
     communityProposalMember(communityProposalID: $communityProposalID) {
       communityProposalID
       communityProposalMemberID
     }
   }
+
+query FindUsersCommunities($userID: ID){
+    findUsersCommunities(userID: $userID){
+    communityName
+    communityID
+  }
+}
+
+query FindAllCommunities{
+    findAllCommunities{
+    communityName
+    communityID
+  }
+}
+
+query FindCommunitysUsers($communityID: ID){
+    findCommunitysUsers(communityID: $communityID){
+    userID
+  }
+}
+
+
   
 query CommunityProposalMember2($userID: ID){
     communityProposalMember(userID: $userID) {

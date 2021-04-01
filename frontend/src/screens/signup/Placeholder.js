@@ -4,10 +4,17 @@ import Styles from "../../style/Style";
 import {BottomButton} from "../components/Buttons";
 
 export default function Placeholder({ navigation }) {
-        
+      
+    //uncomment after testing
     const pressHandler = () => {
         navigation.navigate("Home")
     }
+
+    //micas for testing so remove after
+    // let userID = navigation.getParam("userID");
+    // const pressHandler = () => {
+    //     navigation.navigate("CommunityList", {userID:userID})
+    // }
 
     return(
         <View style={Styles.MiddleOfScreen}>

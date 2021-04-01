@@ -3,12 +3,20 @@ const { gql} = require('apollo-server');
 const typeDefs = gql`
   type User {
     userID: ID 
+    bio: String
+    name: String
   }
 
   type Community {
     communityID: ID
     communityName: String
     communityDescription: String
+  }
+ 
+  type File {
+    filename: String!
+    mimetype: String!
+    encoding: String!
   }
 
   enum Status {
@@ -73,17 +81,23 @@ const typeDefs = gql`
     status(userID: ID): CommunityStatus
     communityProposal(communityProposalID: ID): CommunityProposal
     communityProposalMember(userID: ID, communityProposalID: ID): CommunityProposalMember
+    findUsersCommunities(userID: ID): [Community]
+    findAllCommunities: [Community]
+    findCommunitysUsers(communityID: ID): [User]
+    findallCommunityProposals(communityID: ID): [CommunityProposal]
+    createPresignedLink(bucketName: String, type: String,  filename: String): String
   }
 
   type Mutation {
-    register(userID: ID, username: String, password: String): User
+    register(userID: ID, bio: String, name: String): User
     createCommunity(userID: ID, communityName: String, communityDescription: String): Community
     createCommunityProposal(userID: ID, communityID: ID, communityProposalName: String, communityProposalDescription: String): CommunityProposal
+    addFileUpload(bucketname: String, type: String, file: Upload!, filename: String): File
+    addCommunityMember(userID: ID, communityID: ID, status: Status): CommunityMember
     }
 `
 
 module.exports = typeDefs
-
 
 
 

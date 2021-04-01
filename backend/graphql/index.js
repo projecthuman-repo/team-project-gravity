@@ -2,7 +2,6 @@ const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
 const express = require("express");
 
-
 const database = require('../database/db')
 const sequelizeConnection = database.Conn
 const User = database.User

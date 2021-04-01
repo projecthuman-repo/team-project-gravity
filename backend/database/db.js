@@ -19,6 +19,14 @@ const User = Conn.define('user', {
         type: Sequelize.UUID,
         allowNull: false,
         primaryKey: true
+    },
+    name: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    bio: {
+        type: Sequelize.STRING,
+        allowNull: false
     }
 });
 
@@ -46,24 +54,23 @@ const CommunityStatus = Conn.define('community_status', {
     },
     status: {
         type: Sequelize.ENUM('admin', 'user'),
-        allowNull: false,
-        unique: true
+        allowNull: false
     }
 })
 
 const CommunityMember = Conn.define('community_member', {
-    // userId: {
-    //     type: Sequelize.UUID,
-    //     allowNull: false
-    // },
-    // communityId: {
-    //     type: Sequelize.UUID,
-    //     allowNull: false
-    // },
-    // communityStatus: {
-    //     type: Sequelize.UUID,
-    //     allowNull: false
-    // }
+    userId: {
+        type: Sequelize.UUID,
+        allowNull: false
+    },
+    communityId: {
+        type: Sequelize.UUID,
+        allowNull: false
+    },
+    communityStatusId: {
+        type: Sequelize.UUID,
+        allowNull: false
+    }
 });
 
 const CommunityProposal = Conn.define('community_proposal', {
@@ -80,10 +87,10 @@ const CommunityProposal = Conn.define('community_proposal', {
         type: Sequelize.STRING,
         allowNull: false
     },
-    // communityId: {
-    //     type: Sequelize.UUID,
-    //     allowNull: false
-    // }
+    communityId: {
+        type: Sequelize.UUID,
+        allowNull: false
+    }
 });
 
 const CommunityProposalMember = Conn.define('community_proposal_member', {

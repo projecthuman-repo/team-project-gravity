@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Styles from "../../style/Style";
-import {View, Text, TouchableWithoutFeedback, Image, TouchableHighlight} from "react-native";
+import {View, Text, TouchableWithoutFeedback, Image, TouchableHighlight, Platform} from "react-native";
 
 class BackArrow extends Component {
     render() {
@@ -56,9 +56,11 @@ class ProfileButton extends Component {
     render() {
         return (
             <View style={{position: "absolute", right: 0}}>
+            { Platform.OS === 'web' ? null :
                 <TouchableWithoutFeedback onPress={this.props.function}>
                     <Image style={{height: 26, width: 26}} source={require('../../images/profileIcon.png')} />
                 </TouchableWithoutFeedback>
+            }
             </View>
         )
     }

@@ -2,15 +2,16 @@
 -- source <entire file path to this file>/dummy_data.sql
 
 -- insert users
-INSERT INTO users (id,createdAt,updatedAt) VALUES (1,'2021-03-04 09:22:11','2021-03-04 20:34:13');
-INSERT INTO users (id,createdAt,updatedAt) VALUES (2,'2021-03-04 09:22:11','2021-03-04 20:34:13');
-INSERT INTO users (id,createdAt,updatedAt) VALUES (3,'2021-03-04 09:22:11','2021-03-04 20:34:13');
-INSERT INTO users (id,createdAt,updatedAt) VALUES (4,'2021-03-04 09:22:11','2021-03-04 20:34:13');
-INSERT INTO users (id,createdAt,updatedAt) VALUES (5,'2021-03-04 09:22:11','2021-03-04 20:34:13');
+INSERT INTO users (id,name,bio,createdAt,updatedAt) VALUES ("605b7fc350a67f006b17fee0", "name1", "bio1", '2021-03-04 09:22:11','2021-03-04 20:34:13');
+INSERT INTO users (id,name,bio,createdAt,updatedAt) VALUES (2,"name2", "bio2", '2021-03-04 09:22:11','2021-03-04 20:34:13');
+INSERT INTO users (id,name,bio,createdAt,updatedAt) VALUES (3,"name3", "bio3", '2021-03-04 09:22:11','2021-03-04 20:34:13');
+INSERT INTO users (id,name,bio,createdAt,updatedAt) VALUES (4,"name4", "bio4", '2021-03-04 09:22:11','2021-03-04 20:34:13');
+INSERT INTO users (id,name,bio,createdAt,updatedAt) VALUES (5,"name5", "bio5", '2021-03-04 09:22:11','2021-03-04 20:34:13');
 
 -- insert communities
 INSERT INTO communities (id,name,description,createdAt,updatedAt) VALUES 
-(1,'LGBTQ+','People of all sexualities and gender identities are welcome','2021-03-04 09:22:11','2021-03-04 20:34:13');
+-- (1,'LGBTQ+','People of all sexualities and gender identities are welcome','2021-03-04 09:22:11','2021-03-04 20:34:13');
+(1,'LGBTQ+','Fundraising or fund-raising is the process of seeking and gathering voluntary financial contributions by engaging individuals, businesses, charitable foundations, or governmental agencies. Although fundraising typically refers to efforts to gather money for non-profit organizations, it is sometimes used to refer to the identification and solicitation of investors or other sources of capital for for-profit enterprises. Traditionally, fundraising has consisted mostly of asking for donations through face-to-face fundraising, such as door-knocking. In recent years, though, new forms such as online fundraising or reformed version of grassroots fundraising have emerged.','2021-03-04 09:22:11','2021-03-04 20:34:13');
 INSERT INTO communities (id,name,description,createdAt,updatedAt) VALUES 
 (2,'BLM','Black lives matter organization','2021-03-04 09:22:11','2021-03-04 20:34:13');
 INSERT INTO communities (id,name,description,createdAt,updatedAt) VALUES 

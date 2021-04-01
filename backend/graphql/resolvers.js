@@ -6,6 +6,9 @@ const { minioClient } = require('../minioClient')
 const resolvers = {
   Query: {
     user: async (parent, { userID }, { User }) => {
+      if (userID === '') {
+        return null;
+      }
       const userInfo = await User.findOne({ where : {id: userID}});
       if (userInfo) {
         return {
@@ -14,7 +17,8 @@ const resolvers = {
           "name": userInfo.dataValues.name
         }
       } else {
-        throw new ApolloError(`userID:${userID} doesn't exist`);
+        // throw new ApolloError(`userID:${userID} doesn't exist`);
+        return {};
       }
     },
     community: async (parent, { communityID }, { Community }) => {

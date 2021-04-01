@@ -3,6 +3,8 @@ import {View, Text, TouchableWithoutFeedback, Image, Alert, Platform} from "reac
 import Auth0 from 'react-native-auth0';
 import useUser from '../hooks/queries/useUser';
 
+import * as RA from 'ramda-adjunct';
+
 import Styles from "../style/Style";
 
 export default function Home({ navigation }) {
@@ -12,20 +14,23 @@ export default function Home({ navigation }) {
     const mobile_credentials = require('../auth0-configuration-mobile');
     const auth0 = new Auth0(mobile_credentials);
 
+    const checkUserExists = () => {
+        if (user.bio) {
+            navigation.navigate("CommunityList", {userID: userID})
+        } else {
+            navigation.navigate("Picture", {userID: userID})
+        }
+    }
+
     const user = useUser(userID);
+    if (RA.isNotNil(user)) {
+        checkUserExists();
+    }
 
     const goToCommunityList = () => {
         //TODO: update userId to be something like "guest" which indicates no one has signed in
         // then anywhere that Platform.OS is used, replace with check to see if userId === 'guest'
         navigation.navigate("CommunityList")
-    }
-    
-    const checkUserExists = () => {
-        if (user) {
-            navigation.navigate("CommunityList", {userID: userID})
-        } else {
-            navigation.navigate("Picture", {userID: userID})
-        }
     }
 
     const getUserID = async () => {
@@ -33,26 +38,31 @@ export default function Home({ navigation }) {
 
         var header = new Headers();
         header.append('Authorization', `Bearer ${accessToken}`);
+        header.append('Accept', 'application/json');
 
         const request = new Request(url, {
             method: 'GET',
             headers: header,
         });
         const res = await fetch(request);
-        const userInfo = await res.json();
-        return userInfo.sub;
+        try {
+            const userInfo = await res.json();
+            return userInfo.sub;
+        } catch(err) {
+            console.log("JSON ERR");
+            console.log(err);
+        }
     }
 
     const onLogin = async () => {
         try {
+            await auth0.webAuth.clearSession({});
             const credentials = await auth0.webAuth.authorize({scope: 'openid profile email'});
-            Alert.alert('AccessToken: ' + credentials.accessToken);
             setAccessToken(credentials.accessToken);
 
             const subUserID = await getUserID();
 
             setUserID(subUserID.replace("auth0|", ""));
-            
             checkUserExists();
 
         } catch(err) {

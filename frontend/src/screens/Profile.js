@@ -1,5 +1,5 @@
 import React, { useState} from "react";
-import {View, ScrollView, Text, TouchableWithoutFeedback, TouchableOpacity, Image, FlatList, SafeAreaView} from "react-native";
+import {View, ScrollView, Text, TouchableWithoutFeedback, Alert, TouchableOpacity, Image, FlatList, SafeAreaView} from "react-native";
 import Auth0 from 'react-native-auth0';
 import Styles from "../style/Style";
 import {BackArrow} from "./components/Buttons";

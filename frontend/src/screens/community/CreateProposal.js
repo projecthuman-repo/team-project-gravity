@@ -30,10 +30,13 @@ export default function CreateProposal ({ navigation }) {
     // let userID = "33"
     // let communityID = "3"
 
+    //uncomment when not testing
     const userID = navigation.getParam("userID")
+    //micas for testing so remove after
+    //const userID = "1234567"
     const communityID = navigation.getParam("communityID")
 
-    console.log(userID);
+    console.log("USERID", userID);
     console.log(communityID);
 
     let communityProposalName = "okay"
@@ -42,8 +45,8 @@ export default function CreateProposal ({ navigation }) {
     const type ="communityProposal"
     let file=""
 
-    const [name, setName] = useState('')
-    const [description, setDescription] = useState('')
+    const [nameEvent, setNameEvent] = useState('')
+    const [descriptionEvent, setDescriptionEvent] = useState('')
 
     const [addFileUpload, { loading, error }] = useMutation(ADD_FILE_UPLOAD);
     const [filenameReturned, setFilenameReturned] = useState('')
@@ -58,20 +61,29 @@ export default function CreateProposal ({ navigation }) {
         console.log("hey" + filenameReturned)
     }
 
+    console.log(userID)
+    if(descriptionEvent.nativeEvent && nameEvent.nativeEvent.text){
+        console.log(nameEvent.nativeEvent.text, descriptionEvent.nativeEvent.text)
+    }
+
+
 
     const [createCommunityProposal, { proposalLoading, proposalError }] = useMutation(CREATE_PROPOSAL);
-    const [communityPropIDReturned, setCommunityPropIDReturned] = useState('')
+
     const submit = async () => {
+      if(descriptionEvent.nativeEvent && nameEvent.nativeEvent){
+        const communityProposalDescription = descriptionEvent.nativeEvent.text
+        const communityProposalName = nameEvent.nativeEvent.text
         const {data} = await (createCommunityProposal({
             variables: { userID, communityID, communityProposalName, communityProposalDescription },
           }))
-        console.log(data.createCommunity.communityProposalID)
-        const newID = data.createCommunity.communityProposalID
-        console.log(newID)
-        setCommunityPropIDReturned(newID)
-        console.log("hey" + communityPropIDReturned)
+        console.log(data.createCommunityProposal.communityProposalID)
         alert("Proposal was published")
         navigation.navigate("CommunityList")
+      }
+      else{
+        alert("Fill out name and description")
+      }
     }
 
     const modifyRoles = () => {
@@ -91,7 +103,18 @@ export default function CreateProposal ({ navigation }) {
                     </View>
             </TouchableHighlight>
 
-            <DetailsBlock toSetName={setName} toSetDescriptionpls={setDescription}/>
+            {/* <DetailsBlock toSetName={setName} toSetDescriptionpls={setDescription}/> */}
+            
+            <Text style={Styles.RedSubtitle}> Community Proposal Name: </Text>
+            <Text> </Text>
+            <TextInput style={{height: "15%", width: "60%"}} multiline={true} placeholder="Enter community name here" onChange={text => setNameEvent(text)}></TextInput>
+            <Text>&nbsp;</Text>
+
+            
+            <Text style={Styles.RedSubtitle}> Community Proposal Description: </Text>
+            <Text> </Text>
+            <TextInput style={{height: "15%", width: "60%"}} multiline={true} placeholder="Enter community description in this field" onChange={text => setDescriptionEvent(text)}></TextInput>
+            <Text>&nbsp;</Text>
 
             <Text style={Styles.RedSubtitleLeftPadded}>Help Needed</Text>
             <TouchableWithoutFeedback onPress={() => modifyRoles()}>

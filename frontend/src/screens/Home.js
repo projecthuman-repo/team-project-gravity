@@ -33,6 +33,12 @@ export default function Home({ navigation }) {
         navigation.navigate("CommunityList")
     }
 
+
+    //micas for testing so remove after
+    // const goToPicture = () => {
+    //     navigation.navigate("Picture",  {userID: "12"})
+    // }
+
     const getUserID = async () => {
         const url = `https://${mobile_credentials.domain}/userinfo`;
 
@@ -89,6 +95,13 @@ export default function Home({ navigation }) {
                     <Text style={Styles.ButtonText}> CONTINUE AS GUEST </Text>
                 </View>
             </TouchableWithoutFeedback>
+            {//micas for testing so remove after 
+            }               
+            {/* <TouchableWithoutFeedback onPress={goToPicture}>
+                <View style={Styles.Button}>
+                    <Text style={Styles.ButtonText}> FOR TESTING </Text>
+                </View>
+            </TouchableWithoutFeedback> */}
         </View>
     )
 }

@@ -30,63 +30,43 @@ const CREATE_COMMUNITY = gql`
 export default function CreateCommunity ({ navigation }) {
 
     const userID = navigation.getParam("userID");
-   
-    // let userID = "33"
-    let communityName = "nice21"
-    let communityDescription = "cool community vibes"
+    const communityID = navigation.getParam("communityID");
+  
     let bucketname = "3"
     let file=""
     const type = "community"
 
-    const [addFileUpload, { loading, error }] = useMutation(ADD_FILE_UPLOAD);
-    const [filenameReturned, setFilenameReturned] = useState('')
-    // values from text input
-    const [name, setName] = useState('')
-    const [description, setDescription] = useState('')
+    const [nameEvent, setNameEvent] = useState('')
+    const [descriptionEvent, setDescriptionEvent] = useState('')
 
+
+    const [addFileUpload, { loading, error }] = useMutation(ADD_FILE_UPLOAD);
+   
 
     const choosePhoto = async () => {
         const {data} = await (addFileUpload({
             variables: { type, bucketname, file },
           }))
         console.log(data.addFileUpload.filename)
-        const newFilename = data.addFileUpload.filename
-        console.log(newFilename)
-        setFilenameReturned(newFilename)
-        console.log("hey" + filenameReturned)
     }
 
     const [createCommunity, { communityLoading, communityError }] = useMutation(CREATE_COMMUNITY);
-    const [communityIDReturned, setCommunityIDReturned] = useState('')
 
     const submit = async () => {
-        const {data} = await (createCommunity({
-            variables: { userID, communityName, communityDescription },
-          }))
-        console.log(data.createCommunity.communityID)
-        const newID = data.createCommunity.communityID
-        console.log(newID)
-        setCommunityIDReturned(newID)
-        console.log("hey" + communityIDReturned)
-        alert("Community was created")
-        navigation.navigate("CommunityList")
-      }
-
-      const updateUserEntry = e => {
-        const target = e.target;
-        const value = target.value;
-        const name = target.name;
-        console.log("reached")
-
-        if (name == 'name') {
-          setName(value)
-          console.log(name + value)
-        } else if (name == 'description') {
-          setDescription(value)
+        if(descriptionEvent.nativeEvent && nameEvent.nativeEvent){
+          const communityDescription = descriptionEvent.nativeEvent.text
+          const communityName = nameEvent.nativeEvent.text
+          const {data} = await (createCommunity({
+              variables: { userID, communityName, communityDescription },
+            }))
+          console.log(data.createCommunity.communityID)
+          alert("Community was created")
+          navigation.navigate("CommunityList", {userID:userID})
         }
-        // this.setState({[name]: value})
-    }  
-      
+        else{
+          alert("Specify a name and description")
+        }
+      }
 
     // The text things are for spaces, not sure of a better way to do it
     return(
@@ -101,7 +81,16 @@ export default function CreateCommunity ({ navigation }) {
                     </View>
             </TouchableHighlight>
 
-            <DetailsBlock setNamepls={setName} setDescriptionpls={setDescription}/>
+            <Text style={Styles.RedSubtitle}> Community Name: </Text>
+            <Text> </Text>
+            <TextInput style={{height: "15%", width: "60%"}} multiline={true} placeholder="Enter community name here" onChange={text => setNameEvent(text)}></TextInput>
+            <Text>&nbsp;</Text>
+
+            <Text style={Styles.RedSubtitle}> Community Description: </Text>
+            <Text> </Text>
+            <TextInput style={{height: "15%", width: "60%"}} multiline={true} placeholder="Enter community description in this field" onChange={text => setDescriptionEvent(text)}></TextInput>
+            <Text>&nbsp;</Text>
+
 
             <View style={{marginTop: 10, marginBottom: 60}}>
                 <Text style={Styles.RedSubtitleLeftPadded}>Tags</Text>

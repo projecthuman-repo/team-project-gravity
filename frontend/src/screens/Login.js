@@ -39,7 +39,7 @@ class Login extends Component {
                 Alert.alert('AccessToken: ' + credentials.accessToken);
                 console.log(credentials);
                 this.setState({ accessToken: credentials.accessToken });
-                this.props.navigation.navigate("CommunityList")
+                this.props.navigation.navigate("CommunityList") 
             })
             .catch(error => console.log(error));
     };

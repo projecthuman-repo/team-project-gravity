@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {View, Text, TouchableWithoutFeedback, TouchableHighlight, Image, SafeAreaView, TextInput} from "react-native";
+import {View, Text, TouchableWithoutFeedback, TouchableHighlight, Image, SafeAreaView, TextInput, Platform} from "react-native";
 import Styles from "../../style/Style";
 import {BackArrow, BottomButton, CameraButtonWithTitle} from "../components/Buttons"
 import {Title, DetailsBlock} from "../components/Text";

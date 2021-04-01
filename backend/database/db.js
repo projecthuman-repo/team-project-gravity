@@ -41,7 +41,7 @@ const Community = Conn.define('community', {
         allowNull: false
     },
     description: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
         allowNull: false
     }
 });
@@ -84,7 +84,7 @@ const CommunityProposal = Conn.define('community_proposal', {
         allowNull: false
     },
     description: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
         allowNull: false
     },
     communityId: {

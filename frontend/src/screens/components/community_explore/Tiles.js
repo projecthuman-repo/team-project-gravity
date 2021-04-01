@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {View, Text, Image, TouchableHighlight, ScrollView} from "react-native";
+import {View, Text, Image, TouchableOpacity, ScrollView} from "react-native";
 
 class SmallTile extends Component {
     render() {
@@ -24,7 +24,7 @@ class LargeTile extends Component {
             <View style={{paddingBottom: 15}}>
                 <View style={{height: 400, width: '100%', borderWidth: 0.5, borderColor: '#dddddd'}}>
                     <View style={{flex: 2}}>
-                        <Image source={this.props.imageUri} 
+                        <Image source={require("../../../images/doc.png")} 
                         style={{flex:1, width: null, height:null, resizeMode: 'cover'}}/>
                     </View>
 
@@ -45,9 +45,9 @@ class SmallTileList extends Component {
 
         for (let i = 0; i < this.props.content.length; i++) {
             tiles.push(
-                <TouchableHighlight onPress={this.props.content[i].link}>
+                <TouchableOpacity onPress={this.props.content[i].link}>
                     <SmallTile name={this.props.content[i].name} imageUri={this.props.content[i].image}/>
-                </TouchableHighlight>
+                </TouchableOpacity>
             )
         }
 
@@ -69,9 +69,9 @@ class LargeTileList extends Component {
 
         for (let i = 0; i < this.props.content.length; i++) {
             tiles.push(
-                <TouchableHighlight onPress={() => navigation.navigate("Community", {communityID: this.props.content[i].communityID, userID: userID})}>
+                <TouchableOpacity onPress={() => navigation.navigate("Community", {communityID: this.props.content[i].communityID, userID: userID})}>
                     <LargeTile name={this.props.content[i].communityName} imageUri={this.props.content[i].image} description={this.props.content[i].communityDescription} />
-                </TouchableHighlight>
+                </TouchableOpacity>
             )
         }
 

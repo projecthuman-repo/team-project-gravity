@@ -9,6 +9,9 @@ import Styles from "../style/Style";
 
 export default function Home({ navigation }) {
     
+    // SUPRESS WARNINGS
+    console.disableYellowBox = true;
+
     const [accessToken, setAccessToken] = useState('');
     const [userID, setUserID] = useState('');
     const mobile_credentials = require('../auth0-configuration-mobile');
@@ -39,6 +42,11 @@ export default function Home({ navigation }) {
         navigation.navigate("Picture",  {userID: "12"})
     }
 
+    //micas for testing so remove after
+    const dummyuid = () => {
+        navigation.navigate("CommunityList",  {userID: "1"})
+    }
+
     const getUserID = async () => {
         const url = `https://${mobile_credentials.domain}/userinfo`;
 
@@ -63,7 +71,7 @@ export default function Home({ navigation }) {
 
     const onLogin = async () => {
         try {
-            await auth0.webAuth.clearSession({});
+            // await auth0.webAuth.clearSession({});
             const credentials = await auth0.webAuth.authorize({scope: 'openid profile email'});
             setAccessToken(credentials.accessToken);
 
@@ -98,7 +106,7 @@ export default function Home({ navigation }) {
             </TouchableWithoutFeedback>
             {//micas for testing so remove after 
             }               
-            <TouchableWithoutFeedback onPress={goToPicture}>
+            <TouchableWithoutFeedback onPress={dummyuid}>
                 <View style={Styles.Button}>
                     <Text style={Styles.ButtonText}> FOR TESTING </Text>
                 </View>

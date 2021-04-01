@@ -239,7 +239,7 @@ const resolvers = {
         throw new ApolloError('User already exists')
       }
     },
-    createCommunity: async (parent, { userID, communityName, communityDescription }, { Community}) => {
+    createCommunity: async (parent, { userID, communityName, communityDescription }, { Community, CommunityStatus, CommunityMember}) => {
       //const reqRep = 1000
       //get some kind of user rep score to check it before making a comm 
       const existing = await Community.findOne({ where : {name: communityName}});
@@ -251,6 +251,13 @@ const resolvers = {
           if (err) return console.log(err)
           console.log('Communitys bucket created successfully in "us-east-1".')
         })
+        //add the user that made the community to the community
+        const newStatus = new CommunityStatus({id: uuidv4(), status: "admin"})
+        await newStatus.save()
+        const communityStatusValue = newStatus.dataValues.id
+        console.log(communityStatusValue)
+        const newMember = new CommunityMember({userId: userID, communityId: newCommunity.dataValues.id, communityStatusId: communityStatusValue})
+        await newMember.save()
         return {
           "communityID": newCommunity.dataValues.id,
           "communityName": newCommunity.dataValues.name,

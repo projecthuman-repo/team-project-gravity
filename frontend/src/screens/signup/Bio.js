@@ -97,6 +97,9 @@ export default function Bio({ navigation }) {
             <View style={Styles.MiddleOfScreen}>
                 <Text style={Styles.RedSubtitle}> What's Your Name? </Text>
                 <Text> </Text>
+
+                {Platform.OS === 'web' ? 
+                <View>
                 <TextInput style={{height: "15%", width: "60%"}} multiline={true} placeholder="Enter your name here" onChange={text => setNameEvent(text)}></TextInput>
                 <Text>&nbsp;</Text>
 
@@ -107,6 +110,22 @@ export default function Bio({ navigation }) {
 
                 <Text style={Styles.RedSubtitle}> Where Else Are You? </Text>
                 <Text>&nbsp;</Text>
+                </View>
+
+                : 
+                <View>
+                <TextInput style={{height: "15%", width: "60%"}} multiline={true} placeholder="Enter your name here" onChangeText={text => setNameEvent(text)}></TextInput>
+                <Text>&nbsp;</Text>
+
+                <Text style={Styles.RedSubtitle}> What Makes You, YOU? </Text>
+                <Text> </Text>
+                <TextInput style={{height: "15%", width: "60%"}} multiline={true} placeholder="Enter user bio in this field" onChangeText={text => setBioEvent(text)}></TextInput>
+                <Text>&nbsp;</Text>
+
+                <Text style={Styles.RedSubtitle}> Where Else Are You? </Text>
+                <Text>&nbsp;</Text>
+                </View>
+                }
                 {// TODO: these TouchableWithoutFeedback need to be set to call submit(true) on a function for button press
                 }
                 <TouchableWithoutFeedback onPress={redirect}>

@@ -74,7 +74,7 @@ export default function Community({ navigation }) {
                 <Text style={Styles.miniTitle}>Tags</Text>
                 <View style={Styles.Button}>
                     <TouchableWithoutFeedback onPress={seeTags}>
-                        <Text style={Styles.ButtonText}> Nutrition </Text>
+                        <Text style={Styles.ButtonText}>Sample Tag</Text>
                     </TouchableWithoutFeedback>
                 </View>
             </View>

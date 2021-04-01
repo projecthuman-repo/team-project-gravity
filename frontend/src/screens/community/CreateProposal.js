@@ -135,46 +135,40 @@ export default function CreateProposal ({ navigation }) {
             
             {Platform.OS === 'web' ? 
             <View>
-            <Text style={Styles.RedSubtitle}> Community Proposal Name: </Text>
+            <Text style={Styles.RedSubtitle}>Community Proposal Name: </Text>
             <Text> </Text>
             <TextInput style={{height: "15%", width: "60%"}} multiline={true} placeholder="Enter community name here" onChange={text => setNameEvent(text)}></TextInput>
             <Text>&nbsp;</Text>
 
             
-            <Text style={Styles.RedSubtitle}> Community Proposal Description: </Text>
+            <Text style={Styles.RedSubtitle}>Community Proposal Description: </Text>
             <Text> </Text>
             <TextInput style={{height: "15%", width: "60%"}} multiline={true} placeholder="Enter community description in this field" onChange={text => setDescriptionEvent(text)}></TextInput>
             <Text>&nbsp;</Text>
             </View>
             :
             <View>
-            <Text style={Styles.RedSubtitle}> Community Proposal Name: </Text>
+            <Text style={{paddingTop: 30, marginHorizontal: 20, color: '#f85f69', fontSize: 16, fontWeight: '700'}}>Community Proposal Name: </Text>
             <Text> </Text>
-            <TextInput style={{height: "15%", width: "60%"}} multiline={true} placeholder="Enter community name here" onChangeText={text => setNameEvent(text)}></TextInput>
+            <TextInput style={{marginHorizontal: 20, height: "15%", width: "60%"}} multiline={true} placeholder="Name" onChangeText={text => setNameEvent(text)}></TextInput>
             <Text>&nbsp;</Text>
 
             
-            <Text style={Styles.RedSubtitle}> Community Proposal Description: </Text>
+            <Text style={{marginHorizontal: 20, color: '#f85f69', fontSize: 16, fontWeight: '700'}}>Community Proposal Description: </Text>
             <Text> </Text>
-            <TextInput style={{height: "15%", width: "60%"}} multiline={true} placeholder="Enter community description in this field" onChangeText={text => setDescriptionEvent(text)}></TextInput>
+            <TextInput style={{marginHorizontal: 20, height: "15%", width: "60%"}} multiline={true} placeholder="Description" onChangeText={text => setDescriptionEvent(text)}></TextInput>
             <Text>&nbsp;</Text>
             </View>
             }
 
-            <Text style={Styles.RedSubtitleLeftPadded}>Help Needed</Text>
+            <Text style={{marginHorizontal: 20, color: '#f85f69', fontSize: 16, fontWeight: '700'}}>Help Needed</Text>
             <TouchableWithoutFeedback onPress={() => modifyRoles()}>
-                <Text style={{marginLeft: 35, color: "#1881fa", fontSize: 15, paddingTop: 2, fontWeight: "600"}}>Modify Roles</Text>
+                <Text style={{marginLeft: 20, color: "#1881fa", fontSize: 15, fontWeight: "600"}}>Modify Roles</Text>
             </TouchableWithoutFeedback>
 
-            <View style={{marginTop: 10, marginBottom: 60}}>
-                <Text style={Styles.RedSubtitleLeftPadded}>Tags</Text>
-            </View>
+            <Text style={{paddingTop: 20, marginHorizontal: 20, color: '#f85f69', fontSize: 16, fontWeight: '700'}}>Tags</Text>
 
-            <TouchableWithoutFeedback onPress={submit} >
-            <View style={Styles.Button}>
-                <Text style={Styles.ButtonText}> Create </Text>
-            </View>
-          </TouchableWithoutFeedback>
+          <BottomButton text="Create" function={submit} />
         </SafeAreaView>
     )
 }

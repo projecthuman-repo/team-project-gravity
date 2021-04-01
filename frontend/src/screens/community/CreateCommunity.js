@@ -124,14 +124,15 @@ export default function CreateCommunity ({ navigation }) {
             </View>
             :
             <View>
-            <Text style={Styles.RedSubtitle}> Community Name: </Text>
+            <Text style={{paddingTop: 30, marginHorizontal: 20, color: '#f85f69', fontSize: 16, fontWeight: '700'}}>Community Name: </Text>
             <Text> </Text>
-            <TextInput style={{height: "15%", width: "60%"}} multiline={true} placeholder="Enter community name here" onChangeText={text => setNameEvent(text)}></TextInput>
+            <TextInput style={{marginHorizontal: 20, height: "15%", width: "60%"}} multiline={true} placeholder="Name" onChangeText={text => setNameEvent(text)}></TextInput>
             <Text>&nbsp;</Text>
 
-            <Text style={Styles.RedSubtitle}> Community Description: </Text>
+            
+            <Text style={{marginHorizontal: 20, color: '#f85f69', fontSize: 16, fontWeight: '700'}}>Community Description: </Text>
             <Text> </Text>
-            <TextInput style={{height: "15%", width: "60%"}} multiline={true} placeholder="Enter community description in this field" onChangeText={text => setDescriptionEvent(text)}></TextInput>
+            <TextInput style={{marginHorizontal: 20, height: "15%", width: "60%"}} multiline={true} placeholder="Description" onChangeText={text => setDescriptionEvent(text)}></TextInput>
             <Text>&nbsp;</Text>
             </View>
             }
@@ -141,11 +142,8 @@ export default function CreateCommunity ({ navigation }) {
             <View style={{marginTop: 10, marginBottom: 60}}>
                 <Text style={Styles.RedSubtitleLeftPadded}>Tags</Text>
             </View>
-            <TouchableWithoutFeedback onPress={submit} >
-            <View style={Styles.Button}>
-                <Text style={Styles.ButtonText}> Create </Text>
-            </View>
-          </TouchableWithoutFeedback>
+
+          <BottomButton text="Create" function={submit} />
         </SafeAreaView>
     )
 }

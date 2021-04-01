@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {View, Text, TextInput, TouchableWithoutFeedback, Button, Image, SafeAreaView} from "react-native";
+import {View, Text, TextInput, TouchableWithoutFeedback, Button, Image, Platform, SafeAreaView} from "react-native";
 import Styles from "../../style/Style";
 import {BackArrow, BottomButton} from "../components/Buttons";
 import { useMutation, useQuery } from '@apollo/react-hooks';
@@ -35,29 +35,59 @@ export default function Bio({ navigation }) {
     const [bioEvent, setBioEvent] = useState('')
 
     console.log(userID)
-    if(bioEvent.nativeEvent && nameEvent.nativeEvent.text){
-        console.log(nameEvent.nativeEvent.text, bioEvent.nativeEvent.text)
+    if (Platform.OS === 'web'){
+        if(bioEvent.nativeEvent && nameEvent.nativeEvent.text){
+            console.log(nameEvent.nativeEvent.text, bioEvent.nativeEvent.text)
+        }    
+    }
+    else{
+        if(nameEvent && bioEvent){
+            console.log(nameEvent, bioEvent)
+        }
+        
     }
 
     const [register, { loading, error }] = useMutation(REGISTER);
     const submit = async (stitched) => {
-        if(nameEvent.nativeEvent && bioEvent.nativeEvent){
-            const bio = bioEvent.nativeEvent.text
-            const name = nameEvent.nativeEvent.text
-            const {data} = await (register({
-                variables: { userID, bio, name },
-            }))
-            console.log(data.register.bio)
-            if(stitched){
-                navigation.navigate("StitchedPlaceholder",  {userID: userID})
+        if (Platform.OS === 'web'){
+            if(nameEvent.nativeEvent && bioEvent.nativeEvent){
+                const bio = bioEvent.nativeEvent.text
+                const name = nameEvent.nativeEvent.text
+                const {data} = await (register({
+                    variables: { userID, bio, name },
+                }))
+                console.log(data.register.bio)
+                if(stitched){
+                    navigation.navigate("StitchedPlaceholder",  {userID: userID})
+                }
+                else{
+                    navigation.navigate("Placeholder",  {userID: userID})
+                }
             }
             else{
-                navigation.navigate("Placeholder",  {userID: userID})
+                alert("Input a name and bio to continue")
             }
         }
         else{
-            alert("Input a name and bio to continue")
+            if(nameEvent && bioEvent){
+                const bio = bioEvent
+                const name = nameEvent
+                const {data} = await (register({
+                    variables: { userID, bio, name },
+                }))
+                console.log(data.register.bio)
+                if(stitched){
+                    navigation.navigate("StitchedPlaceholder",  {userID: userID})
+                }
+                else{
+                    navigation.navigate("Placeholder",  {userID: userID})
+                }
+            }
+            else{
+                alert("Input a name and bio to continue")
+            }
         }
+
       }
 
     return(

@@ -41,6 +41,18 @@ export default function CreateCommunity ({ navigation }) {
 
 
     const [addFileUpload, { loading, error }] = useMutation(ADD_FILE_UPLOAD);
+
+    if (Platform.OS === 'web'){
+      if(descriptionEvent.nativeEvent && nameEvent.nativeEvent.text){
+          console.log(descriptionEvent.nativeEvent.text, nameEvent.nativeEvent.text)
+      }    
+    }
+    else{
+        if(nameEvent && descriptionEvent){
+            console.log(nameEvent, descriptionEvent)
+        }
+        
+    }
    
 
     const choosePhoto = async () => {
@@ -53,6 +65,7 @@ export default function CreateCommunity ({ navigation }) {
     const [createCommunity, { communityLoading, communityError }] = useMutation(CREATE_COMMUNITY);
 
     const submit = async () => {
+      if (Platform.OS === 'web'){
         if(descriptionEvent.nativeEvent && nameEvent.nativeEvent){
           const communityDescription = descriptionEvent.nativeEvent.text
           const communityName = nameEvent.nativeEvent.text
@@ -67,6 +80,22 @@ export default function CreateCommunity ({ navigation }) {
           alert("Specify a name and description")
         }
       }
+      else{
+        if(descriptionEvent && nameEvent){
+            const communityDescription = descriptionEvent
+            const communityName = nameEvent
+            const {data} = await (createCommunity({
+              variables: { userID, communityName, communityDescription },
+            }))
+          console.log(data.createCommunity.communityID)
+          alert("Community was created")
+          navigation.navigate("CommunityList", {userID:userID})
+        }
+        else{
+          alert("Specify a name and description")
+        }
+      }
+    }
 
     // The text things are for spaces, not sure of a better way to do it
     return(
@@ -81,6 +110,8 @@ export default function CreateCommunity ({ navigation }) {
                     </View>
             </TouchableHighlight>
 
+            {Platform.OS === 'web' ? 
+            <View>
             <Text style={Styles.RedSubtitle}> Community Name: </Text>
             <Text> </Text>
             <TextInput style={{height: "15%", width: "60%"}} multiline={true} placeholder="Enter community name here" onChange={text => setNameEvent(text)}></TextInput>
@@ -90,6 +121,21 @@ export default function CreateCommunity ({ navigation }) {
             <Text> </Text>
             <TextInput style={{height: "15%", width: "60%"}} multiline={true} placeholder="Enter community description in this field" onChange={text => setDescriptionEvent(text)}></TextInput>
             <Text>&nbsp;</Text>
+            </View>
+            :
+            <View>
+            <Text style={Styles.RedSubtitle}> Community Name: </Text>
+            <Text> </Text>
+            <TextInput style={{height: "15%", width: "60%"}} multiline={true} placeholder="Enter community name here" onChangeText={text => setNameEvent(text)}></TextInput>
+            <Text>&nbsp;</Text>
+
+            <Text style={Styles.RedSubtitle}> Community Description: </Text>
+            <Text> </Text>
+            <TextInput style={{height: "15%", width: "60%"}} multiline={true} placeholder="Enter community description in this field" onChangeText={text => setDescriptionEvent(text)}></TextInput>
+            <Text>&nbsp;</Text>
+            </View>
+            }
+
 
 
             <View style={{marginTop: 10, marginBottom: 60}}>

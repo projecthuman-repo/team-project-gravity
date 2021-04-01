@@ -62,27 +62,55 @@ export default function CreateProposal ({ navigation }) {
     }
 
     console.log(userID)
-    if(descriptionEvent.nativeEvent && nameEvent.nativeEvent.text){
-        console.log(nameEvent.nativeEvent.text, descriptionEvent.nativeEvent.text)
+
+    if (Platform.OS === 'web'){
+      if(descriptionEvent.nativeEvent && nameEvent.nativeEvent.text){
+          console.log(descriptionEvent.nativeEvent.text, nameEvent.nativeEvent.text)
+      }    
     }
+    else{
+        if(nameEvent && descriptionEvent){
+            console.log(nameEvent, descriptionEvent)
+        }
+        
+    }
+   
+
 
 
 
     const [createCommunityProposal, { proposalLoading, proposalError }] = useMutation(CREATE_PROPOSAL);
 
     const submit = async () => {
-      if(descriptionEvent.nativeEvent && nameEvent.nativeEvent){
-        const communityProposalDescription = descriptionEvent.nativeEvent.text
-        const communityProposalName = nameEvent.nativeEvent.text
-        const {data} = await (createCommunityProposal({
+      if (Platform.OS === 'web'){
+        if(descriptionEvent.nativeEvent && nameEvent.nativeEvent){
+          const communityProposalDescription = descriptionEvent.nativeEvent.text
+          const communityProposalName = nameEvent.nativeEvent.text
+          const {data} = await (createCommunityProposal({
+              variables: { userID, communityID, communityProposalName, communityProposalDescription },
+            }))
+          console.log(data.createCommunityProposal.communityProposalID)
+          alert("Proposal was published")
+          navigation.navigate("CommunityList")
+        }
+        else{
+          alert("Fill out name and description")
+        }
+      }
+      else{
+        if(descriptionEvent && nameEvent){
+          const communityProposalDescription = descriptionEvent
+          const communityProposalName = nameEvent
+          const {data} = await (createCommunityProposal({
             variables: { userID, communityID, communityProposalName, communityProposalDescription },
           }))
         console.log(data.createCommunityProposal.communityProposalID)
         alert("Proposal was published")
         navigation.navigate("CommunityList")
       }
-      else{
-        alert("Fill out name and description")
+        else{
+          alert("Specify a name and description")
+        }
       }
     }
 
@@ -105,6 +133,8 @@ export default function CreateProposal ({ navigation }) {
 
             {/* <DetailsBlock toSetName={setName} toSetDescriptionpls={setDescription}/> */}
             
+            {Platform.OS === 'web' ? 
+            <View>
             <Text style={Styles.RedSubtitle}> Community Proposal Name: </Text>
             <Text> </Text>
             <TextInput style={{height: "15%", width: "60%"}} multiline={true} placeholder="Enter community name here" onChange={text => setNameEvent(text)}></TextInput>
@@ -115,6 +145,21 @@ export default function CreateProposal ({ navigation }) {
             <Text> </Text>
             <TextInput style={{height: "15%", width: "60%"}} multiline={true} placeholder="Enter community description in this field" onChange={text => setDescriptionEvent(text)}></TextInput>
             <Text>&nbsp;</Text>
+            </View>
+            :
+            <View>
+            <Text style={Styles.RedSubtitle}> Community Proposal Name: </Text>
+            <Text> </Text>
+            <TextInput style={{height: "15%", width: "60%"}} multiline={true} placeholder="Enter community name here" onChangeText={text => setNameEvent(text)}></TextInput>
+            <Text>&nbsp;</Text>
+
+            
+            <Text style={Styles.RedSubtitle}> Community Proposal Description: </Text>
+            <Text> </Text>
+            <TextInput style={{height: "15%", width: "60%"}} multiline={true} placeholder="Enter community description in this field" onChangeText={text => setDescriptionEvent(text)}></TextInput>
+            <Text>&nbsp;</Text>
+            </View>
+            }
 
             <Text style={Styles.RedSubtitleLeftPadded}>Help Needed</Text>
             <TouchableWithoutFeedback onPress={() => modifyRoles()}>

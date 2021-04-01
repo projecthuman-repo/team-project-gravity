@@ -142,6 +142,22 @@ Now the database is running! You can run the back-end via:
 
 From here, run the front-end with the above steps and that's everything!    
 
+#### **Optional: Using GraphQL Playground**
+
+Upon running the above steps, the database and back-end will be connected and ready to go!
+
+GraphQL has a user interface called GraphQL Playground, which can be accessed at `localhost:4000/graphql`. In this interface, you can use GraphQL to manually create POST (mutation) and GET (query) requests to the database for testing purposes!
+
+For example, you can test querying all existing communities via:
+
+    query {
+      findAllCommunities {
+        communityName
+        communityID
+        communityDescription
+      }
+    }
+
 ---
 
 ## Front-end Setup

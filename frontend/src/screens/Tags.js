@@ -1,12 +1,12 @@
 import React from "react";
-import {View, Text, TextInput, TouchableWithoutFeedback, Image} from "react-native";
+import {View, Text, TextInput, TouchableWithoutFeedback, Image, SafeAreaView} from "react-native";
 import Styles from "../style/CommunityStyle";
 
 export default function Tags({ navigation }) {
     return(
-        <View>
+        <SafeAreaView style={Styles.SafeAreaViewStyle}>
             <Text> Tags </Text>
-        </View>
+        </SafeAreaView>
 
     )
 

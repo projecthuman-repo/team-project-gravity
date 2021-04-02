@@ -75,6 +75,8 @@ export default function CommunityList({ navigation }) {
                 <LargeTileList content={communities} navigation={navigation} userID = {userID}/>
             </View>
 
+            <View style={Styles.WebViewPadding}></View>
+
             <BottomButton text="Create Community" function={() => createCommunity()} />
         </SafeAreaView>
     )

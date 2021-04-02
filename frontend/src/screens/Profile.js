@@ -36,7 +36,6 @@ export default function Home({ navigation }) {
     // The text things are for spaces, not sure of a better way to do it
     return(
         <SafeAreaView style={Styles.SafeAreaViewStyle}>
-            <ScrollView>
             <View style={[{flexDirection:'row', alignItems:'center'}]}>
                 <View style={[{flex:1,flexDirection:'row'}]}>
                     <BackArrow function={() => navigation.navigate("CommunityList")} />
@@ -134,7 +133,6 @@ export default function Home({ navigation }) {
                 {key: "Feed item 4", link: () => navigation.navigate("Community")}
             ]}/>
 
-            </ScrollView>
         </SafeAreaView>
     );
 }

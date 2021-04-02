@@ -56,7 +56,7 @@ class CameraButtonWithTitle extends Component {
 class ProfileButton extends Component {
     render() {
         return (
-            <View style={{position: "absolute", right: 0}}>
+            <View style={Styles.ProfileButton}>
             { Platform.OS === 'web' ? null :
                 <TouchableWithoutFeedback onPress={this.props.function}>
                     <Image style={{height: 26, width: 26}} source={require('../../images/profileIcon.png')} />

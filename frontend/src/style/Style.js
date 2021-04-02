@@ -8,29 +8,38 @@ const bottomButtonWidth = 0.9;
 export default {
     "SafeAreaViewStyle": {
         backgroundColor: "white",
+        position: "absolute",
         height: "100%",
 		
 		...Platform.select({
 			ios: {
-				width: "100%"
+				width: "100%",
+                marginLeft: "0%",
 			},
 			android: {
-				width: "100%"
+				width: "100%",
+                marginLeft: "0%",
 			},
 			default: {
-				width: (webWidth*100).toString() + "%"
+				width: (webWidth*100).toString() + "%",
+                marginLeft: "28%",
 			}
-		}),
+		})
+    },
+
+    "WebViewPadding": {
+        backgroundColor: "white",
+        height: "100%",
 		
 		...Platform.select({
 			ios: {
-				marginLeft: "0%"
+				height: "0%"
 			},
 			android: {
-				marginLeft: "0%"
+				height: "0%"
 			},
 			default: {
-				marginLeft: "28%"
+				height: "100px"
 			}
 		})
     },
@@ -86,25 +95,28 @@ export default {
 				width: (buttonWidth*100).toString() + "%"
 			},
 			default: {
-				width: ((webWidth * buttonWidth)*100).toString() + "%"
+				width: ((webWidth * buttonWidth * 1.4)*100).toString() + "%"
 			}
 		}),
     },
 
     "BottomButton": {
-        marginHorizontal: (((1-bottomButtonWidth)/2)*100).toString() + "%",
-        position: "absolute",
-        bottom: 33,
-
         ...Platform.select({
 			ios: {
-				width: (bottomButtonWidth*100).toString() + "%"
+                position: "absolute",
+				width: (bottomButtonWidth*100).toString() + "%",
+                left: (((1-bottomButtonWidth)/2)*100).toString() + "%",
+                bottom: 33,
 			},
 			android: {
-				width: (bottomButtonWidth*100).toString() + "%"
+                position: "absolute",
+				width: (bottomButtonWidth*100).toString() + "%",
+                left: (((1-bottomButtonWidth)/2)*100).toString() + "%",
+                bottom: 33,
 			},
 			default: {
-				width: ((webWidth * bottomButtonWidth)*100).toString() + "%"
+				width: ((webWidth * bottomButtonWidth)*100).toString() + "%",
+                left: ((webWidth + webWidth/2 - bottomButtonWidth/2)*100).toString() + "%",
 			}
 		}),
     },
@@ -112,14 +124,15 @@ export default {
     "SmallButton": {
         fontFamily: "Asap-Regular",
         backgroundColor: "#fa5f6a",
-        padding: 5,
+        padding: 7,
         // padding: wp("10%"),
         borderRadius: 5,
         // textAlign: "center",
         // width: win.width/2,
-        width: 200,
+        width: 100,
         alignItems: "center",
         marginBottom: 10,
+        marginLeft: 10
     },
 
     "NextButton": {
@@ -131,6 +144,11 @@ export default {
         width: 250,
         alignItems: "center",
         marginBottom: 10,
+    },
+
+    "ProfileButton": {
+        position: "absolute",
+        right: 0,
     },
 
     "ButtonText": {
@@ -209,8 +227,23 @@ export default {
     },
 
     "logo": {
-        width: wp("40%"),
-        height: hp("20%"),
+        ...Platform.select({
+			ios: {
+				width: wp("40%"),
+                height: hp("20%"),
+                marginTop: "0%",
+			},
+			android: {
+				width: wp("40%"),
+                height: hp("20%"),
+                marginTop: "0%",
+			},
+			default: {
+				width: wp(((webWidth*0.8)*100).toString() + "%"),
+                height: hp(((webWidth*0.9)*100).toString() + "%"),
+                marginTop: "50%"
+			}
+		})
     },
 
     "icon": {

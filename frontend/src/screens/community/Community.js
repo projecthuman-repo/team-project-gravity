@@ -60,7 +60,7 @@ export default function Community({ navigation }) {
     }
 
     return(
-        <SafeAreaView style={{backgroundColor: "white", height: "100%"}}>
+        <SafeAreaView style={Styles.SafeAreaViewStyle}>
             <BackArrow function={() => navigation.navigate("CommunityList")} />
 
             <TitleSubtitleActive title={communityName} subtitle="Members" link={() => navigation.navigate("MemberList", {communityID: communityID, communityName: communityName})}/>

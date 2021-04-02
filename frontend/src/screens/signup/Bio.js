@@ -92,7 +92,7 @@ export default function Bio({ navigation }) {
       }
 
     return(
-        <SafeAreaView style={{backgroundColor: "white", height: "100%", width: "100%"}}>
+        <SafeAreaView style={Styles.SafeAreaViewStyle}>
             <BackArrow function={() => navigation.navigate("ProfileHeader")} />
 
             <View style={Styles.MiddleOfScreen}>

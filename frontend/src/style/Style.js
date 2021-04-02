@@ -1,8 +1,40 @@
 import { Platform, Dimensions } from 'react-native';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
+const webWidth = 0.4;
+const buttonWidth = 0.6;
+const bottomButtonWidth = 0.9;
 
 export default {
+    "SafeAreaViewStyle": {
+        backgroundColor: "white",
+        height: "100%",
+		
+		...Platform.select({
+			ios: {
+				width: "100%"
+			},
+			android: {
+				width: "100%"
+			},
+			default: {
+				width: (webWidth*100).toString() + "%"
+			}
+		}),
+		
+		...Platform.select({
+			ios: {
+				marginLeft: "0%"
+			},
+			android: {
+				marginLeft: "0%"
+			},
+			default: {
+				marginLeft: "28%"
+			}
+		})
+    },
+
     "MiddleOfScreen": {
         backgroundColor: "white",
         flex: 1,
@@ -43,10 +75,38 @@ export default {
         // padding: wp("10%"),
         borderRadius: 5,
         // textAlign: "center",
-        // width: win.width/2,
-        width: wp("50%"),
         alignItems: "center",
         marginBottom: 10,
+
+        ...Platform.select({
+			ios: {
+				width: (buttonWidth*100).toString() + "%"
+			},
+			android: {
+				width: (buttonWidth*100).toString() + "%"
+			},
+			default: {
+				width: ((webWidth * buttonWidth)*100).toString() + "%"
+			}
+		}),
+    },
+
+    "BottomButton": {
+        marginHorizontal: (((1-bottomButtonWidth)/2)*100).toString() + "%",
+        position: "absolute",
+        bottom: 33,
+
+        ...Platform.select({
+			ios: {
+				width: (bottomButtonWidth*100).toString() + "%"
+			},
+			android: {
+				width: (bottomButtonWidth*100).toString() + "%"
+			},
+			default: {
+				width: ((webWidth * bottomButtonWidth)*100).toString() + "%"
+			}
+		}),
     },
 
     "SmallButton": {
@@ -134,7 +194,18 @@ export default {
         backgroundColor: "white",
         flex: 1,
         height: hp("100%"),
-        width: wp("100%"),
+        
+        ...Platform.select({
+			ios: {
+				width: wp("100%")
+			},
+			android: {
+				width: wp("100%")
+			},
+			default: {
+				width: wp((webWidth*100).toString() + '%')
+			}
+		})
     },
 
     "logo": {

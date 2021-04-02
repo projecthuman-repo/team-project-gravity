@@ -120,7 +120,7 @@ export default function CreateProposal ({ navigation }) {
 
     // The text things are for spaces, not sure of a better way to do it
     return(
-        <SafeAreaView style={{backgroundColor: 'white', height: '100%'}}>
+        <SafeAreaView style={Styles.SafeAreaViewStyle}>
             <BackArrow function={() => navigation.navigate("Community")} />
 
             <Title title="Create Proposal"/>

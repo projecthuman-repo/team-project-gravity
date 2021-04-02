@@ -75,7 +75,7 @@ export default function Signup({ navigation }, props) {
     console.log(communities)
 
     return(
-        <SafeAreaView style={Styles.container}>
+      <SafeAreaView style={Styles.SafeAreaViewStyle}>
             <BackArrow function={() => navigation.navigate("Home")} />
             {
             //console.log(communities)
@@ -113,6 +113,6 @@ export default function Signup({ navigation }, props) {
             </View>
           </TouchableWithoutFeedback>
             </View>
-        </SafeAreaView>
+      </SafeAreaView>
     );
 }

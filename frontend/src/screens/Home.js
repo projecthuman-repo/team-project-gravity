@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {View, Text, TouchableWithoutFeedback, Image, Alert, Platform} from "react-native";
+import {View, Text, TouchableWithoutFeedback, Image, Alert, Platform, SafeAreaView} from "react-native";
 import Auth0 from 'react-native-auth0';
 import useUser from '../hooks/queries/useUser';
 
@@ -87,30 +87,32 @@ export default function Home({ navigation }) {
     
     // The text things are for spaces, not sure of a better way to do it
     return(
-        <View style={Styles.MiddleOfScreen}>
-            <View style={Styles.logoContainer}>
-                <Image style={Styles.logo} source={require('../images/logo.jpeg')}></Image>
-            </View>
+        <SafeAreaView style={Styles.SafeAreaViewStyle}>
+            <View style={Styles.MiddleOfScreen}>
+                <View style={Styles.logoContainer}>
+                    <Image style={Styles.logo} source={require('../images/logo.jpeg')}></Image>
+                </View>
 
-            {Platform.OS === 'web' ? null :
-            <TouchableWithoutFeedback onPress={() => onLogin()}>
-                <View style={Styles.Button}>
-                    <Text style={Styles.ButtonText}> LOGIN </Text>
-                </View>
-            </TouchableWithoutFeedback>
-            }
-            <TouchableWithoutFeedback onPress={goToCommunityList}>
-                <View style={Styles.Button}>
-                    <Text style={Styles.ButtonText}> CONTINUE AS GUEST </Text>
-                </View>
-            </TouchableWithoutFeedback>
-            {//micas for testing so remove after 
-            }               
-            <TouchableWithoutFeedback onPress={dummyuid}>
-                <View style={Styles.Button}>
-                    <Text style={Styles.ButtonText}> FOR TESTING </Text>
-                </View>
-            </TouchableWithoutFeedback>
-        </View>
+                {Platform.OS === 'web' ? null :
+                <TouchableWithoutFeedback onPress={() => onLogin()}>
+                    <View style={Styles.Button}>
+                        <Text style={Styles.ButtonText}> LOGIN </Text>
+                    </View>
+                </TouchableWithoutFeedback>
+                }
+                <TouchableWithoutFeedback onPress={goToCommunityList}>
+                    <View style={Styles.Button}>
+                        <Text style={Styles.ButtonText}> CONTINUE AS GUEST </Text>
+                    </View>
+                </TouchableWithoutFeedback>
+                {//micas for testing so remove after 
+                }               
+                <TouchableWithoutFeedback onPress={dummyuid}>
+                    <View style={Styles.Button}>
+                        <Text style={Styles.ButtonText}> FOR TESTING </Text>
+                    </View>
+                </TouchableWithoutFeedback>
+            </View>
+        </SafeAreaView>
     )
 }

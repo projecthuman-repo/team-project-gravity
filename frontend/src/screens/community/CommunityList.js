@@ -51,7 +51,7 @@ export default function CommunityList({ navigation }) {
 
     // For the largeTileList elements, specifically the navigation part, we should pass in the id instead of title. Retrieve all information from the db via the id and display everything via api requests
     return(
-        <SafeAreaView style={{backgroundColor: 'white', height: '100%'}}>
+        <SafeAreaView style={Styles.SafeAreaViewStyle}>
             <View style={{flexDirection: "row", marginHorizontal: 20, paddingBottom: 10}}>
                 <Text style={Styles.BlackTitle}>Community List</Text>
 
@@ -74,6 +74,8 @@ export default function CommunityList({ navigation }) {
                 
                 <LargeTileList content={communities} navigation={navigation} userID = {userID}/>
             </View>
+
+            <View style={Styles.WebViewPadding}></View>
 
             <BottomButton text="Create Community" function={() => createCommunity()} />
         </SafeAreaView>

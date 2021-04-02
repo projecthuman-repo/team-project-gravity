@@ -15,7 +15,7 @@ export default function Picture({ navigation }) {
     }
 
     return(
-        <SafeAreaView style={{backgroundColor: "white", height: "100%", width: "100%"}}>
+        <SafeAreaView style={Styles.SafeAreaViewStyle}>
             <BackArrow function={() => navigation.navigate("Home")} />
         
             <View style={Styles.MiddleOfScreen}>

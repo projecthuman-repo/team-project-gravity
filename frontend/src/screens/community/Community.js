@@ -1,6 +1,7 @@
 import React from "react";
 import {View, Text, TouchableWithoutFeedback, Image, ScrollView, SafeAreaView} from "react-native";
-import Styles from "../../style/CommunityStyle";
+import Styles from "../../style/Style";
+import CommunityStyles from "../../style/CommunityStyle";
 import {BackArrow, BottomButton} from "../components/Buttons";
 import {TitleSubtitleActive, ProposalList, CategoricalListActive} from "../components/Text";
 import useCommunity from '../../hooks/queries/useCommunity';
@@ -60,7 +61,7 @@ export default function Community({ navigation }) {
     }
 
     return(
-        <SafeAreaView style={{backgroundColor: "white", height: "100%"}}>
+        <SafeAreaView style={Styles.SafeAreaViewStyle}>
             <BackArrow function={() => navigation.navigate("CommunityList")} />
 
             <TitleSubtitleActive title={communityName} subtitle="Members" link={() => navigation.navigate("MemberList", {communityID: communityID, communityName: communityName})}/>
@@ -70,9 +71,9 @@ export default function Community({ navigation }) {
             <CategoricalListActive title="Recent Activity" content={[
             ]}/>
 
-            <View style={Styles.Tags}>
-                <Text style={Styles.miniTitle}>Tags</Text>
-                <View style={Styles.Button}>
+            <View style={CommunityStyles.Tags}>
+                <Text style={CommunityStyles.miniTitle}>Tags</Text>
+                <View style={Styles.SmallButton}>
                     <TouchableWithoutFeedback onPress={seeTags}>
                         <Text style={Styles.ButtonText}>Sample Tag</Text>
                     </TouchableWithoutFeedback>

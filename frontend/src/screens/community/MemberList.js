@@ -1,5 +1,6 @@
 import React from "react";
 import {View, Text, TextInput, TouchableWithoutFeedback, Image, SafeAreaView} from "react-native";
+import Styles from "../../style/Style";
 import {BackArrow} from "../components/Buttons";
 import {TitleSubtitleInactive, UserList} from "../components/Text";
 import { useQuery } from '@apollo/react-hooks';
@@ -41,7 +42,7 @@ export default function MemberList ({ navigation }) {
     console.log(users)
 
     return(
-        <SafeAreaView style={{backgroundColor: "white", height: "100%", width: "100%"}}>
+        <SafeAreaView style={Styles.SafeAreaViewStyle}>
             <BackArrow function={() =>navigation.navigate("Community")} />
 
             <TitleSubtitleInactive title="Community Members" subtitle={communityName} />

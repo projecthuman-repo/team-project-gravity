@@ -15,7 +15,7 @@ export default function Proposal({ navigation }) {
     console.log(communityName)
 
     return(
-        <SafeAreaView style={{backgroundColor: 'white', height: '100%',}}>
+        <SafeAreaView style={Styles.SafeAreaViewStyle}>
             <BackArrow function={() => navigation.navigate("Community")}/>
 
             <Image style={{height: 100, width: 96, alignSelf: "center"}} source={require('../../images/camera.png')} />

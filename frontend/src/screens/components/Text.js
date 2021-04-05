@@ -36,28 +36,6 @@ class TitleSubtitleInactive extends Component {
     }
 }
 
-class ProposalList extends Component {
-    render() {
-        const navigation = this.props.navigation;
-
-        return (
-            <View style={{paddingVertical: 15, marginHorizontal: 20}}>
-                <Text selectable={false} style={Styles.ColoredTitleText}>Proposals</Text>
-                <FlatList
-                    data={this.props.content}
-                    renderItem={({item}) => (
-                        <TouchableOpacity onPress={() => navigation.navigate("Proposal", {communityName: this.props.communityName, communityProposalID: item.communityProposalID, communityProposalName: item.communityProposalName, communityProposalDescription: item.communityProposalDescription})}>
-                            <Text selectable={false} style={Styles.CommunityListItem} numberOfLines={1}>
-                                {item.communityProposalName}
-                            </Text>
-                        </TouchableOpacity>
-                    )}
-                />
-            </View>
-        )
-    }
-}
-
 class UserList extends Component {
     render() {
         return (
@@ -147,7 +125,6 @@ export {
     Title,
     TitleSubtitleActive,
     TitleSubtitleInactive,
-    ProposalList,
     UserList,
     CategoricalListActive,
     CategoricalListInactive,

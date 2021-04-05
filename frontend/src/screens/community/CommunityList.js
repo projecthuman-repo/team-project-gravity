@@ -62,12 +62,14 @@ export default function CommunityList({ navigation }) {
                 <Text style={Styles.RedSubtitle}>Communities by location</Text>
             </View>
 
-            <SmallTileList content={[
-                {name: "Toronto", link: filter, image: require('../../images/community_list/small/toronto.jpg')},
-                {name: "Vancouver", link: filter, image: require('../../images/community_list/small/vancouver.jpg')},
-                {name: "NYC", link: filter, image: require('../../images/community_list/small/nyc.jpg')},
-                {name: "LA", link: filter, image: require('../../images/community_list/small/la.jpg')},
-            ]} />
+            <View style={{marginLeft: 20}}>
+                <SmallTileList content={[
+                    {name: "Toronto", link: filter, image: require('../../images/community_list/small/toronto.jpg')},
+                    {name: "Vancouver", link: filter, image: require('../../images/community_list/small/vancouver.jpg')},
+                    {name: "NYC", link: filter, image: require('../../images/community_list/small/nyc.jpg')},
+                    {name: "LA", link: filter, image: require('../../images/community_list/small/la.jpg')},
+                ]} />
+            </View>
 
             <View style={{paddingTop: 20, backgroundColor: 'white', height: '67%'}}>
                 <Text style={Styles.RedSubtitle}>All communities</Text>

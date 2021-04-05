@@ -3,7 +3,8 @@ import {View, Text, TouchableWithoutFeedback, Image, ScrollView, SafeAreaView} f
 import Styles from "../../style/Style";
 import CommunityStyles from "../../style/CommunityStyle";
 import {BackArrow, BottomButton} from "../components/Buttons";
-import {TitleSubtitleActive, ProposalList, CategoricalListActive} from "../components/Text";
+import {SmallProposalTileList} from "../components/community_explore/Tiles";
+import {TitleSubtitleActive, CategoricalListActive} from "../components/Text";
 import useCommunity from '../../hooks/queries/useCommunity';
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost'
@@ -65,8 +66,12 @@ export default function Community({ navigation }) {
             <BackArrow function={() => navigation.navigate("CommunityList")} />
 
             <TitleSubtitleActive title={communityName} subtitle="Members" link={() => navigation.navigate("MemberList", {communityID: communityID, communityName: communityName})}/>
+
+            <View style={{paddingVertical: 15, marginHorizontal: 20}}>
+                <Text selectable={false} style={Styles.ColoredTitleText}>Proposals</Text>
+            </View>
             
-            <ProposalList title="Proposals" content={proposals} navigation={navigation} communityName={communityName} />
+            <SmallProposalTileList content={proposals} navigation={navigation} communityName={communityName} />
 
             <CategoricalListActive title="Recent Activity" content={[
             ]}/>

@@ -78,7 +78,7 @@ class SmallProposalTileList extends Component {
 
         return (
             <View style={{marginBottom: 20}}>
-                <ScrollView style={{paddingTop: 10, paddingLeft: 20, paddingRight: 20}}>
+                <ScrollView style={{paddingTop: 10, paddingLeft: 20, paddingRight: 20}} horizontal={true}>
                     { tiles }
                 </ScrollView>
             </View>

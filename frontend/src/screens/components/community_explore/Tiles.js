@@ -1,6 +1,8 @@
+import { F } from 'ramda';
 import React, { Component } from 'react';
-import {View, Text, Image, TouchableOpacity, ScrollView, FlatList} from "react-native";
+import {View, Text, Image, TouchableOpacity, ScrollView, FlatList, TouchableHighlight} from "react-native";
 import Styles from "../../../style/Style";
+import StitchedPlaceholder from '../../signup/StitchedPlaceholder';
 
 class SmallTile extends Component {
     render() {
@@ -113,10 +115,40 @@ class LargeTileList extends Component {
     }
 }
 
+class StitchedTiles extends Component {
+    render() {
+        const navigation = this.props.navigation;
+        const userID = this.props.userID;
+        var tiles = [];
+
+        for (let i = 0; i < this.props.content.length; i++) {
+            tiles.push(
+                <TouchableHighlight style={{alignItems: "center", width: 400, height: 100, backgroundColor: '#f85f69', borderRadius: 10, marginBottom: 5}} onPress={() => {navigation.navigate("StitchedPlaceholder", {userID: userID})}}>
+                    <View style={{alignItems: "center"}}>
+                    <Text style={{color: "#35424a", paddingTop: 10, paddingBottom: 3, fontSize: 20, fontWeight: '600'}}>{this.props.content[i].header}</Text>
+                    <Text style={{color: "#35424a", paddingTop: 5, paddingHorizontal: 10, fontSize: 16, fontWeight: '400', textAlign: "center" }}>{this.props.content[i].description}</Text>
+                    </View>
+                </TouchableHighlight>
+            )
+
+        }
+
+        return (
+            <View style={{marginVertical: 50, height: 450}}>
+                <ScrollView >
+                    { tiles }
+                </ScrollView>
+            </View>
+        )
+
+    }
+}
+
 export {
     SmallTile,
     LargeTile,
     SmallTileList,
     SmallProposalTileList,
-    LargeTileList
+    LargeTileList,
+    StitchedTiles
 }

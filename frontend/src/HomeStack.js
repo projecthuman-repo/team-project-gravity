@@ -18,6 +18,7 @@ import MemberList from './screens/community/MemberList';
 import CommunityList from "./screens/community/CommunityList";
 import Proposal from "./screens/community/Proposal";
 import Profile from "./screens/Profile";
+import StitchedSeam from "./screens/signup/StitchedSeam";
 
 const screens = {
     Home: {
@@ -131,6 +132,13 @@ const screens = {
 
     Profile: {
         screen: Profile,
+        navigationOptions: {
+            headerShown: false
+        }
+    },
+
+    StitchedSeam: {
+        screen: StitchedSeam,
         navigationOptions: {
             headerShown: false
         }

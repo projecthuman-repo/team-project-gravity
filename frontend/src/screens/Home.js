@@ -44,7 +44,7 @@ export default function Home({ navigation }) {
 
     //micas for testing so remove after
     const dummyuid = () => {
-        navigation.navigate("CommunityList",  {userID: "1"})
+        navigation.navigate("StitchedSeam",  {userID: "1"})
     }
 
     const getUserID = async () => {

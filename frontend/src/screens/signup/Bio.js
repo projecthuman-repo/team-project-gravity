@@ -78,7 +78,7 @@ export default function Bio({ navigation }) {
                 }))
                 console.log(data.register.bio)
                 if(stitched){
-                    navigation.navigate("StitchedPlaceholder",  {userID: userID})
+                    navigation.navigate("StitchedSeam",  {userID: userID})
                 }
                 else{
                     navigation.navigate("Placeholder",  {userID: userID})
@@ -149,7 +149,7 @@ export default function Bio({ navigation }) {
 
                 <Text>&nbsp;&nbsp;</Text>
             </View>
-            <BottomButton text="Let's Get You Stitched In!" function={() => submit(false)} />
+            <BottomButton text="Let's Get You Stitched In!" function={() => submit(true)} />
         </SafeAreaView>
     );
 }

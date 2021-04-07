@@ -62,6 +62,30 @@ class SmallTileList extends Component {
     }
 }
 
+class SmallTileListProfile extends Component {
+    render() {
+        const navigation = this.props.navigation;
+        const userID = this.props.userID;
+        var tiles = [];
+
+        for (let i = 0; i < this.props.content.length; i++) {
+            tiles.push(
+                <TouchableOpacity onPress={() => navigation.navigate("Community", {userID: userID, communityID: this.props.content[i].communityID})}>
+                    <SmallTile name={this.props.content[i].communityName} imageUri={this.props.content[i].image}/>
+                </TouchableOpacity>
+            )
+        }
+
+        return (
+            <View style={{height:130, marginTop: 20}}>
+                <ScrollView horizontal={true}>
+                    { tiles }
+                </ScrollView>
+            </View>
+        )
+    }
+}
+
 class SmallProposalTileList extends Component {
     render() {
         const navigation = this.props.navigation;
@@ -85,8 +109,6 @@ class SmallProposalTileList extends Component {
         )
     }
 }
-
-
 
 
 class LargeTileList extends Component {
@@ -113,10 +135,25 @@ class LargeTileList extends Component {
     }
 }
 
+class BadgeTile extends Component {
+    render() {
+        return (
+            <View style={{height: 50, width:50, marginLeft: 10, borderWidth: 0.5, borderRadius: 5, borderColor: '#dddddd'}}>
+                <View style={{flex: 2}}>
+                    <Image source={this.props.imageUri} 
+                    style={{flex:1, width: null, height:null, resizeMode: 'contain'}}/>
+                </View>
+            </View>
+        )
+    }
+}
+
 export {
     SmallTile,
     LargeTile,
     SmallTileList,
+    SmallTileListProfile,
     SmallProposalTileList,
-    LargeTileList
+    LargeTileList,
+    BadgeTile
 }

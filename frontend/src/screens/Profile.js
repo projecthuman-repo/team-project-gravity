@@ -4,8 +4,8 @@ import Auth0 from 'react-native-auth0';
 import Styles from "../style/Style";
 import {BackArrow} from "./components/Buttons";
 import {CategoricalListActive} from "./components/Text";
-import {BadgeTile} from "./components/ProfileComponents";
-import {SmallTileListProfile} from "./components/community_explore/Tiles";
+import {SmallTileListProfile, BadgeTile} from "./components/community_explore/Tiles";
+import useUser from '../hooks/queries/useUser';
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost'
 import * as R from 'ramda';
@@ -45,6 +45,11 @@ export default function Profile({ navigation }) {
     }
 
     const userID = navigation.getParam("userID");
+    const user = useUser(userID);
+    let name;
+    if (RA.isNotNil(user)) {
+        name = user.name
+    }
 
     const {loading, data, error} = useQuery(gql`
     query FindUsersCommunities($userID: ID){
@@ -62,9 +67,6 @@ export default function Profile({ navigation }) {
         R.prop('findUsersCommunities'),
         R.always([]),
     )(data)
-
-    console.log(communities)
-
     
     // The text things are for spaces, not sure of a better way to do it
     return(
@@ -77,8 +79,8 @@ export default function Profile({ navigation }) {
 
                     <View style={{marginHorizontal: 20, width: "75%"}}>
                         <TouchableWithoutFeedback onPress={logout}>
-                            <View style={{justifyContent: "center", alignItems: "center", backgroundColor: "#fa5f6a", width: "100%", height: 45, borderRadius: 10}}>
-                                <Text style={{color: "white", fontWeight: "500", fontSize: 20}}> Logout </Text>
+                            <View style={{justifyContent: "center", alignItems: "center", backgroundColor: "#fa5f6a", width: "100%", height: 40, marginTop: 20, marginRight: 20, borderRadius: 8}}>
+                                <Text style={{color: "white", fontWeight: "500", fontSize: 16}}> Logout </Text>
                             </View>
                         </TouchableWithoutFeedback>
                     </View>
@@ -87,12 +89,12 @@ export default function Profile({ navigation }) {
 
             <View style={{alignItems: "center"}}>
                 <Image style={Styles.ProfilePicture} source={require("../images/profilePicture.png")}/>
-                <Text selectable={false} style={{fontWeight: "bold", fontSize: 24, marginTop: 10}}>Full Name</Text>
+                <Text selectable={false} style={{fontWeight: "bold", fontSize: 24, marginTop: 10}}>{name}</Text>
             </View>
 
-            <CategoricalListActive title="Badges" content={[]}/>
+            <Text style={{paddingTop: 30, marginHorizontal: 20, color: '#f85f69', fontSize: 18, fontWeight: '700'}}>Badges</Text>
 
-            <View>
+            <View style={{paddingTop: 20}}>
                 <ScrollView horizontal={true}>
                     <TouchableOpacity onPress={displayBadgeName.bind(this, "Badge #1")}>
                         <BadgeTile imageUri={require('../images/badge.png')}/>
@@ -136,17 +138,17 @@ export default function Profile({ navigation }) {
                 </ScrollView>
             </View>
 
-            <CategoricalListActive title="Communities" content={[]}/>
+            <Text style={{paddingTop: 30, marginHorizontal: 20, color: '#f85f69', fontSize: 18, fontWeight: '700'}}>Communities</Text>
 
             <View style={{marginLeft: 20}}>
                 <SmallTileListProfile content={communities} navigation={navigation} userID = {userID} />
             </View>
 
             <CategoricalListActive title="Feed" content={[
-                {key: "Feed item 1", link: () => navigation.navigate("Community")},
-                {key: "Feed item 2", link: () => navigation.navigate("Community")},
-                {key: "Feed item 3", link: () => navigation.navigate("Community")},
-                {key: "Feed item 4", link: () => navigation.navigate("Community")}
+                {key: "Feed item 1", link: () => navigation.navigate("CommunityList")},
+                {key: "Feed item 2", link: () => navigation.navigate("CommunityList")},
+                {key: "Feed item 3", link: () => navigation.navigate("CommunityList")},
+                {key: "Feed item 4", link: () => navigation.navigate("CommunityList")}
             ]}/>
 
         </SafeAreaView>

@@ -45,28 +45,47 @@ export default function Profile({ navigation }) {
     }
 
     const userID = navigation.getParam("userID");
-    const user = useUser(userID);
-    let name;
-    if (RA.isNotNil(user)) {
-        name = user.name
+
+    const queries = () => {
+        const res1 = useQuery(gql`
+        query User($userID: ID){
+            user(userID: $userID) {
+                name
+            }
+        }
+        `, {
+            variables: { userID },
+            fetchPolicy: 'cache-and-network'
+        });
+        const res2 = useQuery(gql`
+        query FindUsersCommunities($userID: ID){
+            findUsersCommunities(userID: $userID) {
+                communityName
+                communityID
+            }
+        }
+        `, {
+            variables: { userID },
+            fetchPolicy: 'cache-and-network'
+        });
+        return [res1, res2] 
     }
 
-    const {loading, data, error} = useQuery(gql`
-    query FindUsersCommunities($userID: ID){
-        findUsersCommunities(userID: $userID) {
-            communityName
-            communityID
-        }
-    }`, {
-        variables: { userID },
-        fetchPolicy: 'cache-and-network'
-    })    
+    const [{loading: loading1, data: data1}, {loading: loading2, data: data2}] = queries()
+
+    const user = R.ifElse(
+        queryIsNotNil('user'),
+        R.prop('user'),
+        R.always([]),
+    )(data1)
 
     const communities = R.ifElse(
         queryIsNotNil('findUsersCommunities'),
         R.prop('findUsersCommunities'),
         R.always([]),
-    )(data)
+    )(data2)
+
+    const name = user.name;
     
     // The text things are for spaces, not sure of a better way to do it
     return(

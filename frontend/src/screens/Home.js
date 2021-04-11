@@ -107,11 +107,11 @@ export default function Home({ navigation }) {
                 </TouchableWithoutFeedback>
                 {//micas for testing so remove after 
                 }               
-                <TouchableWithoutFeedback onPress={dummyuid}>
+                {/* <TouchableWithoutFeedback onPress={dummyuid}>
                     <View style={Styles.Button}>
                         <Text style={Styles.ButtonText}> FOR TESTING </Text>
                     </View>
-                </TouchableWithoutFeedback>
+                </TouchableWithoutFeedback> */}
             </View>
         </SafeAreaView>
     )

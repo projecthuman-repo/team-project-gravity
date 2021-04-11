@@ -1,4 +1,8 @@
-# SPOTSTITCH OFF-BOARDING
+# SPOTSTITCH
+
+Spotstitch is an app which acts as a hub to inspire change and garner support for communal projects and those in need. Further, it shapes leaders who pursue their passions, fosters diverse projects, and generates support for existing projects.
+
+Many communal projects suffer from a lack of exposure and support simply because they aren't connected to passionate individuals. Spotstitch is here to change that; It is the hub for people who need change, and for those eager to exact it.
 
 ## General Information
 This repository is used to develop the mobile (iOS and Android) application SpotStitch, which is also functional as a web application. It is temporarily deployed on the web awaiting deployment on the Play Store & Apple Store.

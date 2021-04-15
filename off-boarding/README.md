@@ -203,7 +203,7 @@ To be able to use Auth0, a developer must create an Auth0 account, and within th
     NOTE: the {domain} should be replaced with the domain assigned to your application (which can be found at the top of the "Settings" page you are currently on.
    - Scroll to the bottom of the page and click on the blue button "Save Changes"
 4. Update the configuration file in this repository's front-end
-    - Keep the Auth0 tab open in your web browser, and in your code editor, navigate to `./frontend/src/atuh0-configuration-mobile.js`
+    - Keep the Auth0 tab open in your web browser, and in your code editor, navigate to `./frontend/src/auth0-configuration-mobile.js`
     - Replace the string next to clientID with the clientID of your newly created Auth0 application, which can be found in the Auth0 Settings tab of your application (the page you were on in Step 3) just below where you found the Domain.
     - Replace the string next to domain with the domain of your newly created Auth0 application (it is the same domain that was found and used in step 3)
 
@@ -256,7 +256,7 @@ The minified version of the front-end pages can be found in `./frontend/web-buil
 The minfied version is NOT automatically updated whenever UI changes are made - the minified version of the UI MUST be updated everytime that UI changes are made. This is done via:
 
 
-    npm build-frontend # From repository root
+    npm run build-frontend # From repository root
 
 OR via:
 

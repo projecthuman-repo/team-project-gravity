@@ -1,5 +1,5 @@
 import React from "react";
-import {View, Text,SafeAreaView} from "react-native";
+import {View, Text,SafeAreaView, Platform} from "react-native";
 import Styles from "../../style/Style";
 import {LargeTileList, SmallTileList} from "../components/community_explore/Tiles";
 import {BottomButton, ProfileButton} from "../components/Buttons";
@@ -78,8 +78,9 @@ export default function CommunityList({ navigation }) {
             </View>
 
             <View style={Styles.WebViewPadding}></View>
-
+            { Platform.OS === 'web' ? null :
             <BottomButton text="Create Community" function={() => createCommunity()} />
+            }
         </SafeAreaView>
     )
 }

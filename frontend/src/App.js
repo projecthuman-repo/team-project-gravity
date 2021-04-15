@@ -4,9 +4,8 @@ import { ApolloClient, ApolloProvider, InMemoryCache, createNetworkInterface } f
 import {Platform} from "react-native";
 import { createUploadLink } from 'apollo-upload-client'
 
-let url = "https://staging.spotstitch.herokuapp.com/graphql"
+let url = "https://spotstitch-staging.herokuapp.com/graphql"
 if (process.env['NODE_ENV'] === 'development'){
-  console.log("LOCAL")
   url = "http://localhost:4000/graphql"
 }
 

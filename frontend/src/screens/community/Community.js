@@ -1,5 +1,5 @@
 import React from "react";
-import {View, Text, TouchableWithoutFeedback, Image, ScrollView, SafeAreaView} from "react-native";
+import {View, Text, TouchableWithoutFeedback, Image, ScrollView, SafeAreaView, Platform} from "react-native";
 import Styles from "../../style/Style";
 import CommunityStyles from "../../style/CommunityStyle";
 import {BackArrow, BottomButton} from "../components/Buttons";
@@ -144,8 +144,9 @@ export default function Community({ navigation }) {
                 <BackArrow function={() => navigation.navigate("CommunityList")} />
 
                 <TitleSubtitleInactive title={communityName} subtitle="Join the community to see more!" />
-    
+                { Platform.OS === 'web' ? null :
                 <BottomButton text="Join Community" function={submit} />
+                }
             </SafeAreaView>
         );
     }

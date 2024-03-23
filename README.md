@@ -11,7 +11,7 @@ This repository is used to develop the mobile (iOS and Android) application Spot
   - Front-end: React Native
   - Back-end: GraphQL with Express middleware and MinIO for image storage
   - Database: MySQL (using the Sequelize library) 
-  - CI/CD: Githib Actions
+  - CI/CD: Github Actions
   - Deployment: Heroku
   - Third-party authentication: Auth0
 
